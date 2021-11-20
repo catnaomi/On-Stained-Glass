@@ -98,7 +98,7 @@ var LZString={_keyStr:"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz01234
 		<div id="init-lacking">Your browser lacks required capabilities. Please upgrade it or switch to another to continue.</div>
 		<div id="init-loading"><div>Loading&hellip;</div></div>
 	</div>
-	<tw-storydata name="On Stained Glass" startnode="12" creator="Twine" creator-version="2.3.14" ifid="D8334177-4232-43BC-BC63-63FE70796685" zoom="0.6" format="SugarCube" format-version="2.34.1" options="" hidden><style role="stylesheet" id="twine-user-stylesheet" type="text/twine-css"></style><script role="script" id="twine-user-script" type="text/twine-javascript">var employeeGuardPosition = 1;
+	<tw-storydata name="On Stained Glass" startnode="24" creator="Twine" creator-version="2.3.14" ifid="D8334177-4232-43BC-BC63-63FE70796685" zoom="0.6" format="SugarCube" format-version="2.34.1" options="" hidden><style role="stylesheet" id="twine-user-stylesheet" type="text/twine-css"></style><script role="script" id="twine-user-script" type="text/twine-javascript">var employeeGuardPosition = 1;
 // 0 = north
 // 1 = east
 // 2 = south
@@ -207,9 +207,12 @@ v1 - first escape
 [[meeting area|E1: Meeting Area]]</tw-passagedata><tw-passagedata pid="9" name="E1: Computer Room" tags="" position="1202,297" size="100,100">Double-click this passage to edit it.</tw-passagedata><tw-passagedata pid="10" name="E1: Meeting Area" tags="" position="833,105" size="100,100">Double-click this passage to edit it.</tw-passagedata><tw-passagedata pid="11" name="Chapter Select" tags="" position="273,573" size="100,100">chapter select
 
 [[escape|E1: Context]]
-[[heist|H0: Context]]</tw-passagedata><tw-passagedata pid="12" name="H0: Context" tags="" position="409,886" size="100,100">The familiar and tell-tale whirring of the drones overhead echoes through the walls of the alleyway. You tap your fingers nervously against the brick and patchwork-titanium building be
+[[heist|H0: Context]]</tw-passagedata><tw-passagedata pid="12" name="H0: Context" tags="" position="238.99999999999997,806" size="100,100">The familiar and tell-tale whirring of the drones overhead echoes through the walls of the alleyway. You tap your fingers nervously against the brick and patchwork-titanium building behind you, looking nervously around the corner and up into the sky. Before you and your ragtag group of rogues is the Nwaeri-Carlisle Corporation building: the headquarters of one of the five largest companies in the city. But-- and perhaps more importantly-- it&#39;s your home.
 
-[[H0: Lobby]]
+You hear a crackling of a voice coming from your headset.
+
+[[&gt; Listen.|H0: Context 2]]
+
 
 &lt;&lt;silently&gt;&gt;
 &lt;&lt;set $h0serviceDoor to false&gt;&gt;
@@ -219,27 +222,28 @@ v1 - first escape
 &lt;&lt;set $researchGuardDown to false&gt;&gt;
 &lt;&lt;set $heistFloor to 0&gt;&gt;
 &lt;&lt;set $talkedToReceptionist to false&gt;&gt;
-&lt;&lt;set $enteredLobby
-&lt;&lt;/silently&gt;&gt;</tw-passagedata><tw-passagedata pid="13" name="H0: Lobby" tags="" position="607,894" size="100,100">Sweet talk the &lt;&lt;nobr&gt;&gt;
-&lt;&lt;link &quot;receptionist&quot;&gt;&gt;
+&lt;&lt;set $h1confrontedMarcellus to false&gt;&gt;
+&lt;&lt;set $h1bombReady to false&gt;&gt;
+&lt;&lt;/silently&gt;&gt;</tw-passagedata><tw-passagedata pid="13" name="H0: Lobby" tags="" position="607,894" size="100,100">You&#39;re in the golden, gaudy, and nostalgic lobby of the NCC building. It&#39;s filled with glass cases filled with decommissioned guns and drones, relics of the NCC&#39;s reign over the city. Beneath your feet is an elaborate red carpet stretching from you to &lt;&lt;nobr&gt;&gt;
+&lt;&lt;link &quot;a receptionist&quot;&gt;&gt;
 	&lt;&lt;set $h0receptionist to true&gt;&gt;
 	&lt;&lt;replace #link-h0receptionist&gt;&gt;
 		[[H0: Receptionist]]
 	&lt;&lt;/replace&gt;&gt;
 	&lt;&lt;replace #description-text&gt;&gt;
-		The receptionist greets those who pass.
+		The receptionist-- Emilia-- greets those who pass.
 	&lt;&lt;/replace&gt;&gt;
 &lt;&lt;/link&gt;&gt;
-&lt;&lt;/nobr&gt;&gt;. There&#39;s also a &lt;&lt;nobr&gt;&gt;
-&lt;&lt;link &quot;door on the left&quot;&gt;&gt;
+&lt;&lt;/nobr&gt;&gt;, sitting at a desk ahead. &lt;&lt;if $informedOfDoor is true&gt;&gt;Now that you&#39;re looking for it, you realize there&#39;s &lt;&lt;nobr&gt;&gt;
+&lt;&lt;link &quot;what looks like a door&quot;&gt;&gt;
 	&lt;&lt;set $h0serviceDoor to true&gt;&gt;
 		&lt;&lt;replace #link-h0serviceDoor&gt;&gt;
 			[[H0: Service Room]]
 		&lt;&lt;/replace&gt;&gt;
 		&lt;&lt;replace #description-text&gt;&gt;
-			Service door hidden by paint or something.
+			Service door hidden by golden paint.
 		&lt;&lt;/replace&gt;&gt;
-&lt;&lt;/link&gt;&gt;&lt;&lt;/nobr&gt;&gt;.
+&lt;&lt;/link&gt;&gt;&lt;&lt;/nobr&gt;&gt; just barely visible among the golden walls.&lt;&lt;/if&gt;&gt;
 
 &lt;span id=&quot;description-text&quot;&gt;&lt;/span&gt;
 
@@ -250,20 +254,44 @@ v1 - first escape
 &lt;&lt;if !$talkedToReceptionist&gt;&gt;&lt;&lt;set $talkedToReceptionist to true&gt;&gt;&lt;&lt;include [[H0: Emilia Dialogue 00]]&gt;&gt;&lt;&lt;else&gt;&gt;Emilia greets people as they pass by. She looks at you with a knowing look. She probably won&#39;t let you pass.
 
 [[H0: Lobby]]&lt;&lt;/if&gt;&gt;
-</tw-passagedata><tw-passagedata pid="15" name="H0: Service Room" tags="" position="812,847" size="100,100">you get into the service room with an elevator.
+</tw-passagedata><tw-passagedata pid="15" name="H0: Service Room" tags="" position="810.3333333333334,853.6666666666666" size="100,100">&lt;&lt;if visited() &lt;= 1&gt;&gt;You and your &quot;butlers&quot; quickly dart into the service room. You look back at Emilia and she seems surprised and a bit suspicious as she looks over at you, and you see her raise a phone to her ear.&lt;&lt;/if&gt;&gt;
 
-[[H0: Lobby]]
-[[H0: Service Elevator]]
+You&#39;re in a service room. It&#39;s pretty dingy and grey, with signs of frequent use. Much to your surprise, there&#39;s another elevator here.
 
-&lt;&lt;set $heistTime to $heistTime + 1&gt;&gt;</tw-passagedata><tw-passagedata pid="16" name="H0: Main Elevator" tags="" position="960,988" size="100,100">you take the elevator up. marcellus gives a speech here as you change clothes.
+[[&gt; Head out to the Lobby|H0: Lobby]]
+[[&gt; Take the Elevator Up|H0: Service Elevator]]
 
-[[H1: Cubicles West (3)]]
-&lt;&lt;set $heistTime to $heistTime + 1&gt;&gt;
-&lt;&lt;set $heistFloor to 1&gt;&gt;</tw-passagedata><tw-passagedata pid="17" name="H0: Service Elevator" tags="" position="964,850" size="100,100">you take the elevator up. marcellus gives a speech here as you change clothes.
+&lt;&lt;set $heistTime to $heistTime + 1&gt;&gt;</tw-passagedata><tw-passagedata pid="16" name="H0: Main Elevator" tags="" position="960,984.6666666666667" size="100,100">&lt;&lt;silently&gt;&gt;&lt;&lt;set $heistTime to $heistTime + 1&gt;&gt;
+&lt;&lt;set $heistFloor to 1&gt;&gt;
+&lt;&lt;/silently&gt;&gt;&quot;Great work, team,&quot; says Marcellus to the group. &quot;Get changed.&quot;
 
-[[H1: Employee Floor Service Closet]]
-&lt;&lt;set $heistTime to $heistTime + 1&gt;&gt;
-&lt;&lt;set $heistFloor to 1&gt;&gt;</tw-passagedata><tw-passagedata pid="18" name="H1: Employee Floor Service Closet" tags="" position="1151,861" size="100,100">&lt;&lt;silently&gt;&gt;
+Marcellus, Violet, and Minh all strip off their servants&#39; attire into the stealth-appropriate bodysuits underneath. You nervously fumble with the buttons on your blouse, to change as well, but Marcellus glances over with a bemused look on his face.
+
+&quot;Unfortunately, now the Kiddie gloves are off. I have a man upstairs disabling the camera feed, but there should be guards patrolling the area,&quot; says Marcellus, with his familiar air of authority. &quot;Do not, under any circumstances, let a guard catch you, understood?&quot;
+
+&lt;span id=&quot;dialogueH1-elevator&quot;&gt;&lt;&lt;nobr&gt;&gt;
+	&lt;&lt;link &quot;&gt; Nod.&quot;&gt;&gt;
+	&lt;&lt;replace &quot;#dialogueH1-elevator&quot;&gt;&gt;
+		&lt;&lt;include [[H1: Elevator Affirmative]]&gt;&gt;
+	&lt;&lt;/replace&gt;&gt;
+	&lt;&lt;/link&gt;&gt;
+&lt;&lt;/nobr&gt;&gt;&lt;/span&gt;
+</tw-passagedata><tw-passagedata pid="17" name="H0: Service Elevator" tags="" position="964,850" size="100,100">&lt;&lt;silently&gt;&gt;&lt;&lt;set $heistTime to $heistTime + 1&gt;&gt;
+&lt;&lt;set $heistFloor to 1&gt;&gt;
+&lt;&lt;/silently&gt;&gt;&quot;Well, that could&#39;ve gone better.&quot; says Marcellus to the group. &quot;Get changed.&quot;
+
+Marcellus, Violet, and Minh all strip off their servants&#39; attire into the stealth-appropriate bodysuits underneath. You nervously fumble with the buttons on your blouse, to change as well, but Marcellus glances over with a bemused look on his face.
+
+&quot;Unfortunately, now the Kiddie gloves are off. I have a man upstairs disabling the camera feed, but there should be guards patrolling the area,&quot; says Marcellus, with his familiar air of authority. &quot;Do not, under any circumstances, let a guard catch you, understood?&quot;
+
+&lt;span id=&quot;dialogueH1-service&quot;&gt;&lt;&lt;nobr&gt;&gt;
+	&lt;&lt;link &quot;&gt; Nod.&quot;&gt;&gt;
+	&lt;&lt;replace &quot;#dialogueH1-service&quot;&gt;&gt;
+		&lt;&lt;include [[H1: Service Affirmative]]&gt;&gt;
+	&lt;&lt;/replace&gt;&gt;
+	&lt;&lt;/link&gt;&gt;
+&lt;&lt;/nobr&gt;&gt;&lt;/span&gt;
+</tw-passagedata><tw-passagedata pid="18" name="H1: Employee Floor Service Closet" tags="" position="1151,861" size="100,100">&lt;&lt;silently&gt;&gt;
 	&lt;&lt;script&gt;&gt;
 		window.UpdateGuardPositionEmployee()
 	&lt;&lt;/script&gt;&gt;
@@ -271,12 +299,12 @@ v1 - first escape
 	&lt;&lt;set $heistTime to $heistTime + 1&gt;&gt;
 	&lt;&lt;set $h1serviceCloset to true&gt;&gt;
 &lt;&lt;/silently&gt;&gt;
-you&#39;re in the service closet for the employee floor. you hear a guard outside. there&#39;s a door out to the cubicles.
+You&#39;re in the service closet for the employee floor. It&#39;s dingy and grey-- as you&#39;d expect-- but well-kept. There&#39;s a door out to the cubicles.
 
-&lt;&lt;if window.GetGuardPositionEmployee() is 0&gt;&gt;you see a guard right outside the door. you should wait a moment.&lt;&lt;/if&gt;&gt;
+&lt;&lt;if window.GetGuardPositionEmployee() is 0&gt;&gt;You hear the footsteps of a guard right ouside the door. You should wait and hide here.&lt;&lt;/if&gt;&gt;
 
-[[H1: Cubicles North (0)]]
-[[&gt; wait|H1: Employee Floor Service Closet]]</tw-passagedata><tw-passagedata pid="19" name="H1: Cubicles West (3)" tags="" position="1177,1011" size="100,100">&lt;&lt;silently&gt;&gt;
+[[&gt; Head outside.|H1: Cubicles North (0)]]
+[[&gt; Hide here for a moment.|H1: Employee Floor Service Closet]]</tw-passagedata><tw-passagedata pid="19" name="H1: Cubicles West (3)" tags="" position="1173.6666666666667,994.3333333333334" size="100,100">&lt;&lt;silently&gt;&gt;
 	&lt;&lt;script&gt;&gt;
 		window.UpdateGuardPositionEmployee()
 	&lt;&lt;/script&gt;&gt;
@@ -297,19 +325,19 @@ western cubicle section. the main elevator doors are to the west. you see a &lt;
 &lt;span id=&quot;description-text&quot;&gt;&lt;&lt;if $guardPosition is 3 &amp;&amp; $employeeGuardDown&gt;&gt;There&#39;s a guard stuffed in a nearby cubicle.&lt;&lt;/if&gt;&gt;&lt;/span&gt;
 
 &lt;span id=&quot;link-h1surveillanceRoom&quot;&gt;&lt;&lt;if $h1surveillanceRoom&gt;&gt;[[H1: Surveillance Room]]&lt;&lt;/if&gt;&gt;&lt;/span&gt;
-[[H1: Cubicles South (2)]]&lt;&lt;nobr&gt;&gt;
+[[&gt; Go south.|H1: Cubicles South (2)]]&lt;&lt;nobr&gt;&gt;
 &lt;&lt;if $guardPosition is 2 &amp;&amp; !$employeeGuardDown&gt;&gt; You hear footsteps from this direction.&lt;&lt;/if&gt;&gt;
 &lt;&lt;/nobr&gt;&gt;
-[[H1: Cubicles North (0)]]&lt;&lt;nobr&gt;&gt;
+[[&gt; Go north.|H1: Cubicles North (0)]]&lt;&lt;nobr&gt;&gt;
 &lt;&lt;if $guardPosition is 0 &amp;&amp; !$employeeGuardDown&gt;&gt; You hear footsteps from this direction.&lt;&lt;/if&gt;&gt;
-&lt;&lt;/nobr&gt;&gt;</tw-passagedata><tw-passagedata pid="20" name="H1: Cubicles North (0)" tags="" position="1329,878" size="100,100">&lt;&lt;silently&gt;&gt;
+&lt;&lt;/nobr&gt;&gt;</tw-passagedata><tw-passagedata pid="20" name="H1: Cubicles North (0)" tags="" position="1322,875" size="100,100">&lt;&lt;silently&gt;&gt;
 	&lt;&lt;script&gt;&gt;
 		window.UpdateGuardPositionEmployee()
 	&lt;&lt;/script&gt;&gt;
 	&lt;&lt;set $guardPosition to window.GetGuardPositionEmployee()&gt;&gt;
 	&lt;&lt;set $heistTime to $heistTime + 1&gt;&gt;
 &lt;&lt;/silently&gt;&gt;
-north cubicle section. you can go east and west. there&#39;s a &lt;&lt;nobr&gt;&gt;
+You&#39;re in the northern part of the office floor. To the north there&#39;s &lt;&lt;nobr&gt;&gt;
 &lt;&lt;link &quot;fine oak door&quot;&gt;&gt;
 	&lt;&lt;set $h1conferenceRoom to true&gt;&gt;
 	&lt;&lt;replace #link-h1conferenceRoom&gt;&gt;
@@ -318,7 +346,7 @@ north cubicle section. you can go east and west. there&#39;s a &lt;&lt;nobr&gt;&
 	&lt;&lt;replace #description-text&gt;&gt;
 		The fine oak door is labelled &quot;Conference Room 16&quot;.
 	&lt;&lt;/replace&gt;&gt;
-&lt;&lt;/link&gt;&gt;&lt;&lt;/nobr&gt;&gt; to the north, and a &lt;&lt;nobr&gt;&gt;
+&lt;&lt;/link&gt;&gt;&lt;&lt;/nobr&gt;&gt;, and you can see a large table through the nearby window. To the northwest is a &lt;&lt;nobr&gt;&gt;
 &lt;&lt;link &quot;pair of swinging doors&quot;&gt;&gt;
 	&lt;&lt;set $h1serviceCloset to true&gt;&gt;
 	&lt;&lt;replace #link-h1serviceCloset&gt;&gt;
@@ -327,14 +355,15 @@ north cubicle section. you can go east and west. there&#39;s a &lt;&lt;nobr&gt;&
 	&lt;&lt;replace #description-text&gt;&gt;
 		The double doors are labeled &quot;Employees Only&quot;. Must be a service closet.
 	&lt;&lt;/replace&gt;&gt;
-&lt;&lt;/link&gt;&gt;&lt;&lt;/nobr&gt;&gt; to the northwest.
+&lt;&lt;/link&gt;&gt;&lt;&lt;/nobr&gt;&gt;.
+You can go east or west.
 
 &lt;span id=&quot;description-text&quot;&gt;&lt;&lt;if $guardPosition is 0 &amp;&amp; $employeeGuardDown&gt;&gt;There&#39;s a guard stuffed in a nearby cubicle.&lt;&lt;/if&gt;&gt;&lt;/span&gt;
 
-[[H1: Cubicles East (1)]]&lt;&lt;nobr&gt;&gt;
+[[&gt; Go east.|H1: Cubicles East (1)]]&lt;&lt;nobr&gt;&gt;
 &lt;&lt;if $guardPosition is 1 &amp;&amp; !$employeeGuardDown&gt;&gt; You hear footsteps from this direction.&lt;&lt;/if&gt;&gt;
 &lt;&lt;/nobr&gt;&gt;
-[[H1: Cubicles West (3)]]&lt;&lt;nobr&gt;&gt;
+[[&gt; Go west.|H1: Cubicles West (3)]]&lt;&lt;nobr&gt;&gt;
 &lt;&lt;if $guardPosition is 3 &amp;&amp; !$employeeGuardDown&gt;&gt; You hear footsteps from this direction.&lt;&lt;/if&gt;&gt;
 &lt;&lt;/nobr&gt;&gt;
 &lt;span id=&quot;link-h1conferenceRoom&quot;&gt;&lt;&lt;if $h1conferenceRoom&gt;&gt;[[H1: Conference Room]]&lt;&lt;/if&gt;&gt;&lt;/span&gt;
@@ -345,7 +374,7 @@ north cubicle section. you can go east and west. there&#39;s a &lt;&lt;nobr&gt;&
 	&lt;&lt;set $guardPosition to window.GetGuardPositionEmployee()&gt;&gt;
 	&lt;&lt;set $heistTime to $heistTime + 1&gt;&gt;
 &lt;&lt;/silently&gt;&gt;
-east cubicle section. there&#39;s a &lt;&lt;nobr&gt;&gt;
+You&#39;re in the eastern part of the office floor. You see a &lt;&lt;nobr&gt;&gt;
 &lt;&lt;link &quot;familiar-looking door&quot;&gt;&gt;
 	&lt;&lt;set $h1robertsOffice to true&gt;&gt;
 	&lt;&lt;replace #link-h1robertsOffice&gt;&gt;
@@ -354,15 +383,16 @@ east cubicle section. there&#39;s a &lt;&lt;nobr&gt;&gt;
 	&lt;&lt;replace #description-text&gt;&gt;
 		You&#39;ve been in here before, when you were younger. The placard next to it reads: &quot;Robert Carlisle&quot;.
 	&lt;&lt;/replace&gt;&gt;
-&lt;&lt;/link&gt;&gt;&lt;&lt;/nobr&gt;&gt; to the north.
+&lt;&lt;/link&gt;&gt;&lt;&lt;/nobr&gt;&gt; to the northeast.
+You can go north or south.
 
 &lt;span id=&quot;description-text&quot;&gt;&lt;&lt;if $guardPosition is 1 &amp;&amp; $employeeGuardDown&gt;&gt;There&#39;s a guard stuffed in a nearby cubicle.&lt;&lt;/if&gt;&gt;&lt;/span&gt;
 
 &lt;span id=&quot;link-h1robertsOffice&quot;&gt;&lt;&lt;if $h1robertsOffice&gt;&gt;[[H1: Robert&#39;s Office]]&lt;&lt;/if&gt;&gt;&lt;/span&gt;
-[[H1: Cubicles North (0)]]&lt;&lt;nobr&gt;&gt;
+[[&gt; Go north.|H1: Cubicles North (0)]]&lt;&lt;nobr&gt;&gt;
 &lt;&lt;if $guardPosition is 0 &amp;&amp; !$employeeGuardDown&gt;&gt; You hear footsteps from this direction.&lt;&lt;/if&gt;&gt;
 &lt;&lt;/nobr&gt;&gt;
-[[H1: Cubicles South (2)]]&lt;&lt;nobr&gt;&gt;
+[[&gt; Go south.|H1: Cubicles South (2)]]&lt;&lt;nobr&gt;&gt;
 &lt;&lt;if $guardPosition is 2 &amp;&amp; !$employeeGuardDown&gt;&gt; You hear footsteps from this direction.&lt;&lt;/if&gt;&gt;
 &lt;&lt;/nobr&gt;&gt;</tw-passagedata><tw-passagedata pid="22" name="H1: Cubicles South (2)" tags="" position="1318,1126" size="100,100">&lt;&lt;silently&gt;&gt;
 	&lt;&lt;script&gt;&gt;
@@ -384,100 +414,196 @@ south cubicle section. you see &lt;&lt;nobr&gt;&gt;
 
 &lt;span id=&quot;description-text&quot;&gt;&lt;&lt;if $guardPosition is 2 &amp;&amp; $employeeGuardDown&gt;&gt;There&#39;s a guard stuffed in a nearby cubicle.&lt;&lt;/if&gt;&gt;&lt;/span&gt;
 
-&lt;span id=&quot;link-h1officeCubicle&quot;&gt;&lt;&lt;if $h1officeCubicle&gt;&gt;[[H1: Office Cubicle]]&lt;&lt;/if&gt;&gt;&lt;/span&gt;
-[[H1: Cubicles East (1)]]&lt;&lt;nobr&gt;&gt;
+&lt;span id=&quot;link-h1officeCubicle&quot;&gt;&lt;&lt;if $h1officeCubicle&gt;&gt;[[&gt; Go in the cubicle.|H1: Office Cubicle]]&lt;&lt;/if&gt;&gt;&lt;/span&gt;
+[[&gt; Go east.|H1: Cubicles East (1)]]&lt;&lt;nobr&gt;&gt;
 &lt;&lt;if $guardPosition is 1 &amp;&amp; !$employeeGuardDown&gt;&gt; You hear footsteps from this direction.&lt;&lt;/if&gt;&gt;
 &lt;&lt;/nobr&gt;&gt;
-[[H1: Cubicles West (3)]]&lt;&lt;nobr&gt;&gt;
+[[&gt; Go west.|H1: Cubicles West (3)]]&lt;&lt;nobr&gt;&gt;
 &lt;&lt;if $guardPosition is 3 &amp;&amp; !$employeeGuardDown&gt;&gt; You hear footsteps from this direction.&lt;&lt;/if&gt;&gt;
-&lt;&lt;/nobr&gt;&gt;</tw-passagedata><tw-passagedata pid="23" name="H1: Conference Room" tags="" position="1314,740" size="100,100">futuristic conference room. schematics left up on holograms on walls.
-[[H1: Cubicles North (0)]]</tw-passagedata><tw-passagedata pid="24" name="H1: Robert&#39;s Office" tags="" position="1613,974" size="100,100">&lt;&lt;silently&gt;&gt;
+&lt;&lt;/nobr&gt;&gt;</tw-passagedata><tw-passagedata pid="23" name="H1: Conference Room" tags="" position="1314,740" size="100,100">&lt;&lt;silently&gt;&gt;
 	&lt;&lt;script&gt;&gt;
 		window.UpdateGuardPositionEmployee()
 	&lt;&lt;/script&gt;&gt;
 	&lt;&lt;set $guardPosition to window.GetGuardPositionEmployee()&gt;&gt;
 	&lt;&lt;set $heistTime to $heistTime + 1&gt;&gt;
 &lt;&lt;/silently&gt;&gt;
-big personal reveal wow
+In the middle of the conference room lies a giant table with 8 chairs. They&#39;re in disarray, as if a meeting was held in here recently and not yet cleaned up. Some holopads on the table are still turned on, showing expired login screens. On the board at the far corner of the room you see the 
+&lt;&lt;nobr&gt;&gt;
+&lt;&lt;link &quot;holoscreen&quot;&gt;&gt;
+    &lt;&lt;set $h1conferenceBoard to true&gt;&gt;
+    &lt;&lt;replace #link-h1conferenceBoard&gt;&gt;
+        [[&gt; Check the board.|H1: Conference Board]]
+    &lt;&lt;/replace&gt;&gt;
+    &lt;&lt;replace #description-text&gt;&gt;
+        The board is labelled &quot;Problematic Areas&quot;.
+    &lt;&lt;/replace&gt;&gt;
+&lt;&lt;/link&gt;&gt;&lt;&lt;/nobr&gt;&gt; filled up with maps.
 
-[[H1: Cubicles East (1)]]
-[[H2: Scaling the Building]]</tw-passagedata><tw-passagedata pid="25" name="H1: Emails" tags="" position="1479,1277" size="100,100">every day i recieve emails
+&lt;span id=&quot;description-text&quot;&gt;&lt;&lt;if $guardPosition is 0 &amp;&amp; !$employeeGuardDown&gt;&gt;You hear the footsteps of a guard right ouside the door. You should wait and hide here.&lt;&lt;/if&gt;&gt;&lt;/span&gt;
+[[&gt; Exit the conference room.|H1: Cubicles North (0)]]
+&lt;span id=&quot;link-h1conferenceBoard&quot;&gt;&lt;&lt;if $h1conferenceBoard&gt;&gt;[[&gt; Check the board.|H1: Conference Board]]&lt;&lt;/if&gt;&gt;&lt;/span&gt;
+[[&gt; Hide here for a moment.|H1: Conference Room]]</tw-passagedata><tw-passagedata pid="24" name="H1: Robert&#39;s Office" tags="" position="1608,985.6666666666666" size="100,100">&lt;&lt;silently&gt;&gt;
+	&lt;&lt;script&gt;&gt;
+		window.UpdateGuardPositionEmployee()
+	&lt;&lt;/script&gt;&gt;
+	&lt;&lt;set $guardPosition to window.GetGuardPositionEmployee()&gt;&gt;
+	&lt;&lt;set $heistTime to $heistTime + 1&gt;&gt;
+&lt;&lt;/silently&gt;&gt;
+You&#39;re in your father&#39;s office. His desk is adorned with a placard reading &quot;Robert Carlisle,&quot; but it&#39;s nearly knocked off by the mess of papers and photographs on it.
+&lt;&lt;if visited() &lt;= 1&gt;&gt;
+Violet walks over the window, looking out over the city. She puts down her bag and starts setting up the explosive for the window.&lt;&lt;/if&gt;&gt;
 
-[[H1: Office Cubicle]]</tw-passagedata><tw-passagedata pid="26" name="H1: Surveillance Room" tags="" position="1096,1170" size="100,100">lots of cameras. eduardo is here.
+&lt;span id=&quot;description-text&quot;&gt;&lt;&lt;if $guardPosition is 1 &amp;&amp; !$employeeGuardDown&gt;&gt;You hear the footsteps of a guard right ouside the door. You should wait and hide here.&lt;&lt;/if&gt;&gt;&lt;/span&gt;
 
-[[H1: Cubicles West (3)]]</tw-passagedata><tw-passagedata pid="27" name="H2: Scaling the Building" tags="" position="1746,869" size="100,100">&lt;&lt;silently&gt;&gt;
+[[&gt; Check his desk.|H1: Robert&#39;s Desk]]
+[[&gt; Exit the office.|H1: Cubicles East (1)]]
+&lt;&lt;if $h1bombReady&gt;&gt;[[&gt; &quot;I&#39;m ready. Let&#39;s go.&quot;|H1: Blowing the Wall]]&lt;&lt;/if&gt;&gt;
+[[&gt; Hide here for a moment.|H1: Robert&#39;s Office]]</tw-passagedata><tw-passagedata pid="25" name="H1: Emails" tags="" position="1341,1248" size="100,100">From: Allison Nwaeri
+To: Pearson Cole
+cc: Hector Zhang
+
+Cole,
+
+The disappearance of Miss Carlisle is a security concern that cannot be overlooked. That Robert is prioritizing looking for the girl rather than patching this GLARING hole in our security represents a conflict of interest. It seems to me that Robert needs to be replaced from his seat at the board. His son, Cecil, should do well enough as a temporary replacement. I suggest you bring this up at the next meeting.
+
+Hope this finds you well,
+Allison Nwaeri
+
+[[&gt; Back to the cubicle.|H1: Office Cubicle]]
+&lt;&lt;silently&gt;&gt;
+	&lt;&lt;script&gt;&gt;
+		window.UpdateGuardPositionEmployee()
+	&lt;&lt;/script&gt;&gt;
+	&lt;&lt;set $guardPosition to window.GetGuardPositionEmployee()&gt;&gt;
+	&lt;&lt;set $heistTime to $heistTime + 1&gt;&gt;
+&lt;&lt;/silently&gt;&gt;</tw-passagedata><tw-passagedata pid="26" name="H1: Surveillance Room" tags="" position="1149.3333333333333,1214.6666666666667" size="100,100">The far wall of this surveillance room is filled with monitors, showing camera footage of various places in the NCC building. Sitting in front of these monitors is &lt;&lt;nobr&gt;&gt;
+&lt;&lt;if $h1eduardoAwake&gt;&gt;
+	&lt;&lt;set _h1eduardoDesc to &quot;Eduardo&quot;&gt;&gt;
+&lt;&lt;else&gt;&gt;
+	&lt;&lt;set _h1eduardoDesc to &quot;a sleeping man&quot;&gt;&gt;
+&lt;&lt;/if&gt;&gt;
+&lt;&lt;link _h1eduardoDesc&gt;&gt;
+	&lt;&lt;set $h1eduardoTalk to true&gt;&gt;
+	&lt;&lt;replace #link-h1eduardoTalk&gt;&gt;
+		[[&gt; Talk to the guard.|H1: Eduardo Talk]]
+	&lt;&lt;/replace&gt;&gt;
+	&lt;&lt;if $h1eduardoAwake&gt;&gt;
+		&lt;&lt;replace #description-text&gt;&gt;
+			Despite everything, Eduardo is still dozing off at his desk.
+		&lt;&lt;/replace&gt;&gt;
+	&lt;&lt;else&gt;&gt;
+		&lt;&lt;replace #description-text&gt;&gt;
+			He&#39;s snoring pretty loudly. You&#39;re tempted to wake him up.
+		&lt;&lt;/replace&gt;&gt;
+	&lt;&lt;/if&gt;&gt;
+&lt;&lt;/link&gt;&gt;&lt;&lt;/nobr&gt;&gt; in a guard uniform. There&#39;s a &lt;&lt;nobr&gt;&gt;
+&lt;&lt;link &quot;sticky note&quot;&gt;&gt;
+	&lt;&lt;set $h1stickyNote to true&gt;&gt;
+	&lt;&lt;replace #link-h1stickyNote&gt;&gt;
+		[[&gt; Read the Sticky Note|H1: Sticky Note]]
+	&lt;&lt;/replace&gt;&gt;
+	&lt;&lt;replace #description-text&gt;&gt;
+		You can make out the words &quot;username&quot; and &quot;password&quot; written on it.
+	&lt;&lt;/replace&gt;&gt;
+&lt;&lt;/link&gt;&gt;&lt;&lt;/nobr&gt;&gt; on the desk.
+
+&lt;span id=&quot;description-text&quot;&gt;&lt;&lt;if $guardPosition is 3 &amp;&amp; $employeeGuardDown&gt;&gt;You hear the footsteps of a guard right ouside the door. You should wait and hide here.&lt;&lt;/if&gt;&gt;&lt;/span&gt;
+
+[[&gt; Leave.|H1: Cubicles West (3)]]
+&lt;span id=&quot;link-h1eduardoTalk&quot;&gt;&lt;&lt;if $h1eduardoTalk&gt;&gt;[[&gt; Talk to the guard.|H1: Eduardo Talk]]&lt;&lt;/if&gt;&gt;&lt;/span&gt;
+&lt;span id=&quot;link-h1stickyNote&quot;&gt;&lt;&lt;if $h1stickyNote&gt;&gt;[[&gt; Read the Sticky Note|H1: Sticky Note]]&lt;&lt;/if&gt;&gt;&lt;/span&gt;
+&lt;&lt;silently&gt;&gt;
+	&lt;&lt;script&gt;&gt;
+		window.UpdateGuardPositionEmployee()
+	&lt;&lt;/script&gt;&gt;
+	&lt;&lt;set $guardPosition to window.GetGuardPositionEmployee()&gt;&gt;
+	&lt;&lt;set $heistTime to $heistTime + 1&gt;&gt;
+&lt;&lt;/silently&gt;&gt;</tw-passagedata><tw-passagedata pid="27" name="H2: Scaling the Building" tags="" position="1701.3333333333333,865.6666666666666" size="100,100">&lt;&lt;silently&gt;&gt;
 	&lt;&lt;set $heistTime to $heistTime + 1&gt;&gt;
 	&lt;&lt;set $heistFloor to 2&gt;&gt;
 &lt;&lt;/silently&gt;&gt;
-you might be scared of heights. the night sky is beautiful.
+You grab the rope and start to pull yourself up. The whir of what sounds like a small motor comes from above you, and you start to be raised up to the next floor.
 
-[[H2: Head Researcher&#39;s Office]]</tw-passagedata><tw-passagedata pid="28" name="H2: Head Researcher&#39;s Office" tags="" position="1919,885" size="100,100">&lt;&lt;silently&gt;&gt;
+Against your better judgment, you look behind you. You see the expanse of Terminus before you. The lights from Sable Square are bright and nearly blinding even from this far away. At the edge of the city, you see the edge of the weather control field. Somehow, the city sprawls past it, looking lived in and beautiful, despite the conditions.
+
+You&#39;d never seen the city like this before. It&#39;s wonderful.
+
+[[&gt; Keep Climbing.|H2: Scaling the Building 2]]</tw-passagedata><tw-passagedata pid="28" name="H2: Head Researcher&#39;s Office" tags="" position="1919,885" size="100,100">&lt;&lt;silently&gt;&gt;
 	&lt;&lt;script&gt;&gt;
 		window.UpdateGuardPositionResearch()
 	&lt;&lt;/script&gt;&gt;
 	&lt;&lt;set $guardPosition to window.GetGuardPositionResearch()&gt;&gt;
 	&lt;&lt;set $heistTime to $heistTime + 1&gt;&gt;
 &lt;&lt;/silently&gt;&gt;
-you&#39;re in an office again. wowie. you can go east and west. there&#39;s a &lt;&lt;nobr&gt;&gt;
-&lt;&lt;link &quot;computer here&quot;&gt;&gt;
-	&lt;&lt;set $h2headComputer to true&gt;&gt;
-	&lt;&lt;replace #link-h2headComputer&gt;&gt;
-		[[H2: Head Researcher Computer]]
-	&lt;&lt;/replace&gt;&gt;
-	&lt;&lt;replace #description-text&gt;&gt;
-		Looks like the Head Researcher here has left their computer logged in.
-	&lt;&lt;/replace&gt;&gt;
-&lt;&lt;/link&gt;&gt;&lt;&lt;/nobr&gt;&gt;, that hasn&#39;t been turned off. to the east, there&#39;s a &lt;&lt;nobr&gt;&gt;
+You&#39;re in an office of what can only be some sort of scientist. The walls are covered in shelves for various books of content you could hardly understand. On the desk in the center of the room, you see &lt;&lt;nobr&gt;&gt;
+&lt;&lt;link &quot;a computer&quot;&gt;&gt;
+	&lt;&lt;if $h2researchPassword&gt;&gt;
+		&lt;&lt;set $h2researchAccess to true&gt;&gt;
+		&lt;&lt;replace #link-h2research&gt;&gt;
+			[[&gt; Log on.|H2: Head Researcher Computer]]
+		&lt;&lt;/replace&gt;&gt;
+		&lt;&lt;replace #description-text&gt;&gt;
+			You enter the password you got from the lab.
+		&lt;&lt;/replace&gt;&gt;
+	&lt;&lt;else&gt;&gt;
+		&lt;&lt;replace #description-text&gt;&gt;
+			You don&#39;t have the password, but maybe it&#39;s around here somewhere.
+		&lt;&lt;/replace&gt;&gt;
+	&lt;&lt;/if&gt;&gt;
+&lt;&lt;/link&gt;&gt;&lt;&lt;/nobr&gt;&gt; that hasn&#39;t been turned off. To the east, there&#39;s a &lt;&lt;nobr&gt;&gt;
 &lt;&lt;link &quot;door with a window&quot;&gt;&gt;
 	&lt;&lt;set $h2headExit to true&gt;&gt;
 	&lt;&lt;replace #link-h2headExit&gt;&gt;
 		[[H2: Research Hallway North (0)]]
 	&lt;&lt;/replace&gt;&gt;
 	&lt;&lt;replace #description-text&gt;&gt;
-		The door looks like it leads out into the hallway.
+		The door looks like it leads out into a hallway.
 	&lt;&lt;/replace&gt;&gt;
 &lt;&lt;/link&gt;&gt;&lt;&lt;/nobr&gt;&gt; that dimly lights the room.
 
-&lt;span id=&quot;description-text&quot;&gt;&lt;/span&gt;
+&lt;span id=&quot;description-text&quot;&gt;&lt;&lt;if $guardPosition is 0 &amp;&amp; !$researchGuardDown&gt;&gt;You hear the footsteps of a guard right ouside the door. You should wait and hide here.&lt;&lt;/if&gt;&gt;&lt;/span&gt;
 
-&lt;span id=&quot;link-h2headExit&quot;&gt;&lt;&lt;if $h2headExit&gt;&gt;[[H2: Research Hallway North (0)]]&lt;&lt;/if&gt;&gt;&lt;/span&gt;
-&lt;span id=&quot;link-h2headComputer&quot;&gt;&lt;&lt;if $h2headComputer&gt;&gt;[[H2: Head Researcher Computer]]&lt;&lt;/if&gt;&gt;&lt;/span&gt;</tw-passagedata><tw-passagedata pid="29" name="H2: Research Hallway North (0)" tags="" position="2065,952" size="100,100">&lt;&lt;silently&gt;&gt;
+&lt;span id=&quot;link-h2headExit&quot;&gt;&lt;&lt;if $h2headExit&gt;&gt;[[&gt; Head into the hallway.|H2: Research Hallway North (0)]]&lt;&lt;/if&gt;&gt;&lt;/span&gt;
+&lt;span id=&quot;link-h2headComputer&quot;&gt;&lt;&lt;if $h2researchAccess&gt;&gt;[[H2: Head Researcher Computer]]&lt;&lt;/if&gt;&gt;&lt;/span&gt;
+[[&gt; Hide here for a moment.|H2: Head Researcher&#39;s Office]]</tw-passagedata><tw-passagedata pid="29" name="H2: Research Hallway North (0)" tags="" position="2065,952" size="100,100">&lt;&lt;silently&gt;&gt;
 	&lt;&lt;script&gt;&gt;
 		window.UpdateGuardPositionResearch()
 	&lt;&lt;/script&gt;&gt;
 	&lt;&lt;set $guardPosition to window.GetGuardPositionResearch()&gt;&gt;
 	&lt;&lt;set $heistTime to $heistTime + 1&gt;&gt;
 &lt;&lt;/silently&gt;&gt;
-research hallway. head researcher&#39;s office is to the west. you can go south.
+You&#39;re in a steril looking hallway. The walls and floors are stark white and tile. The head researcher&#39;s office is to the west.
+You can go south.
 
 &lt;span id=&quot;description-text&quot;&gt;&lt;&lt;if $guardPosition is 0 &amp;&amp; $researchGuardDown&gt;&gt;There&#39;s a guard laying on the ground.&lt;&lt;/if&gt;&gt;&lt;/span&gt;
 
-[[H2: Research Hallway West (1)]]&lt;&lt;if $guardPosition is 1 &amp;&amp; !$researchGuardDown&gt;&gt; You hear footsteps from this direction.&lt;&lt;/if&gt;&gt;
-[[H2: Head Researcher&#39;s Office]]</tw-passagedata><tw-passagedata pid="30" name="H2: Research Hallway West (1)" tags="" position="2191,1040" size="100,100">&lt;&lt;silently&gt;&gt;
+[[&gt; Go south.|H2: Research Hallway West (1)]]&lt;&lt;if $guardPosition is 1 &amp;&amp; !$researchGuardDown&gt;&gt; You hear footsteps from this direction.&lt;&lt;/if&gt;&gt;
+[[&gt; Go into the office.|H2: Head Researcher&#39;s Office]]</tw-passagedata><tw-passagedata pid="30" name="H2: Research Hallway West (1)" tags="" position="2202.6666666666665,1051.6666666666667" size="100,100">&lt;&lt;silently&gt;&gt;
 	&lt;&lt;script&gt;&gt;
 		window.UpdateGuardPositionResearch()
 	&lt;&lt;/script&gt;&gt;
 	&lt;&lt;set $guardPosition to window.GetGuardPositionResearch()&gt;&gt;
 	&lt;&lt;set $heistTime to $heistTime + 1&gt;&gt;
 &lt;&lt;/silently&gt;&gt;
-research hallway. there&#39;s a set of &lt;&lt;nobr&gt;&gt;
+You&#39;re in a steril looking hallway. The walls and floors are stark white and tile. There&#39;s a set of &lt;&lt;nobr&gt;&gt;
 &lt;&lt;link &quot;official-looking doors&quot;&gt;&gt;
 	&lt;&lt;set $h2researchLab to true&gt;&gt;
 	&lt;&lt;replace #link-h2researchLab&gt;&gt;
-		[[H2: Research Lab Alpha]]
+		[[&gt; Go into the Lab.|H2: Research Lab Alpha]]
 	&lt;&lt;/replace&gt;&gt;
 	&lt;&lt;replace #description-text&gt;&gt;
 		The doors are marked with a symbol that looks like an A, must be Research Lab Alpha. You have a keycard for this.
 	&lt;&lt;/replace&gt;&gt;
-&lt;&lt;/link&gt;&gt;&lt;&lt;/nobr&gt;&gt; to the west. you can go south or north.
+&lt;&lt;/link&gt;&gt;&lt;&lt;/nobr&gt;&gt; to the west.
+You can go south or north.
 
 &lt;span id=&quot;description-text&quot;&gt;&lt;&lt;if $guardPosition is 1 &amp;&amp; $researchGuardDown&gt;&gt;There&#39;s a guard laying on the ground.&lt;&lt;/if&gt;&gt;&lt;/span&gt;
 
 [[H2: Research Hallway South (2)]]&lt;&lt;if $guardPosition is 2 &amp;&amp; !$employeeGuardDown&gt;&gt; You hear footsteps from this direction.&lt;&lt;/if&gt;&gt;
 [[H2: Research Hallway North (0)]]&lt;&lt;if $guardPosition is 0 &amp;&amp; !$employeeGuardDown&gt;&gt; You hear footsteps from this direction.&lt;&lt;/if&gt;&gt;
-&lt;span id=&quot;link-h2researchLab&quot;&gt;&lt;&lt;if $h2researchLab&gt;&gt;[[H2: Research Lab Alpha]]&lt;&lt;/if&gt;&gt;&lt;/span&gt;
+&lt;span id=&quot;link-h2researchLab&quot;&gt;&lt;&lt;if $h2researchLab&gt;&gt;[[&gt; Go into the Lab.|H2: Research Lab Alpha]]&lt;&lt;/if&gt;&gt;&lt;/span&gt;
 
-</tw-passagedata><tw-passagedata pid="31" name="H2: Research Lab Alpha" tags="" position="2041,1117" size="100,100">&lt;&lt;silently&gt;&gt;
+</tw-passagedata><tw-passagedata pid="31" name="H2: Research Lab Alpha" tags="" position="2216,868.6666666666666" size="100,100">&lt;&lt;silently&gt;&gt;
 	&lt;&lt;script&gt;&gt;
 		window.UpdateGuardPositionResearch()
 	&lt;&lt;/script&gt;&gt;
@@ -528,21 +654,21 @@ it&#39;s a research lab full of things. you see a &lt;&lt;nobr&gt;&gt;
 &lt;span id=&quot;link-h2vent&quot;&gt;&lt;&lt;if $h2vent&gt;&gt;[[H2: Vent]]&lt;&lt;/if&gt;&gt;&lt;/span&gt;
 &lt;span id=&quot;link-h2gun&quot;&gt;&lt;&lt;if $h2gun&gt;&gt;[[H2: Gun]]&lt;&lt;/if&gt;&gt;&lt;/span&gt;
 &lt;span id=&quot;link-h2android&quot;&gt;&lt;&lt;if $h2android&gt;&gt;[[H2: Android]]&lt;&lt;/if&gt;&gt;&lt;/span&gt;
-&lt;span id=&quot;link-h2camera&quot;&gt;&lt;&lt;if $h2camera&gt;&gt;[[H2: Camera]]&lt;&lt;/if&gt;&gt;&lt;/span&gt;</tw-passagedata><tw-passagedata pid="32" name="H2: Research Hallway South (2)" tags="" position="2365,1145" size="100,100">&lt;&lt;silently&gt;&gt;
+&lt;span id=&quot;link-h2camera&quot;&gt;&lt;&lt;if $h2camera&gt;&gt;[[H2: Camera]]&lt;&lt;/if&gt;&gt;&lt;/span&gt;</tw-passagedata><tw-passagedata pid="32" name="H2: Research Hallway South (2)" tags="" position="2336.6666666666665,1133.3333333333333" size="100,100">&lt;&lt;silently&gt;&gt;
 	&lt;&lt;script&gt;&gt;
 		window.UpdateGuardPositionResearch()
 	&lt;&lt;/script&gt;&gt;
 	&lt;&lt;set $guardPosition to window.GetGuardPositionResearch()&gt;&gt;
 	&lt;&lt;set $heistTime to $heistTime + 1&gt;&gt;
 &lt;&lt;/silently&gt;&gt;
-research hallway. the security checkpoint&#39;s to the south, through one-sided glass.
+You&#39;re in a steril looking hallway. &lt;&lt;if $h2securityCheckpoint&gt;&gt;You now know that the security checkpoint&#39;s to the south, through one-sided glass.&lt;&lt;/if&gt;&gt; To the east, you see a glass door-- to the vault, you believe.
 
 &lt;span id=&quot;description-text&quot;&gt;&lt;&lt;if $guardPosition is 3 &amp;&amp; $researchGuardDown&gt;&gt;There&#39;s a guard laying on the ground.&lt;&lt;/if&gt;&gt;&lt;/span&gt;
 
 &lt;span id=&quot;link-h2securityCheckpoint&quot;&gt;&lt;&lt;if $h2securityCheckpoint&gt;&gt;[[H2: Security Checkpoint]]&lt;&lt;/if&gt;&gt;&lt;/span&gt;
-[[H2: Research Hallway West (1)]]&lt;&lt;if $guardPosition is 1 &amp;&amp; !$employeeGuardDown&gt;&gt; You hear footsteps from this direction.&lt;&lt;/if&gt;&gt;
-[[H2: Sterilization Room]]</tw-passagedata><tw-passagedata pid="33" name="H2: Vent" tags="" position="2104,1255" size="100,100">[[H2: Research Lab Alpha]]
-[[H2: Security Checkpoint]]</tw-passagedata><tw-passagedata pid="34" name="H2: Security Checkpoint" tags="" position="2288,1308" size="100,100">&lt;&lt;silently&gt;&gt;
+[[&gt; Go north.|H2: Research Hallway West (1)]]&lt;&lt;if $guardPosition is 1 &amp;&amp; !$employeeGuardDown&gt;&gt; You hear footsteps from this direction.&lt;&lt;/if&gt;&gt;
+[[H2: Sterilization Room]]</tw-passagedata><tw-passagedata pid="33" name="H2: Vent" tags="" position="2402.3333333333335,985.6666666666666" size="100,100">[[H2: Research Lab Alpha]]
+[[H2: Security Checkpoint]]</tw-passagedata><tw-passagedata pid="34" name="H2: Security Checkpoint" tags="" position="2521.333333333333,1078" size="100,100">&lt;&lt;silently&gt;&gt;
 	&lt;&lt;script&gt;&gt;
 		window.UpdateGuardPositionResearch()
 	&lt;&lt;/script&gt;&gt;
@@ -565,11 +691,36 @@ you have a confrontation here. there&#39;s a &lt;&lt;nobr&gt;&gt;
 [[H2: Vent]]
 &lt;span id=&quot;link-h2securityCheckpoint&quot;&gt;&lt;&lt;if $h2securityCheckpoint&gt;&gt;[[H2: Research Hallway South (2)]]&lt;&lt;/if&gt;&gt;&lt;/span&gt;</tw-passagedata><tw-passagedata pid="35" name="H2: Sterilization Room" tags="" position="2510,1250" size="100,100">You enter the sterilization room. From here, the heist continues to the theft of the biokey...
 
-To be continued.</tw-passagedata><tw-passagedata pid="36" name="H2: Biokey Vault" tags="" position="2461,975" size="100,100">Double-click this passage to edit it.</tw-passagedata><tw-passagedata pid="37" name="H1: Office Cubicle" tags="" position="1320,1278" size="100,100">cubicle hiding place.
+To be continued.</tw-passagedata><tw-passagedata pid="36" name="H2: Biokey Vault" tags="" position="2627.6666666666665,1271.6666666666667" size="100,100">Double-click this passage to edit it.</tw-passagedata><tw-passagedata pid="37" name="H1: Office Cubicle" tags="" position="1495.6666666666667,1173.3333333333333" size="100,100">&lt;&lt;silently&gt;&gt;
+	&lt;&lt;script&gt;&gt;
+		window.UpdateGuardPositionEmployee()
+	&lt;&lt;/script&gt;&gt;
+	&lt;&lt;set $guardPosition to window.GetGuardPositionEmployee()&gt;&gt;
+	&lt;&lt;set $heistTime to $heistTime + 1&gt;&gt;
+&lt;&lt;/silently&gt;&gt;
+In the cubicle, you see a computer seemingly left turned on for the night. It&#39;s on the login screen, requesting a &lt;&lt;nobr&gt;&gt;
+&lt;&lt;link &quot;password&quot;&gt;&gt;
+	&lt;&lt;if $h1emailPassword&gt;&gt;
+		&lt;&lt;set $h1emailAccess to true&gt;&gt;
+		&lt;&lt;replace #link-h1emails&gt;&gt;
+			[[&gt; Log on.|H1: Emails]]
+		&lt;&lt;/replace&gt;&gt;
+		&lt;&lt;replace #description-text&gt;&gt;
+			You enter the password you got from the surveillance room.
+		&lt;&lt;/replace&gt;&gt;
+	&lt;&lt;else&gt;&gt;
+		&lt;&lt;replace #description-text&gt;&gt;
+			You don&#39;t have the password, but maybe it&#39;s around here somewhere.
+		&lt;&lt;/replace&gt;&gt;
+	&lt;&lt;/if&gt;&gt;
+&lt;&lt;/link&gt;&gt;&lt;&lt;/nobr&gt;&gt;.
 
-[[H1: Emails]]
-[[H1: Cubicles South (2)]]</tw-passagedata><tw-passagedata pid="38" name="H2: Head Researcher Computer" tags="" position="1939,718" size="100,100">maybe you need to find a password in the lab to access this?
-[[H2: Head Researcher&#39;s Office]]</tw-passagedata><tw-passagedata pid="39" name="H2: Gun" tags="" position="1796,1157" size="100,100">&lt;&lt;silently&gt;&gt;
+&lt;span id=&quot;description-text&quot;&gt;&lt;&lt;if $guardPosition is 2 &amp;&amp; !$employeeGuardDown&gt;&gt;You hear the footsteps of a guard right ouside the door. You should wait and hide here.&lt;&lt;/if&gt;&gt;&lt;/span&gt;
+
+&lt;span id=&quot;link-h1emails&quot;&gt;&lt;&lt;if $h1emailAccess&gt;&gt;[[&gt; Log on.|H1: Emails]]&lt;&lt;/if&gt;&gt;&lt;/span&gt;
+[[&gt; Leave this cubicle.|H1: Cubicles South (2)]]
+[[&gt; Hide here for a moment.|H1: Office Cubicle]]</tw-passagedata><tw-passagedata pid="38" name="H2: Head Researcher Computer" tags="" position="1937.3333333333333,729.6666666666666" size="100,100">maybe you need to find a password in the lab to access this?
+[[H2: Head Researcher&#39;s Office]]</tw-passagedata><tw-passagedata pid="39" name="H2: Gun" tags="" position="2156.666666666667,718.3333333333333" size="100,100">&lt;&lt;silently&gt;&gt;
 	&lt;&lt;script&gt;&gt;
 		window.UpdateGuardPositionResearch()
 	&lt;&lt;/script&gt;&gt;
@@ -600,7 +751,7 @@ it&#39;s a gun. quite scary. there&#39;s also a &lt;&lt;nobr&gt;&gt;
 
 [[H2: Research Lab Alpha]]
 &lt;span id=&quot;link-h2android&quot;&gt;&lt;&lt;if $h2android&gt;&gt;[[H2: Android]]&lt;&lt;/if&gt;&gt;&lt;/span&gt;
-&lt;span id=&quot;link-h2camera&quot;&gt;&lt;&lt;if $h2camera&gt;&gt;[[H2: Camera]]&lt;&lt;/if&gt;&gt;&lt;/span&gt;</tw-passagedata><tw-passagedata pid="40" name="H2: Android" tags="" position="1779,1298" size="100,100">&lt;&lt;silently&gt;&gt;
+&lt;span id=&quot;link-h2camera&quot;&gt;&lt;&lt;if $h2camera&gt;&gt;[[H2: Camera]]&lt;&lt;/if&gt;&gt;&lt;/span&gt;</tw-passagedata><tw-passagedata pid="40" name="H2: Android" tags="" position="2324.666666666667,703.6666666666666" size="100,100">&lt;&lt;silently&gt;&gt;
 	&lt;&lt;script&gt;&gt;
 		window.UpdateGuardPositionResearch()
 	&lt;&lt;/script&gt;&gt;
@@ -631,7 +782,7 @@ creepy android. quite scary. nearby there&#39;s also a &lt;&lt;nobr&gt;&gt;
 
 [[H2: Research Lab Alpha]]
 &lt;span id=&quot;link-h2gun&quot;&gt;&lt;&lt;if $h2gun&gt;&gt;[[H2: Gun]]&lt;&lt;/if&gt;&gt;&lt;/span&gt;
-&lt;span id=&quot;link-h2camera&quot;&gt;&lt;&lt;if $h2camera&gt;&gt;[[H2: Camera]]&lt;&lt;/if&gt;&gt;&lt;/span&gt;</tw-passagedata><tw-passagedata pid="41" name="H2: Camera" tags="" position="1931,1298" size="100,100">&lt;&lt;silently&gt;&gt;
+&lt;span id=&quot;link-h2camera&quot;&gt;&lt;&lt;if $h2camera&gt;&gt;[[H2: Camera]]&lt;&lt;/if&gt;&gt;&lt;/span&gt;</tw-passagedata><tw-passagedata pid="41" name="H2: Camera" tags="" position="2368.666666666667,855.6666666666665" size="100,100">&lt;&lt;silently&gt;&gt;
 	&lt;&lt;script&gt;&gt;
 		window.UpdateGuardPositionResearch()
 	&lt;&lt;/script&gt;&gt;
@@ -667,14 +818,14 @@ fancy camera. quite scary. nearby there&#39;s also a &lt;&lt;nobr&gt;&gt;
 &quot;Miss Trucy!&quot; says the receptionist-- named Emilia, if you remember correctly. &quot;It&#39;s lovely to see you this evening, need me to call you a lift up to the suite?&quot;
 
 &lt;span id=&quot;dialogueH0-emilia00&quot;&gt;&lt;&lt;nobr&gt;&gt;
-	&lt;&lt;link &quot;No, actually. I was wondering if you could let me up to floor 34?&quot;&gt;&gt;
+	&lt;&lt;link &quot;\&quot;No, actually. I was wondering if you could let me up to floor 34?\&quot;&quot;&gt;&gt;
 		&lt;&lt;replace &quot;#dialogueH0-emilia00&quot;&gt;&gt;
 			&lt;&lt;include [[H0: Emilia Dialogue A0]]&gt;&gt;
 		&lt;&lt;/replace&gt;&gt;
 	&lt;&lt;/link&gt;&gt;
 &lt;&lt;/nobr&gt;&gt;
 &lt;&lt;nobr&gt;&gt;
-	&lt;&lt;link &quot;Not yet, I actually left my bag on one of the office floors...&quot;&gt;&gt;
+	&lt;&lt;link &quot;\&quot;Not yet, I actually left my bag on one of the office floors...\&quot;&quot;&gt;&gt;
 	&lt;&lt;replace &quot;#dialogueH0-emilia00&quot;&gt;&gt;
 		&lt;&lt;include [[H0: Emilia Dialogue B0]]&gt;&gt;
 	&lt;&lt;/replace&gt;&gt;
@@ -684,14 +835,14 @@ fancy camera. quite scary. nearby there&#39;s also a &lt;&lt;nobr&gt;&gt;
 &quot;Floor 34?&quot; says Emilia, surprised. &quot;Why, that&#39;s an office floor, Miss Trucy. I hate to say this, but I don&#39;t believe you&#39;re allowed up there.&quot;
 
 &lt;span id=&quot;dialogueH0-emiliaA0&quot;&gt;&lt;&lt;nobr&gt;&gt;
-	&lt;&lt;link &quot;Why not?&quot;&gt;&gt;
+	&lt;&lt;link &quot;\&quot;Why not?\&quot;&quot;&gt;&gt;
 		&lt;&lt;replace &quot;#dialogueH0-emiliaA0&quot;&gt;&gt;
 			&lt;&lt;include [[H0: Emilia Dialogue AA]]&gt;&gt;
 		&lt;&lt;/replace&gt;&gt;
 	&lt;&lt;/link&gt;&gt;
 &lt;&lt;/nobr&gt;&gt;
 &lt;&lt;nobr&gt;&gt;
-	&lt;&lt;link &quot;But, I left my bag up there...&quot;&gt;&gt;
+	&lt;&lt;link &quot;\&quot;But, I left my bag up there...\&quot;&quot;&gt;&gt;
 		&lt;&lt;replace &quot;#dialogueH0-emiliaA0&quot;&gt;&gt;
 			&lt;&lt;include [[H0: Emilia Dialogue AB]]&gt;&gt;
 		&lt;&lt;/replace&gt;&gt;
@@ -711,14 +862,14 @@ fancy camera. quite scary. nearby there&#39;s also a &lt;&lt;nobr&gt;&gt;
 &quot;Oh, did you? What were you doing up there?&quot; says Emilia, puzzled. &quot;Last I checked you weren&#39;t allowed up on the office floors yet.&quot;
 
 &lt;span id=&quot;dialogueH0-emiliaB0&quot;&gt;&lt;&lt;nobr&gt;&gt;
-	&lt;&lt;link &quot;I was just exploring, that&#39;s all.&quot;&gt;&gt;
+	&lt;&lt;link &quot;\&quot;I was just exploring, that&#39;s all.\&quot;&quot;&gt;&gt;
 		&lt;&lt;replace &quot;#dialogueH0-emiliaB0&quot;&gt;&gt;
 			&lt;&lt;include [[H0: Emilia Dialogue BA]]&gt;&gt;
 		&lt;&lt;/replace&gt;&gt;
 	&lt;&lt;/link&gt;&gt;
 &lt;&lt;/nobr&gt;&gt;
 &lt;&lt;nobr&gt;&gt;
-	&lt;&lt;link &quot;Cecil was showing me around yesterday,&quot;&gt;&gt;
+	&lt;&lt;link &quot;\&quot;Cecil was showing me around yesterday,\&quot;&quot;&gt;&gt;
 		&lt;&lt;replace &quot;#dialogueH0-emiliaB0&quot;&gt;&gt;
 			&lt;&lt;include [[H0: Emilia Dialogue BB]]&gt;&gt;
 		&lt;&lt;/replace&gt;&gt;
@@ -729,11 +880,16 @@ fancy camera. quite scary. nearby there&#39;s also a &lt;&lt;nobr&gt;&gt;
 
 &quot;No, I&#39;m okay. Thank you, Emilia.&quot; you say.
 
-[[H0: Emilia Dialogue Fail]]</tw-passagedata><tw-passagedata pid="48" name="H0: Emilia Dialogue Success" tags="" position="976,1357" size="100,100">success
+[[H0: Emilia Dialogue Fail]]</tw-passagedata><tw-passagedata pid="48" name="H0: Emilia Dialogue Success" tags="" position="976,1357" size="100,100">&quot;Nice talkin, Truce,&quot; whispers Violet, elbowing you playfully. &quot;Let&#39;s get upstairs.&quot;
 
-[[H0: Main Elevator]]</tw-passagedata><tw-passagedata pid="49" name="H0: Emilia Dialogue Fail" tags="" position="870,1168" size="100,100">fail
+Looks like you pulled it off.
 
-[[H0: Lobby]]</tw-passagedata><tw-passagedata pid="50" name="H0: Emilia Dialogue BB" tags="" position="535,1396" size="100,100">&quot;Cecil was showing me around yesterday,&quot; you say.
+[[&gt; Take the elevator up.|H0: Main Elevator]]</tw-passagedata><tw-passagedata pid="49" name="H0: Emilia Dialogue Fail" tags="" position="875,1178" size="100,100">&quot;That- that didn&#39;t sound so good, Trucy,&quot; crackles Oculus into your ear. &quot;I&#39;m looking over the floor plans now, though, and it looks like there might be a secret door to the service room and elevator. Maybe look for that and keep your mouth shut?&quot;
+
+Wish you&#39;d have known that earlier.
+
+[[&gt; Look around the Lobby some more.|H0: Lobby]]
+&lt;&lt;set $informedOfDoor to true&gt;&gt;</tw-passagedata><tw-passagedata pid="50" name="H0: Emilia Dialogue BB" tags="" position="535,1396" size="100,100">&quot;Cecil was showing me around yesterday,&quot; you say.
 
 &quot;Oh, was he now? I suppose you&#39;re at that age where you should really get to know the place,&quot; she says. &quot;Wow, they grow up so fast. You already have an escort, go on through.&quot;
 
@@ -784,7 +940,221 @@ Marcellus blows smoke off his plasma pistol.
 &lt;&lt;set $researchGuardDown to true&gt;&gt;
 &lt;&lt;set _nextPassage to window.PreGuardPassage()&gt;&gt;
 &lt;&lt;link &quot;&gt; Get going.&quot; _nextPassage&gt;&gt;&lt;&lt;/link&gt;&gt;
-&lt;&lt;/nobr&gt;&gt;</tw-passagedata></tw-storydata>
+&lt;&lt;/nobr&gt;&gt;</tw-passagedata><tw-passagedata pid="58" name="H0: Context 2" tags="" position="244,942.6666666666667" size="100,100">&lt;&lt;include [[H0: Context Dialogue]]&gt;&gt;</tw-passagedata><tw-passagedata pid="59" name="H0: Context Dialogue" tags="" position="365,944" size="100,100">&quot;Alright, team. Listen up, and listen up good, yeah?&quot; says Oculus, speaking hurriedly into your remote communications line. &quot;Anyone need a refresher on the plan?&quot;
+
+You&#39;d hate to cause all of this to go to ruin if you forget something, but you&#39;ve gotten enough flack as-is for asking too many questions in this group.
+
+&lt;span id=&quot;dialogueH0-context&quot;&gt;&lt;&lt;nobr&gt;&gt;
+	&lt;&lt;link &quot;&gt; \&quot;I could use one, if that&#39;s okay.\&quot;&quot;&gt;&gt;
+		&lt;&lt;replace &quot;#dialogueH0-context&quot;&gt;&gt;
+			&lt;&lt;include [[H0: Context Dialogue Y]]&gt;&gt;
+		&lt;&lt;/replace&gt;&gt;
+	&lt;&lt;/link&gt;&gt;
+&lt;&lt;/nobr&gt;&gt;
+&lt;&lt;nobr&gt;&gt;
+	[[&gt; Stay silent.|H0: Context 3]]
+&lt;&lt;/nobr&gt;&gt;&lt;/span&gt;</tw-passagedata><tw-passagedata pid="60" name="H0: Context Dialogue Y" tags="" position="485.6666666666666,943.9999999999999" size="100,100">&quot;I could use one, if that&#39;s okay,&quot; you say, trying to hide your nervousness.
+
+&quot;If //Trucy// needs help out of all of you, we&#39;re in trouble,&quot; Oculus laughs. &quot;Alright here&#39;s the deal, numbskulls. You go in, disguised as little Trucy here&#39;s butlers, you get into the building, take the elevator up to the offices- Violet blows the wall- up to the research floor, yeah?&quot;
+
+&quot;After that, you get past the security checkpoint and Minh uses that fancy rope to pull down the key,&quot; Oculus continues. &quot;Then Trucy pricks herself with it- we take it- and jump out the window easy.&quot;
+
+[[&quot;&gt; \&quot;Right. Thank you, Oculus.\&quot;&quot;|H0: Context 3]]</tw-passagedata><tw-passagedata pid="61" name="H0: Context 3" tags="" position="427.33333333333337,807.3333333333334" size="100,100">&quot;Alright, if no one else has any more questions,&quot; says Marcellus, looking at you. &quot;Let&#39;s get this show on the road... Lady Trucy,&quot;
+
+Guess it&#39;s time to go.
+
+[[&gt; Head inside.|H0: Lobby]]</tw-passagedata><tw-passagedata pid="62" name="H1: Service Affirmative" tags="" position="1063.3333333333333,723.0000000000001" size="100,100">&quot;Good. Keep your weapons at the ready and comms clear,&quot; he says, punctuating his speech with a whirr and a click from his plasma pistol. &quot;Let&#39;s begin.&quot;
+
+The Elevator doors open to a service closet.
+
+[[&gt; Exit the elevator.|H1: Employee Floor Service Closet]]</tw-passagedata><tw-passagedata pid="63" name="H1: Elevator Affirmative" tags="" position="1063.3333333333333,1105" size="100,100">&quot;Good. Keep your weapons at the ready and comms clear,&quot; he says, punctuating his speech with a whirr and a click from his plasma pistol. &quot;Let&#39;s begin.&quot;
+
+The Elevator doors open to a hallway of cubicles.
+
+[[&gt; Exit the elevator.|H1: Cubicles West (3)]]</tw-passagedata><tw-passagedata pid="64" name="H1: Conference Board" tags="" position="1315,601" size="100,100">&lt;&lt;silently&gt;&gt;
+	&lt;&lt;script&gt;&gt;
+		window.UpdateGuardPositionEmployee()
+	&lt;&lt;/script&gt;&gt;
+	&lt;&lt;set $guardPosition to window.GetGuardPositionEmployee()&gt;&gt;
+	&lt;&lt;set $heistTime to $heistTime + 1&gt;&gt;
+&lt;&lt;/silently&gt;&gt;
+You look at the board filled maps. The board is labelled &quot;Problematic Areas,&quot; and a few maps of areas in the city are listed.
+
+&lt;span id=&quot;h1-boardtext&quot;&gt;&lt;/span&gt;
+
+&lt;&lt;nobr&gt;&gt;
+&lt;&lt;link &quot;&gt; West Industrial District&quot;&gt;&gt;
+	&lt;&lt;replace &quot;#h1-boardtext&quot;&gt;&gt;
+		&lt;&lt;include [[H1: Board West Industrial]]&gt;&gt;
+	&lt;&lt;/replace&gt;&gt;
+	&lt;&lt;script&gt;&gt;
+		window.UpdateGuardPositionEmployee()
+	&lt;&lt;/script&gt;&gt;
+	&lt;&lt;set $guardPosition to window.GetGuardPositionEmployee()&gt;&gt;
+	&lt;&lt;set $heistTime to $heistTime + 1&gt;&gt;
+&lt;&lt;/link&gt;&gt;&lt;&lt;/nobr&gt;&gt;
+&lt;&lt;nobr&gt;&gt;
+&lt;&lt;link &quot;&gt; Sable Square&quot;&gt;&gt;
+	&lt;&lt;replace &quot;#h1-boardtext&quot;&gt;&gt;
+		&lt;&lt;include [[H1: Sable Square]]&gt;&gt;
+	&lt;&lt;/replace&gt;&gt;
+	&lt;&lt;script&gt;&gt;
+		window.UpdateGuardPositionEmployee()
+	&lt;&lt;/script&gt;&gt;
+	&lt;&lt;set $guardPosition to window.GetGuardPositionEmployee()&gt;&gt;
+	&lt;&lt;set $heistTime to $heistTime + 1&gt;&gt;
+&lt;&lt;/link&gt;&gt;&lt;&lt;/nobr&gt;&gt;
+&lt;&lt;nobr&gt;&gt;
+&lt;&lt;link &quot;&gt; Far Northern Reaches&quot;&gt;&gt;
+	&lt;&lt;replace &quot;#h1-boardtext&quot;&gt;&gt;
+		&lt;&lt;include [[H1: Northern Reaches]]&gt;&gt;
+	&lt;&lt;/replace&gt;&gt;
+	&lt;&lt;script&gt;&gt;
+		window.UpdateGuardPositionEmployee()
+	&lt;&lt;/script&gt;&gt;
+	&lt;&lt;set $guardPosition to window.GetGuardPositionEmployee()&gt;&gt;
+	&lt;&lt;set $heistTime to $heistTime + 1&gt;&gt;
+&lt;&lt;/link&gt;&gt;&lt;&lt;/nobr&gt;&gt;
+[[&gt; Stop looking at the board|H1: Conference Room]]</tw-passagedata><tw-passagedata pid="65" name="H1: Board West Industrial" tags="" position="1135,591" size="100,100">You recognize this area, being the place where the Glass Rose keeps their shoddy-but-well-hidden base. Beneath it, it says &quot;Increase of Illicit Sales and Criminal Activity. Recommendation: Curfews and Increased Terminations&quot;
+
+Perhaps you all aren&#39;t as unnoticed as you originally thought. You really hope no one gets hurt because of this.</tw-passagedata><tw-passagedata pid="66" name="H1: Sable Square" tags="" position="1120,484" size="100,100">Sable Square, the hotbed of advertising and glamour is also listed here. Beneath it, it says &quot;Evidence of Tampered Security Footage. Recommendation: Internal Investigation into Security Personnel&quot;
+
+You wonder if Marcellus has anything to do with this too. Sure is a lot he doesn&#39;t seem to be telling you.</tw-passagedata><tw-passagedata pid="67" name="H1: Northern Reaches" tags="" position="1236,450" size="100,100">You see a place you don&#39;t recognize on the northern end of the city. It&#39;s far enough that you didn&#39;t even realize that part of the city is inhabitable. Beneath it, it says &quot;High Casualty Count due to External Clime Exposure. Recommendation: No action required.&quot;
+
+You hadn&#39;t realized your family&#39;s company cared so //little// about people. Aren&#39;t they supposed to be keeping them safe?</tw-passagedata><tw-passagedata pid="68" name="H1: Eduardo Talk" tags="" position="1135.3333333333333,1364.6666666666667" size="100,100">You have a brief conversation with Eduardo. Marcellus yells at him a bit.
+
+&lt;&lt;set $h1eduardoAwake to true&gt;&gt;
+[[H1: Surveillance Room]]
+&lt;&lt;silently&gt;&gt;
+	&lt;&lt;script&gt;&gt;
+		window.UpdateGuardPositionEmployee()
+	&lt;&lt;/script&gt;&gt;
+	&lt;&lt;set $guardPosition to window.GetGuardPositionEmployee()&gt;&gt;
+	&lt;&lt;set $heistTime to $heistTime + 1&gt;&gt;
+&lt;&lt;/silently&gt;&gt;</tw-passagedata><tw-passagedata pid="69" name="H1: Sticky Note" tags="" position="1268.3333333333333,1364.6666666666667" size="100,100">The sticky note reads:
+username: cpearson914
+password: nwaeri1Day!
+
+This should be password for a computer somewhere.
+&lt;&lt;set $h1emailPassword to true&gt;&gt;
+[[&gt; Go back.|H1: Surveillance Room]]
+&lt;&lt;silently&gt;&gt;
+	&lt;&lt;script&gt;&gt;
+		window.UpdateGuardPositionEmployee()
+	&lt;&lt;/script&gt;&gt;
+	&lt;&lt;set $guardPosition to window.GetGuardPositionEmployee()&gt;&gt;
+	&lt;&lt;set $heistTime to $heistTime + 1&gt;&gt;
+&lt;&lt;/silently&gt;&gt;</tw-passagedata><tw-passagedata pid="70" name="H1: Robert&#39;s Desk" tags="" position="1611,1177.3333333333333" size="100,100">You see an assortment of maps and photographs scattered throughout the desk. In the photos, it looks like he&#39;s taken some surveillance footage of you around the city, ushered from place to place. In many of these, you face can barely be seen through your hood. On the maps, he&#39;s marked a variety of potential sightings, largely revolving around the Black Market. The writing on the page is frantic and messy, as if it was done anxiously and in a hurry.
+
+&lt;&lt;if !$h1confrontedMarcellus&gt;&gt;You... thought he wasn&#39;t looking for you.
+
+[[&gt; Leave it alone.|H1: Office No Confrontation]]
+[[&gt; &quot;Hey, Marcellus. I&#39;m confused...&quot;|H1: Office Marcellus Confrontation]]
+&lt;&lt;else&gt;&gt;You feel very conflicted looking at this desk again.
+
+[[&gt; Focus on something else.|H1: Robert&#39;s Office]]&lt;&lt;/if&gt;&gt;
+&lt;&lt;silently&gt;&gt;
+	&lt;&lt;script&gt;&gt;
+		window.UpdateGuardPositionEmployee()
+	&lt;&lt;/script&gt;&gt;
+	&lt;&lt;set $guardPosition to window.GetGuardPositionEmployee()&gt;&gt;
+	&lt;&lt;set $heistTime to $heistTime + 1&gt;&gt;
+&lt;&lt;/silently&gt;&gt;</tw-passagedata><tw-passagedata pid="71" name="H1: Office No Confrontation" tags="" position="1637,1465.3333333333333" size="100,100">You say nothing, and avoid leaving any trace of your presence on the papers.
+
+After a while,  Violet speaks up.
+
+[[&gt; Listen to Violet|H1: Violet Complete]]</tw-passagedata><tw-passagedata pid="72" name="H1: Office Marcellus Confrontation" tags="" position="1511.3333333333335,1364.3333333333333" size="100,100">&lt;&lt;include [[H1: Marcellus Confrontation 0]]&gt;&gt;</tw-passagedata><tw-passagedata pid="73" name="H1: Violet Complete" tags="" position="1799.0000000000002,1495" size="100,100">&lt;&lt;if !$h1bombReady&gt;&gt;&quot;Charge is primed, boss,&quot; she says, clearly proud of herself. &quot;Ready when you are.&quot;
+
+&quot;Good,&quot; says Marcellus, walking over. &quot;Trucy, if there&#39;s anything else you want to do around here, now&#39;s the time, otherwise, it&#39;s time to move.&quot;&lt;&lt;set $h1bombReady to true&gt;&gt;&lt;&lt;else&gt;&gt;&quot;Hey, Trucy,&quot; says Violet. &quot;Not to interrupt, but remember, I&#39;m ready when you are.&lt;&lt;/if&gt;&gt;
+
+[[&gt; Look around the office some more.|H1: Robert&#39;s Office]]
+[[&gt; &quot;I&#39;m ready. Let&#39;s go.&quot;|H1: Blowing the Wall]]</tw-passagedata><tw-passagedata pid="74" name="H1: Marcellus Confrontation 0" tags="" position="1423.3333333333335,1642.6666666666667" size="100,100">&quot;Hey, Marcellus. I&#39;m confused...&quot; you start, turning towards him. He looks up from monitoring the door, seemingly irritated at your inquiry.
+
+&quot;Can this wait, Trucy? Now&#39;s not the time,&quot; he says.
+
+&lt;span id=&quot;dialogueH1-marcellus0&quot;&gt;&lt;&lt;nobr&gt;&gt;
+	&lt;&lt;link &quot;&gt; \&quot;No, this is important. Didn&#39;t you say my father wasn&#39;t looking for me?\&quot;&quot;&gt;&gt;
+		&lt;&lt;replace &quot;#dialogueH1-marcellus0&quot;&gt;&gt;
+			&lt;&lt;include [[H1: Marcellus Confrontation A]]&gt;&gt;
+		&lt;&lt;/replace&gt;&gt;
+	&lt;&lt;/link&gt;&gt;
+&lt;&lt;/nobr&gt;&gt;
+&lt;&lt;nobr&gt;&gt;
+&lt;&lt;link &quot;&gt; \&quot;Yeah, right. I&#39;ll ask later.\&quot;&quot;&gt;&gt;
+	&lt;&lt;replace &quot;#dialogueH1-marcellus0&quot;&gt;&gt;
+		&lt;&lt;include [[H0: Marcellus Confrontation B]]&gt;&gt;
+	&lt;&lt;/replace&gt;&gt;
+&lt;&lt;/link&gt;&gt;
+&lt;&lt;/nobr&gt;&gt;&lt;/span&gt;</tw-passagedata><tw-passagedata pid="75" name="H1: Marcellus Confrontation A" tags="" position="1321.6666666666667,1754.4899393717449" size="100,100">&quot;No, this is important,&quot; you say, ignoring his attempt to shut you down. &quot;Didn&#39;t you say my father wasn&#39;t looking for me?&quot;
+
+He hesitates for a moment, so brief you wouldn&#39;t notice it if you weren&#39;t paying attention. &quot;I mean, yeah. The piece of trash didn&#39;t even bother to search for his own daughter, what of it?&quot;
+
+&lt;span id=&quot;dialogueH1-marcellusA&quot;&gt;&lt;&lt;nobr&gt;&gt;
+	&lt;&lt;link &quot;\&quot;But, look at this. Pictures and maps of... me?\&quot;&quot;&gt;&gt;
+		&lt;&lt;replace &quot;#dialogueH1-marcellusA&quot;&gt;&gt;
+			&lt;&lt;include [[H1: Marcellus Confrontation AA]]&gt;&gt;
+		&lt;&lt;/replace&gt;&gt;
+	&lt;&lt;/link&gt;&gt;
+&lt;&lt;/nobr&gt;&gt;
+&lt;&lt;nobr&gt;&gt;
+	&lt;&lt;link &quot;&gt; \&quot;Did you lie to me, Marcellus?\&quot;&quot;&gt;&gt;
+	&lt;&lt;replace &quot;#dialogueH1-marcellusA&quot;&gt;&gt;
+		&lt;&lt;include [[H0: Marcellus Confrontation AB]]&gt;&gt;
+	&lt;&lt;/replace&gt;&gt;
+	&lt;&lt;/link&gt;&gt;
+&lt;&lt;/nobr&gt;&gt;&lt;/span&gt;</tw-passagedata><tw-passagedata pid="76" name="H0: Marcellus Confrontation B" tags="" position="1554.3333333333335,1651.4899393717449" size="100,100">&quot;Yeah, right,&quot; you say, a bit dejectedly. &quot;I&#39;ll ask later.&quot;
+
+After a while,  Violet speaks up.
+
+[[&gt; Listen to Violet|H1: Violet Complete]]</tw-passagedata><tw-passagedata pid="77" name="H1: Marcellus Confrontation AA" tags="" position="1425.6666666666667,1886" size="100,100">&quot;But, look at this,&quot; you tell him, gesturing to your father&#39;s desk. &quot;Pictures and maps of... me?&quot;
+
+He sighs, and steps over from his watch. He glances over the desk, and reaches up and runs a hand through his greased hair.
+
+&quot;...Huh,&quot; he says, after a while. &quot;Must have started recently, I&#39;m sure the other big wigs were putting pressure on him and all.&quot;
+
+[[&gt; &quot;I suppose that makes sense.&quot;|H1: Marcellus Confrontation Confused]]</tw-passagedata><tw-passagedata pid="78" name="H0: Marcellus Confrontation AB" tags="" position="1503.3333333333337,1753.1566060384114" size="100,100">&quot;Did you lie to me, Marcellus?&quot; you ask, feeling betrayed. Your father is cruel, sure, but you&#39;d never known him not to care like this... right?
+
+&quot;Did I lie- Trucy!&quot; says Marcellus incredulous, &quot;Trucy, ever since you&#39;ve joined us, you&#39;ve been nothing but a dear friend to us. And I like to think I speak on behalf of all of us to say that we&#39;d never lie to you about something like this.&quot;
+
+You feel... conflicted.
+
+[[&gt; Take a deep breath.|H1: Marcellus Confrontation Betrayed]]</tw-passagedata><tw-passagedata pid="79" name="H1: Marcellus Confrontation Confused" tags="" position="1685.6666666666667,1909.3333333333333" size="100,100">&quot;I suppose that makes sense...&quot; you trail off. Something seems off about this whole ordeal, but you can&#39;t quite put a finger on what.
+
+Before you can say anything else, though, Violet speaks up.
+
+[[&gt; Listen to Violet|H1: Violet Complete]]
+&lt;&lt;set $h1confrontedMarcellus to true&gt;&gt;</tw-passagedata><tw-passagedata pid="80" name="H1: Marcellus Confrontation Betrayed" tags="" position="1630,1788.3333333333333" size="100,100">You try to collect yourself and the emotions inside of you. Something is definitely off about this whole ordeal, and you&#39;re unsure who to trust and who to believe anymore.
+
+Before you can say anything else, though, Violet speaks up.
+
+[[&gt; Listen to Violet|H1: Violet Complete]]
+&lt;&lt;set $h1confrontedMarcellus to true&gt;&gt;</tw-passagedata><tw-passagedata pid="81" name="H1: Blowing the Wall" tags="" position="1834.3333333333333,1308.3333333333333" size="100,100">&quot;I&#39;m ready. Let&#39;s go.&quot; you say to Violet, resolved.
+
+She nods. She takes a step away from the wall, revealing a metal contraption made of clearly-recycled parts and too much ancient tape. You&#39;re not sure how quiet this explosion is going to be, given its construction.
+
+&quot;Alright, counting down,&quot; says Violet, holding the trigger device. &quot;Three, two, one...&quot;
+
+[[&gt; Plug you ears|H1: Blowing the Wall 2]]</tw-passagedata><tw-passagedata pid="82" name="H1: Blowing the Wall 2" tags="" position="1857.6666666666667,1183.333333333333" size="100,100">You put your fingers in your ears in anticipation for the unbearably loud noise. But, surprisingly, it doesn&#39;t come.
+
+Instead, you see glass rocket away from the office&#39;s window, completely without a sound. Had you not known any better, you&#39;d have thought they&#39;d gotten sucked away into space like some of the stories. Before you now is a gaping hole, in your father&#39;s office window.
+
+From your ear, you hear the squeak of Oculus piping up.
+
+[[&gt; Listen to Oculus|H1: Blowing the Wall 3]]</tw-passagedata><tw-passagedata pid="83" name="H1: Blowing the Wall 3" tags="" position="1792.6666666666667,1039.9999999999998" size="100,100">&quot;Good work, V! Sending a hover-platform out to you now,&quot; they say, clearly excited. Violet, clearly proud of herself, brushes off some dust and small fragments of glass from her suit.
+
+&quot;Hell yeah it&#39;s good work,&quot; says Violet, clearly proud of herself, brushes off some dust and small fragments of glass from her suit.
+
+Minh takes off his pack and starts unwrapping some rope, before walking over to the hole. He takes what looks like a hook and a box and swings them both outside and above you. You hear a //clink// as the hook seems to find home.
+
+&quot;You&#39;re up, Miss Trucy,&quot; he says, turning to you.
+
+[[&gt; Climb.|H2: Scaling the Building]]</tw-passagedata><tw-passagedata pid="84" name="H2: Scaling the Building 2" tags="" position="1767.6666666666665,735.6666666666666" size="100,100">As the motor brings you up to the top, you see an open window of what looks like another office. This one, however, seems much less sophisticated. You could almost describe it as, scientific, maybe?
+
+&quot;Good luck, Truce!&quot; you hear a call out from beneath you. You look behind, and Violet flies off on a metal sheet. The underside of it glows blue and you see some small flecks of flame.
+
+You hope she gets back safe.
+
+[[&gt; Enter the office.|H2: Head Researcher&#39;s Office]]</tw-passagedata><tw-passagedata pid="85" name="H2: Emails" tags="" position="1919,1035" size="100,100">Double-click this passage to edit it.</tw-passagedata></tw-storydata>
 	<script id="script-sugarcube" type="text/javascript">
 	/*! SugarCube JS */
 	if(document.documentElement.getAttribute("data-init")==="loading"){!function(window,document,jQuery,undefined){"use strict";function _classCallCheck(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}function _toConsumableArray(e){if(Array.isArray(e)){for(var t=0,r=Array(e.length);t<e.length;t++)r[t]=e[t];return r}return Array.from(e)}var _createClass=function(){function e(e,t){for(var r=0;r<t.length;r++){var n=t[r];n.enumerable=n.enumerable||!1,n.configurable=!0,"value"in n&&(n.writable=!0),Object.defineProperty(e,n.key,n)}}return function(t,r,n){return r&&e(t.prototype,r),n&&e(t,n),t}}(),_slicedToArray=function(){function e(e,t){var r=[],n=!0,a=!1,i=undefined;try{for(var o,s=e[Symbol.iterator]();!(n=(o=s.next()).done)&&(r.push(o.value),!t||r.length!==t);n=!0);}catch(e){a=!0,i=e}finally{try{!n&&s.return&&s.return()}finally{if(a)throw i}}return r}return function(t,r){if(Array.isArray(t))return t;if(Symbol.iterator in Object(t))return e(t,r);throw new TypeError("Invalid attempt to destructure non-iterable instance")}}(),_typeof="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(e){return typeof e}:function(e){return e&&"function"==typeof Symbol&&e.constructor===Symbol&&e!==Symbol.prototype?"symbol":typeof e},errorPrologRegExp=/^(?:(?:uncaught\s+(?:exception:\s+)?)?\w*(?:error|exception|_err):\s+)+/i,Alert=function(){function e(e,t,r,n){var a="fatal"===e,i="Apologies! "+(a?"A fatal":"An")+" error has occurred.";i+=a?" Aborting.":" You may be able to continue, but some parts may not work properly.",null==t&&null==r||(i+="\n\nError",null!=t&&(i+=" ["+t+"]"),i+=null!=r?": "+r.replace(errorPrologRegExp,"")+".":": unknown error."),"object"===(void 0===n?"undefined":_typeof(n))&&null!==n&&n.stack&&(i+="\n\nStack Trace:\n"+n.stack),window.alert(i)}function t(t,r,n){e(null,t,r,n)}function r(t,r,n){e("fatal",t,r,n)}return function(e){window.onerror=function(n,a,i,o,s){"complete"===document.readyState?t(null,n,s):(r(null,n,s),window.onerror=e,"function"==typeof window.onerror&&window.onerror.apply(this,arguments))}}(window.onerror),Object.freeze(Object.defineProperties({},{error:{value:t},fatal:{value:r}}))}(),Patterns=function(){var e=function(){var e=new Map([[" ","\\u0020"],["\f","\\f"],["\n","\\n"],["\r","\\r"],["\t","\\t"],["\v","\\v"],[" ","\\u00a0"],[" ","\\u1680"],["᠎","\\u180e"],[" ","\\u2000"],[" ","\\u2001"],[" ","\\u2002"],[" ","\\u2003"],[" ","\\u2004"],[" ","\\u2005"],[" ","\\u2006"],[" ","\\u2007"],[" ","\\u2008"],[" ","\\u2009"],[" ","\\u200a"],["\u2028","\\u2028"],["\u2029","\\u2029"],[" ","\\u202f"],[" ","\\u205f"],["　","\\u3000"],["\ufeff","\\ufeff"]]),t=/^\s$/,r="";return e.forEach(function(e,n){t.test(n)||(r+=e)}),r?"[\\s"+r+"]":"\\s"}(),t="[\\u0020\\f\\t\\v\\u00a0\\u1680\\u180e\\u2000-\\u200a\\u202f\\u205f\\u3000\\ufeff]",r="\\s"===e?"\\S":e.replace(/^\[/,"[^"),n="[0-9A-Z_a-z\\-\\u00c0-\\u00d6\\u00d8-\\u00f6\\u00f8-\\u00ff\\u0150\\u0170\\u0151\\u0171]",a=n.replace("\\-",""),i=function(){var e="(?:[\\x2D.0-9A-Z_a-z\\xB7\\xC0-\\xD6\\xD8-\\xF6\\xF8-\\u037D\\u037F-\\u1FFF\\u200C\\u200D\\u203F\\u2040\\u2070-\\u218F\\u2C00-\\u2FEF\\u3001-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFFD]|[\\uD800-\\uDB7F][\\uDC00-\\uDFFF])";return"[A-Za-z](?:"+e+"*-"+e+"*|[0-9A-Za-z]*)"}(),o=function(){return"("+n+"+)\\(([^\\)\\|\\n]+)\\):|"+t+"*("+n+"+)"+t+"*:([^;\\|\\n]+);|"+t+"*((?:[#.]"+n+"+"+t+"*)+);"}();return Object.freeze({space:e,spaceNoTerminator:t,lineTerminator:"[\\n\\r\\u2028\\u2029]",notSpace:r,anyChar:"(?:.|[\\n\\r\\u2028\\u2029])",anyLetter:n,anyLetterStrict:a,identifierFirstChar:"[$A-Z_a-z]",identifierNextChar:"[$0-9A-Z_a-z]",identifier:"[$A-Z_a-z][$0-9A-Z_a-z]*",variableSigil:"[$_]",variable:"[$_][$A-Z_a-z][$0-9A-Z_a-z]*",macroName:"[A-Za-z][\\w-]*|[=-]",templateName:"[A-Za-z][\\w-]*",htmlTagName:i,cssIdOrClassSigil:"[#.]",cssImage:"\\[[<>]?[Ii][Mm][Gg]\\[(?:\\s|\\S)*?\\]\\]+",inlineCss:o,url:"(?:file|https?|mailto|ftp|javascript|irc|news|data):[^\\s'\"]+"})}();!function(){function e(e,t){var r=Number.parseInt(e,10)||0;if(r<1)return"";var n=void 0===t?"":String(t);for(""===n&&(n=" ");n.length<r;){var a=n.length,i=r-a;n+=a>i?n.slice(0,i):n}return n.length>r&&(n=n.slice(0,r)),n}var t=function(){function e(e,n){var a=String(e);if(!a)return a;switch(n){case"start":return t.test(a)?a.replace(t,""):a;case"end":return r.test(a)?a.replace(r,""):a;default:throw new Error('_trimString called with incorrect where parameter value: "'+n+'"')}}var t=new RegExp("^"+Patterns.space+Patterns.space+"*"),r=new RegExp(""+Patterns.space+Patterns.space+"*$");return e}();Array.prototype.flat||Object.defineProperty(Array.prototype,"flat",{configurable:!0,writable:!0,value:function(){function e(){if(null==this)throw new TypeError("Array.prototype.flat called on null or undefined");var t=0===arguments.length?1:Number(arguments[0])||0;return t<1?Array.prototype.slice.call(this):Array.prototype.reduce.call(this,function(r,n){return n instanceof Array?r.push.apply(r,_toConsumableArray(e.call(n,t-1))):r.push(n),r},[])}return e}()}),Array.prototype.flatMap||Object.defineProperty(Array.prototype,"flatMap",{configurable:!0,writable:!0,value:function(){if(null==this)throw new TypeError("Array.prototype.flatMap called on null or undefined");return Array.prototype.map.apply(this,arguments).flat()}}),Array.prototype.includes||Object.defineProperty(Array.prototype,"includes",{configurable:!0,writable:!0,value:function(){if(null==this)throw new TypeError("Array.prototype.includes called on null or undefined");if(0===arguments.length)return!1;var e=this.length>>>0;if(0===e)return!1;var t=arguments[0],r=Number(arguments[1])||0;for(r<0&&(r=Math.max(0,e+r));r<e;++r){var n=this[r];if(n===t||n!==n&&t!==t)return!0}return!1}}),Object.entries||Object.defineProperty(Object,"entries",{configurable:!0,writable:!0,value:function(e){if("object"!==(void 0===e?"undefined":_typeof(e))||null===e)throw new TypeError("Object.entries object parameter must be an object");return Object.keys(e).map(function(t){return[t,e[t]]})}}),Object.fromEntries||Object.defineProperty(Object,"fromEntries",{configurable:!0,writable:!0,value:function(e){return Array.from(e).reduce(function(e,t){if(Object(t)!==t)throw new TypeError("Object.fromEntries iterable parameter must yield objects");return t[0]in e?Object.defineProperty(e,t[0],{configurable:!0,enumerable:!0,writable:!0,value:t[1]}):e[t[0]]=t[1],e},{})}}),Object.getOwnPropertyDescriptors||Object.defineProperty(Object,"getOwnPropertyDescriptors",{configurable:!0,writable:!0,value:function(e){if(null==e)throw new TypeError("Object.getOwnPropertyDescriptors object parameter is null or undefined");var t=Object(e);return Reflect.ownKeys(t).reduce(function(e,r){var n=Object.getOwnPropertyDescriptor(t,r);return void 0!==n&&(r in e?Object.defineProperty(e,r,{configurable:!0,enumerable:!0,writable:!0,value:n}):e[r]=n),e},{})}}),Object.values||Object.defineProperty(Object,"values",{configurable:!0,writable:!0,value:function(e){if("object"!==(void 0===e?"undefined":_typeof(e))||null===e)throw new TypeError("Object.values object parameter must be an object");return Object.keys(e).map(function(t){return e[t]})}}),String.prototype.padStart||Object.defineProperty(String.prototype,"padStart",{configurable:!0,writable:!0,value:function(t,r){if(null==this)throw new TypeError("String.prototype.padStart called on null or undefined");var n=String(this),a=n.length,i=Number.parseInt(t,10);return i<=a?n:e(i-a,r)+n}}),String.prototype.padEnd||Object.defineProperty(String.prototype,"padEnd",{configurable:!0,writable:!0,value:function(t,r){if(null==this)throw new TypeError("String.prototype.padEnd called on null or undefined");var n=String(this),a=n.length,i=Number.parseInt(t,10);return i<=a?n:n+e(i-a,r)}}),String.prototype.trimStart||Object.defineProperty(String.prototype,"trimStart",{configurable:!0,writable:!0,value:function(){if(null==this)throw new TypeError("String.prototype.trimStart called on null or undefined");return t(this,"start")}}),String.prototype.trimLeft||Object.defineProperty(String.prototype,"trimLeft",{configurable:!0,writable:!0,value:function(){if(null==this)throw new TypeError("String.prototype.trimLeft called on null or undefined");return t(this,"start")}}),String.prototype.trimEnd||Object.defineProperty(String.prototype,"trimEnd",{configurable:!0,writable:!0,value:function(){if(null==this)throw new TypeError("String.prototype.trimEnd called on null or undefined");return t(this,"end")}}),String.prototype.trimRight||Object.defineProperty(String.prototype,"trimRight",{configurable:!0,writable:!0,value:function(){if(null==this)throw new TypeError("String.prototype.trimRight called on null or undefined");return t(this,"end")}})}(),function(){function _random(){var e=void 0,t=void 0;switch(arguments.length){case 0:throw new Error("_random called with insufficient parameters");case 1:e=0,t=arguments[0];break;default:e=arguments[0],t=arguments[1]}if(e>t){var r=[t,e];e=r[0],t=r[1]}return Math.floor(_nativeMathRandom()*(t-e+1))+e}function _randomIndex(e,t){var r=void 0,n=void 0;switch(t.length){case 1:r=0,n=e-1;break;case 2:r=0,n=Math.trunc(t[1]);break;default:r=Math.trunc(t[1]),n=Math.trunc(t[2])}return Number.isNaN(r)?r=0:!Number.isFinite(r)||r>=e?r=e-1:r<0&&(r=e+r)<0&&(r=0),Number.isNaN(n)?n=0:!Number.isFinite(n)||n>=e?n=e-1:n<0&&(n=e+n)<0&&(n=e-1),_random(r,n)}function _getCodePointStartAndEnd(e,t){var r=e.charCodeAt(t);if(Number.isNaN(r))return{char:"",start:-1,end:-1};if(r<55296||r>57343)return{char:e.charAt(t),start:t,end:t};if(r>=55296&&r<=56319){var n=t+1;if(n>=e.length)throw new Error("high surrogate without trailing low surrogate");var a=e.charCodeAt(n);if(a<56320||a>57343)throw new Error("high surrogate without trailing low surrogate");return{char:e.charAt(t)+e.charAt(n),start:t,end:n}}if(0===t)throw new Error("low surrogate without leading high surrogate");var i=t-1,o=e.charCodeAt(i);if(o<55296||o>56319)throw new Error("low surrogate without leading high surrogate");return{char:e.charAt(i)+e.charAt(t),start:i,end:t}}var _nativeMathRandom=Math.random;Object.defineProperty(Array,"random",{configurable:!0,writable:!0,value:function(e){if("object"!==(void 0===e?"undefined":_typeof(e))||null===e||!Object.prototype.hasOwnProperty.call(e,"length"))throw new TypeError("Array.random array parameter must be an array or array-lke object");var t=e.length>>>0;if(0!==t){return e[0===arguments.length?_random(0,t-1):_randomIndex(t,Array.prototype.slice.call(arguments,1))]}}}),Object.defineProperty(Array.prototype,"concatUnique",{configurable:!0,writable:!0,value:function(){if(null==this)throw new TypeError("Array.prototype.concatUnique called on null or undefined");var e=Array.from(this);if(0===arguments.length)return e;var t=Array.prototype.reduce.call(arguments,function(e,t){return e.concat(t)},[]),r=t.length;if(0===r)return e;for(var n=Array.prototype.indexOf,a=Array.prototype.push,i=0;i<r;++i){var o=t[i];-1===n.call(e,o)&&a.call(e,o)}return e}}),Object.defineProperty(Array.prototype,"count",{configurable:!0,writable:!0,value:function(){if(null==this)throw new TypeError("Array.prototype.count called on null or undefined");for(var e=Array.prototype.indexOf,t=arguments[0],r=Number(arguments[1])||0,n=0;-1!==(r=e.call(this,t,r));)++n,++r;return n}}),Object.defineProperty(Array.prototype,"delete",{configurable:!0,writable:!0,value:function(){if(null==this)throw new TypeError("Array.prototype.delete called on null or undefined");if(0===arguments.length)return[];var e=this.length>>>0;if(0===e)return[];for(var t=Array.prototype.concat.apply([],arguments),r=t.length,n=[],a=0;a<e;++a)for(var i=this[a],o=0;o<r;++o){var s=t[o];if(i===s||i!==i&&s!==s){n.push(a);break}}for(var u=[],l=0,c=n.length;l<c;++l)u[l]=this[n[l]];for(var d=Array.prototype.splice,f=n.length-1;f>=0;--f)d.call(this,n[f],1);return u}}),Object.defineProperty(Array.prototype,"deleteAt",{configurable:!0,writable:!0,value:function(){if(null==this)throw new TypeError("Array.prototype.deleteAt called on null or undefined");if(0===arguments.length)return[];var e=this.length>>>0;if(0===e)return[];for(var t=Array.prototype.splice,r=[].concat(_toConsumableArray(new Set(Array.prototype.concat.apply([],arguments).map(function(t){return t<0?Math.max(0,e+t):t})).values())),n=[].concat(_toConsumableArray(r)).sort(function(e,t){return t-e}),a=[],i=0,o=r.length;i<o;++i)a[i]=this[r[i]];for(var s=0,u=n.length;s<u;++s)t.call(this,n[s],1);return a}}),Object.defineProperty(Array.prototype,"deleteWith",{configurable:!0,writable:!0,value:function(e,t){if(null==this)throw new TypeError("Array.prototype.deleteWith called on null or undefined");if("function"!=typeof e)throw new Error("Array.prototype.deleteWith predicate parameter must be a function");var r=this.length>>>0;if(0===r)return[];for(var n=Array.prototype.splice,a=[],i=[],o=0;o<r;++o)e.call(t,this[o],o,this)&&(i.push(this[o]),a.push(o));for(var s=a.length-1;s>=0;--s)n.call(this,a[s],1);return i}}),Object.defineProperty(Array.prototype,"first",{configurable:!0,writable:!0,value:function(){if(null==this)throw new TypeError("Array.prototype.first called on null or undefined");if(0!=this.length>>>0)return this[0]}}),Object.defineProperty(Array.prototype,"includesAll",{configurable:!0,writable:!0,value:function(){if(null==this)throw new TypeError("Array.prototype.includesAll called on null or undefined");if(1===arguments.length)return Array.isArray(arguments[0])?Array.prototype.includesAll.apply(this,arguments[0]):Array.prototype.includes.apply(this,arguments);for(var e=0,t=arguments.length;e<t;++e)if(!Array.prototype.some.call(this,function(e){return e===this.val||e!==e&&this.val!==this.val},{val:arguments[e]}))return!1;return!0}}),Object.defineProperty(Array.prototype,"includesAny",{configurable:!0,writable:!0,value:function(){if(null==this)throw new TypeError("Array.prototype.includesAny called on null or undefined");if(1===arguments.length)return Array.isArray(arguments[0])?Array.prototype.includesAny.apply(this,arguments[0]):Array.prototype.includes.apply(this,arguments);for(var e=0,t=arguments.length;e<t;++e)if(Array.prototype.some.call(this,function(e){return e===this.val||e!==e&&this.val!==this.val},{val:arguments[e]}))return!0;return!1}}),Object.defineProperty(Array.prototype,"last",{configurable:!0,writable:!0,value:function(){if(null==this)throw new TypeError("Array.prototype.last called on null or undefined");var e=this.length>>>0;if(0!==e)return this[e-1]}}),Object.defineProperty(Array.prototype,"pluck",{configurable:!0,writable:!0,value:function(){if(null==this)throw new TypeError("Array.prototype.pluck called on null or undefined");var e=this.length>>>0;if(0!==e){var t=0===arguments.length?_random(0,e-1):_randomIndex(e,[].concat(Array.prototype.slice.call(arguments)));return Array.prototype.splice.call(this,t,1)[0]}}}),Object.defineProperty(Array.prototype,"pluckMany",{configurable:!0,writable:!0,value:function(e){if(null==this)throw new TypeError("Array.prototype.pluckMany called on null or undefined");var t=this.length>>>0;if(0===t)return[];var r=Math.trunc(e);if(!Number.isInteger(r))throw new Error("Array.prototype.pluckMany want parameter must be an integer");if(r<1)return[];r>t&&(r=t);var n=Array.prototype.splice,a=[],i=t-1;do{a.push(n.call(this,_random(0,i--),1)[0])}while(a.length<r);return a}}),Object.defineProperty(Array.prototype,"pushUnique",{configurable:!0,writable:!0,value:function(){if(null==this)throw new TypeError("Array.prototype.pushUnique called on null or undefined");var e=arguments.length;if(0===e)return this.length>>>0;for(var t=Array.prototype.indexOf,r=Array.prototype.push,n=0;n<e;++n){var a=arguments[n];-1===t.call(this,a)&&r.call(this,a)}return this.length>>>0}}),Object.defineProperty(Array.prototype,"random",{configurable:!0,writable:!0,value:function(){if(null==this)throw new TypeError("Array.prototype.random called on null or undefined");var e=this.length>>>0;if(0!==e){return this[0===arguments.length?_random(0,e-1):_randomIndex(e,[].concat(Array.prototype.slice.call(arguments)))]}}}),Object.defineProperty(Array.prototype,"randomMany",{configurable:!0,writable:!0,value:function(e){if(null==this)throw new TypeError("Array.prototype.randomMany called on null or undefined");var t=this.length>>>0;if(0===t)return[];var r=Math.trunc(e);if(!Number.isInteger(r))throw new Error("Array.prototype.randomMany want parameter must be an integer");if(r<1)return[];r>t&&(r=t);var n=new Map,a=[],i=t-1;do{var o=void 0;do{o=_random(0,i)}while(n.has(o));n.set(o,!0),a.push(this[o])}while(a.length<r);return a}}),Object.defineProperty(Array.prototype,"shuffle",{configurable:!0,writable:!0,value:function(){if(null==this)throw new TypeError("Array.prototype.shuffle called on null or undefined");var e=this.length>>>0;if(0===e)return this;for(var t=e-1;t>0;--t){var r=Math.floor(_nativeMathRandom()*(t+1));if(t!==r){var n=this[t];this[t]=this[r],this[r]=n}}return this}}),Object.defineProperty(Array.prototype,"unshiftUnique",{configurable:!0,writable:!0,value:function(){if(null==this)throw new TypeError("Array.prototype.unshiftUnique called on null or undefined");var e=arguments.length;if(0===e)return this.length>>>0;for(var t=Array.prototype.indexOf,r=Array.prototype.unshift,n=0;n<e;++n){var a=arguments[n];-1===t.call(this,a)&&r.call(this,a)}return this.length>>>0}}),Object.defineProperty(Function.prototype,"partial",{configurable:!0,writable:!0,value:function(){if(null==this)throw new TypeError("Function.prototype.partial called on null or undefined");var e=Array.prototype.slice,t=this,r=e.call(arguments,0);return function(){for(var n=[],a=0,i=0;i<r.length;++i)n.push(r[i]===undefined?arguments[a++]:r[i]);return t.apply(this,n.concat(e.call(arguments,a)))}}}),Object.defineProperty(Math,"clamp",{configurable:!0,writable:!0,value:function(e,t,r){var n=Number(e);return Number.isNaN(n)?NaN:n.clamp(t,r)}}),Object.defineProperty(Math,"easeInOut",{configurable:!0,writable:!0,value:function(e){return 1-(Math.cos(Number(e)*Math.PI)+1)/2}}),Object.defineProperty(Number.prototype,"clamp",{configurable:!0,writable:!0,value:function(){if(null==this)throw new TypeError("Number.prototype.clamp called on null or undefined");if(2!==arguments.length)throw new Error("Number.prototype.clamp called with an incorrect number of parameters");var e=Number(arguments[0]),t=Number(arguments[1]);if(e>t){var r=[t,e];e=r[0],t=r[1]}return Math.min(Math.max(this,e),t)}}),RegExp.escape||function(){var e=/[\\^$*+?.()|[\]{}]/g,t=new RegExp(e.source);Object.defineProperty(RegExp,"escape",{configurable:!0,writable:!0,value:function(r){var n=String(r);return n&&t.test(n)?n.replace(e,"\\$&"):n}})}(),function(){var e=/{(\d+)(?:,([+-]?\d+))?}/g,t=new RegExp(e.source);Object.defineProperty(String,"format",{configurable:!0,writable:!0,value:function(r){function n(e,t,r){if(!t)return e;var n=Math.abs(t)-e.length;if(n<1)return e;var a=String(r).repeat(n);return t<0?e+a:a+e}if(arguments.length<2)return 0===arguments.length?"":r;var a=2===arguments.length&&Array.isArray(arguments[1])?[].concat(_toConsumableArray(arguments[1])):Array.prototype.slice.call(arguments,1);return 0===a.length?r:t.test(r)?(e.lastIndex=0,r.replace(e,function(e,t,r){var i=a[t];if(null==i)return"";for(;"function"==typeof i;)i=i();switch(void 0===i?"undefined":_typeof(i)){case"string":break;case"object":i=JSON.stringify(i);break;default:i=String(i)}return n(i,r?Number.parseInt(r,10):0," ")})):r}})}(),Object.defineProperty(String.prototype,"contains",{configurable:!0,writable:!0,value:function(){if(null==this)throw new TypeError("String.prototype.contains called on null or undefined");return-1!==String.prototype.indexOf.apply(this,arguments)}}),Object.defineProperty(String.prototype,"count",{configurable:!0,writable:!0,value:function(){if(null==this)throw new TypeError("String.prototype.count called on null or undefined");var e=String(arguments[0]||"");if(""===e)return 0;for(var t=String.prototype.indexOf,r=e.length,n=Number(arguments[1])||0,a=0;-1!==(n=t.call(this,e,n));)++a,n+=r;return a}}),Object.defineProperty(String.prototype,"first",{configurable:!0,writable:!0,value:function(){if(null==this)throw new TypeError("String.prototype.first called on null or undefined");return _getCodePointStartAndEnd(String(this),0).char}}),Object.defineProperty(String.prototype,"last",{configurable:!0,writable:!0,value:function(){if(null==this)throw new TypeError("String.prototype.last called on null or undefined");var e=String(this);return _getCodePointStartAndEnd(e,e.length-1).char}}),Object.defineProperty(String.prototype,"splice",{configurable:!0,writable:!0,value:function(e,t,r){if(null==this)throw new TypeError("String.prototype.splice called on null or undefined");var n=this.length>>>0;if(0===n)return"";var a=Number(e);Number.isSafeInteger(a)?a<0&&(a+=n)<0&&(a=0):a=0,a>n&&(a=n);var i=Number(t);(!Number.isSafeInteger(i)||i<0)&&(i=0);var o=this.slice(0,a);return void 0!==r&&(o+=r),a+i<n&&(o+=this.slice(a+i)),o}}),Object.defineProperty(String.prototype,"splitOrEmpty",{configurable:!0,writable:!0,value:function(){if(null==this)throw new TypeError("String.prototype.splitOrEmpty called on null or undefined");return""===String(this)?[]:String.prototype.split.apply(this,arguments)}}),Object.defineProperty(String.prototype,"toLocaleUpperFirst",{configurable:!0,writable:!0,value:function(){if(null==this)throw new TypeError("String.prototype.toLocaleUpperFirst called on null or undefined");var e=String(this),t=_getCodePointStartAndEnd(e,0),r=t.char,n=t.end;return-1===n?"":r.toLocaleUpperCase()+e.slice(n+1)}}),Object.defineProperty(String.prototype,"toUpperFirst",{configurable:!0,writable:!0,value:function(){if(null==this)throw new TypeError("String.prototype.toUpperFirst called on null or undefined");var e=String(this),t=_getCodePointStartAndEnd(e,0),r=t.char,n=t.end;return-1===n?"":r.toUpperCase()+e.slice(n+1)}}),Object.defineProperty(Date.prototype,"toJSON",{configurable:!0,writable:!0,value:function(){return["(revive:date)",this.toISOString()]}}),Object.defineProperty(Function.prototype,"toJSON",{configurable:!0,writable:!0,value:function(){return["(revive:eval)","("+this.toString()+")"]}}),Object.defineProperty(Map.prototype,"toJSON",{configurable:!0,writable:!0,value:function(){return["(revive:map)",[].concat(_toConsumableArray(this))]}}),Object.defineProperty(RegExp.prototype,"toJSON",{configurable:!0,writable:!0,value:function(){return["(revive:eval)",this.toString()]}}),Object.defineProperty(Set.prototype,"toJSON",{configurable:!0,writable:!0,value:function(){return["(revive:set)",[].concat(_toConsumableArray(this))]}}),Object.defineProperty(JSON,"reviveWrapper",{configurable:!0,writable:!0,value:function(e,t){if("string"!=typeof e)throw new TypeError("JSON.reviveWrapper code parameter must be a string");return["(revive:eval)",[e,t]]}}),Object.defineProperty(JSON,"_real_stringify",{value:JSON.stringify}),Object.defineProperty(JSON,"stringify",{configurable:!0,writable:!0,value:function(e,t,r){return JSON._real_stringify(e,function(e,r){var n=r;if("function"==typeof t)try{n=t(e,n)}catch(e){}return void 0===n&&(n=["(revive:eval)","undefined"]),n},r)}}),Object.defineProperty(JSON,"_real_parse",{value:JSON.parse}),Object.defineProperty(JSON,"parse",{configurable:!0,writable:!0,value:function value(text,reviver){return JSON._real_parse(text,function(key,val){var value=val;if(Array.isArray(value)&&2===value.length)switch(value[0]){case"(revive:set)":value=new Set(value[1]);break;case"(revive:map)":value=new Map(value[1]);break;case"(revive:date)":value=new Date(value[1]);break;case"(revive:eval)":try{if(Array.isArray(value[1])){var $ReviveData$=value[1][1];value=eval(value[1][0])}else value=eval(value[1])}catch(e){}}else if("string"==typeof value&&"@@revive@@"===value.slice(0,10))try{value=eval(value.slice(10))}catch(e){}if("function"==typeof reviver)try{value=reviver(key,value)}catch(e){}return value})}}),Object.defineProperty(Array.prototype,"contains",{configurable:!0,writable:!0,value:function(){if(null==this)throw new TypeError("Array.prototype.contains called on null or undefined");return Array.prototype.includes.apply(this,arguments)}}),Object.defineProperty(Array.prototype,"containsAll",{configurable:!0,writable:!0,value:function(){if(null==this)throw new TypeError("Array.prototype.containsAll called on null or undefined");return Array.prototype.includesAll.apply(this,arguments)}}),Object.defineProperty(Array.prototype,"containsAny",{configurable:!0,writable:!0,value:function(){if(null==this)throw new TypeError("Array.prototype.containsAny called on null or undefined");return Array.prototype.includesAny.apply(this,arguments)}}),Object.defineProperty(Array.prototype,"flatten",{configurable:!0,writable:!0,value:function(){if(null==this)throw new TypeError("Array.prototype.flatten called on null or undefined");return Array.prototype.flat.call(this,1/0)}}),Object.defineProperty(String.prototype,"readBracketedList",{configurable:!0,writable:!0,value:function(){if(null==this)throw new TypeError("String.prototype.readBracketedList called on null or undefined");for(var e=new RegExp("(?:\\[\\[((?:\\s|\\S)*?)\\]\\])|([^\"'\\s]\\S*)","gm"),t=[],r=void 0;null!==(r=e.exec(this));)r[1]?t.push(r[1]):r[2]&&t.push(r[2]);return t}})}();var Browser=function(){var e=navigator.userAgent.toLowerCase(),t=e.includes("windows phone"),r=Object.freeze({Android:!t&&e.includes("android"),BlackBerry:/blackberry|bb10/.test(e),iOS:!t&&/ip(?:hone|ad|od)/.test(e),Opera:!t&&("object"===_typeof(window.operamini)||e.includes("opera mini")),Windows:t||/iemobile|wpdesktop/.test(e),any:function(){return r.Android||r.BlackBerry||r.iOS||r.Opera||r.Windows}}),n=!r.Windows&&!/khtml|trident|edge/.test(e)&&e.includes("gecko"),a=!e.includes("opera")&&/msie|trident/.test(e),i=a?function(){var t=/(?:msie\s+|rv:)(\d+\.\d)/.exec(e);return t?Number(t[1]):0}():null,o=e.includes("opera")||e.includes(" opr/"),s=o?function(){var t=new RegExp((/khtml|chrome/.test(e)?"opr":"version")+"\\/(\\d+\\.\\d+)"),r=t.exec(e);return r?Number(r[1]):0}():null,u=e.includes("vivaldi");return Object.freeze({userAgent:e,isMobile:r,isGecko:n,isIE:a,ieVersion:i,isOpera:o,operaVersion:s,isVivaldi:u})}(),Has=function(){var e=function(){try{return"function"==typeof document.createElement("audio").canPlayType}catch(e){}return!1}(),t=function(){try{return"Blob"in window&&"File"in window&&"FileList"in window&&"FileReader"in window&&(!Browser.isOpera||Browser.operaVersion>=15)}catch(e){}return!1}(),r=function(){try{return"geolocation"in navigator&&"function"==typeof navigator.geolocation.getCurrentPosition&&"function"==typeof navigator.geolocation.watchPosition}catch(e){}return!1}(),n=function(){try{return"MutationObserver"in window&&"function"==typeof window.MutationObserver}catch(e){}return!1}(),a=function(){try{return"performance"in window&&"function"==typeof window.performance.now}catch(e){}return!1}(),i=function(){try{return"ontouchstart"in window||!!window.DocumentTouch&&document instanceof window.DocumentTouch||!!navigator.maxTouchPoints||!!navigator.msMaxTouchPoints}catch(e){}return!1}(),o=function(){try{for(var e=new Map([["transition","transitionend"],["MSTransition","msTransitionEnd"],["WebkitTransition","webkitTransitionEnd"],["MozTransition","transitionend"]]),t=[].concat(_toConsumableArray(e.keys())),r=document.createElement("div"),n=0;n<t.length;++n)if(r.style[t[n]]!==undefined)return e.get(t[n])}catch(e){}return!1}();return Object.freeze({audio:e,fileAPI:t,geolocation:r,mutationObserver:n,performance:a,touch:i,transitionEndEvent:o})}(),Visibility=function(){function e(){return a}function t(){return a&&document[a.stateProperty]||"visible"}function r(){return Boolean(a)}function n(){return Boolean(a&&document[a.hiddenProperty])}var a=function(){try{return Object.freeze([{hiddenProperty:"hidden",stateProperty:"visibilityState",changeEvent:"visibilitychange"},{hiddenProperty:"webkitHidden",stateProperty:"webkitVisibilityState",changeEvent:"webkitvisibilitychange"},{hiddenProperty:"mozHidden",stateProperty:"mozVisibilityState",changeEvent:"mozvisibilitychange"},{hiddenProperty:"msHidden",stateProperty:"msVisibilityState",changeEvent:"msvisibilitychange"}].find(function(e){return e.hiddenProperty in document}))}catch(e){}return undefined}();return Object.freeze(Object.defineProperties({},{vendor:{get:e},state:{get:t},isEnabled:{value:r},isHidden:{value:n},hiddenProperty:{value:a&&a.hiddenProperty},stateProperty:{value:a&&a.stateProperty},changeEvent:{value:a&&a.changeEvent}}))}(),Fullscreen=function(){function e(e){var t=e||document.documentElement;return t===document.documentElement&&("msRequestFullscreen"===f.requestFn||Browser.isOpera&&Browser.operaVersion<15)&&(t=document.body),t}function t(){return f}function r(){return(f||null)&&document[f.element]}function n(){return Boolean(f&&document[f.isEnabled])}function a(){return Boolean(f&&document[f.element])}function i(t,r){var n=this;if(!f)return Promise.reject(new Error("fullscreen not supported"));var i=e(r);if("function"!=typeof i[f.requestFn])return Promise.reject(new Error("fullscreen not supported"));if(a())return Promise.resolve();if(p())return i[f.requestFn](t);var o=".Fullscreen_requestFullscreen";return new Promise(function(e,r){jQuery(i).off(o).one(""+f.errorEvent+o+" "+f.changeEvent+o,function(t){jQuery(n).off(o),t.type===f.errorEvent?r(new Error("unknown fullscreen request error")):e()}),i[f.requestFn](t)})}function o(){var e=this;if(!f||"function"!=typeof document[f.exitFn])return Promise.reject(new TypeError("fullscreen not supported"));if(!a())return Promise.reject(new TypeError("fullscreen mode not active"));if(p())return document[f.exitFn]();var t=".Fullscreen_exitFullscreen";return new Promise(function(r,n){jQuery(document).off(t).one(""+f.errorEvent+t+" "+f.changeEvent+t,function(a){jQuery(e).off(t),a.type===f.errorEvent?n(new Error("unknown fullscreen exit error")):r()}),document[f.exitFn]()})}function s(e,t){return a()?o():i(e,t)}function u(t,r){if(f){var n=e(r);$(n).on(f.changeEvent,t)}}function l(t,r){if(f){var n=e(r);t?$(n).off(f.changeEvent,t):$(n).off(f.changeEvent)}}function c(t,r){if(f){var n=e(r);$(n).on(f.errorEvent,t)}}function d(t,r){if(f){var n=e(r);t?$(n).off(f.errorEvent,t):$(n).off(f.errorEvent)}}var f=function(){try{return Object.freeze([{isEnabled:"fullscreenEnabled",element:"fullscreenElement",requestFn:"requestFullscreen",exitFn:"exitFullscreen",changeEvent:"fullscreenchange",errorEvent:"fullscreenerror"},{isEnabled:"webkitFullscreenEnabled",element:"webkitFullscreenElement",requestFn:"webkitRequestFullscreen",exitFn:"webkitExitFullscreen",changeEvent:"webkitfullscreenchange",errorEvent:"webkitfullscreenerror"},{isEnabled:"mozFullScreenEnabled",element:"mozFullScreenElement",requestFn:"mozRequestFullScreen",exitFn:"mozCancelFullScreen",changeEvent:"mozfullscreenchange",errorEvent:"mozfullscreenerror"},{isEnabled:"msFullscreenEnabled",element:"msFullscreenElement",requestFn:"msRequestFullscreen",exitFn:"msExitFullscreen",changeEvent:"MSFullscreenChange",errorEvent:"MSFullscreenError"}].find(function(e){return e.isEnabled in document}))}catch(e){}return undefined}(),p=function(){function e(){if(null!==t)return t;if(t=!1,f)try{var e=document.exitFullscreen();e.catch(function(){}),t=e instanceof Promise}catch(e){}return t}var t=null;return e}();return Object.freeze(Object.defineProperties({},{vendor:{get:t},element:{get:r},isEnabled:{value:n},isFullscreen:{value:a},request:{value:i},exit:{value:o},toggle:{value:s},onChange:{value:u},offChange:{value:l},onError:{value:c},offError:{value:d}}))}(),_ref3=function(){function e(e){for(var t=e.cloneNode(!0),r=document.createDocumentFragment(),n=void 0;null!==(n=t.firstChild);){if(n.nodeType===Node.ELEMENT_NODE)switch(n.nodeName.toUpperCase()){case"BR":case"DIV":case"P":r.appendChild(document.createTextNode(" "))}r.appendChild(n)}return r.textContent}function t(e){if("object"!==(void 0===e?"undefined":_typeof(e))||null===e)return e;if(e instanceof String)return String(e);if(e instanceof Number)return Number(e);if(e instanceof Boolean)return Boolean(e)
