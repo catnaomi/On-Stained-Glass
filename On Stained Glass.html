@@ -98,7 +98,7 @@ var LZString={_keyStr:"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz01234
 		<div id="init-lacking">Your browser lacks required capabilities. Please upgrade it or switch to another to continue.</div>
 		<div id="init-loading"><div>Loading&hellip;</div></div>
 	</div>
-	<tw-storydata name="On Stained Glass" startnode="13" creator="Twine" creator-version="2.3.14" ifid="D8334177-4232-43BC-BC63-63FE70796685" zoom="0.6" format="SugarCube" format-version="2.34.1" options="" hidden><style role="stylesheet" id="twine-user-stylesheet" type="text/twine-css"></style><script role="script" id="twine-user-script" type="text/twine-javascript">var employeeGuardPosition = 1;
+	<tw-storydata name="On Stained Glass" startnode="12" creator="Twine" creator-version="2.3.14" ifid="D8334177-4232-43BC-BC63-63FE70796685" zoom="0.6" format="SugarCube" format-version="2.34.1" options="" hidden><style role="stylesheet" id="twine-user-stylesheet" type="text/twine-css"></style><script role="script" id="twine-user-script" type="text/twine-javascript">var employeeGuardPosition = 1;
 // 0 = north
 // 1 = east
 // 2 = south
@@ -110,11 +110,16 @@ var researchGuardPosition = 2;
 // 2   = south
 
 var moveOscillator = 0;
+
+var preGuardPassage = "";
 window.GetGuardPositionEmployee = function() {
 	return employeeGuardPosition;
 }
 
 window.UpdateGuardPositionEmployee = function() {
+	if (State.variables.employeeGuardDown) {
+		return employeeGuardPosition;
+	}
 	employeeGuardPosition = (employeeGuardPosition + moveOscillator)%4;
 	moveOscillator = 1 - moveOscillator;
 	return employeeGuardPosition;
@@ -128,9 +133,58 @@ window.GetGuardPositionResearch = function() {
 }
 
 window.UpdateGuardPositionResearch = function() {
+	if (State.variables.researchGuardDown) {
+		return researchGuardPosition;
+	}
 	researchGuardPosition = (researchGuardPosition + moveOscillator)%4;
 	moveOscillator = 1 - moveOscillator;
 	return researchGuardPosition;
+}
+
+window.PreGuardPassage = function () {
+	return preGuardPassage;
+}
+Config.navigation.override = function(d) {
+	var pos = window.GetPosFromDestination(d);
+	
+	if (!State.variables.employeeGuardDown && pos == window.GetGuardPositionEmployee() && State.variables.heistFloor == 1)
+	{
+		console.log("caught");
+		preGuardPassage = d;
+		return "H1: Employee Guard";	
+	}
+	else if (!State.variables.researchGuardDown && pos == window.GetGuardPositionResearch() && State.variables.heistFloor == 2)
+	{
+		console.log("caught");
+		preGuardPassage = d;
+		return "H2: Research Guard";	
+	}
+	
+}
+
+window.GetPosFromDestination = function(d) {
+	if (d == "H1: Cubicles North (0)") {
+		return 0;
+	}
+	else if (d == "H1: Cubicles East (1)") {
+		return 1;
+	}
+	else if (d == "H1: Cubicles South (2)") {
+		return 2;
+	}
+	else if (d == "H1: Cubicles West (3)") {
+		return 3;
+	}
+	else if (d == "H2: Research Hallway North (0)") {
+		return 0;	
+	}
+	else if (d == "H2: Research Hallway West (1)") {
+		return 1;	
+	}
+	else if (d == "H2: Research Hallway South (2)") {
+		return 2;	
+	}
+	return -1;
 }</script><tw-passagedata pid="1" name="begin" tags="" position="259,54" size="100,100">On Stained Glass
 by cat naomi
 
@@ -157,12 +211,16 @@ v1 - first escape
 
 [[H0: Lobby]]
 
-
+&lt;&lt;silently&gt;&gt;
 &lt;&lt;set $h0serviceDoor to false&gt;&gt;
 &lt;&lt;set $h0receptionist to false&gt;&gt;
-&lt;&lt;set $heistTime to 0&gt;&gt;</tw-passagedata><tw-passagedata pid="13" name="H0: Lobby" tags="" position="607,894" size="100,100">&lt;&lt;set $h0serviceText to &quot;Service door hidden by paint or something.&quot;&gt;&gt;
-
-Sweet talk the &lt;&lt;nobr&gt;&gt;
+&lt;&lt;set $heistTime to 0&gt;&gt;
+&lt;&lt;set $employeeGuardDown to false&gt;&gt;
+&lt;&lt;set $researchGuardDown to false&gt;&gt;
+&lt;&lt;set $heistFloor to 0&gt;&gt;
+&lt;&lt;set $talkedToReceptionist to false&gt;&gt;
+&lt;&lt;set $enteredLobby
+&lt;&lt;/silently&gt;&gt;</tw-passagedata><tw-passagedata pid="13" name="H0: Lobby" tags="" position="607,894" size="100,100">Sweet talk the &lt;&lt;nobr&gt;&gt;
 &lt;&lt;link &quot;receptionist&quot;&gt;&gt;
 	&lt;&lt;set $h0receptionist to true&gt;&gt;
 	&lt;&lt;replace #link-h0receptionist&gt;&gt;
@@ -189,7 +247,10 @@ Sweet talk the &lt;&lt;nobr&gt;&gt;
 &lt;span id=&quot;link-h0receptionist&quot;&gt;&lt;&lt;if $h0receptionist&gt;&gt;[[H0: Receptionist]]&lt;&lt;/if&gt;&gt;&lt;/span&gt;
 
 &lt;&lt;set $heistTime to $heistTime + 1&gt;&gt;</tw-passagedata><tw-passagedata pid="14" name="H0: Receptionist" tags="" position="817,977" size="100,100">&lt;&lt;set $heistTime to $heistTime + 1&gt;&gt;
-&lt;&lt;include [[H0: Emilia Dialogue 00]]&gt;&gt;</tw-passagedata><tw-passagedata pid="15" name="H0: Service Room" tags="" position="812,847" size="100,100">you get into the service room with an elevator.
+&lt;&lt;if !$talkedToReceptionist&gt;&gt;&lt;&lt;set $talkedToReceptionist to true&gt;&gt;&lt;&lt;include [[H0: Emilia Dialogue 00]]&gt;&gt;&lt;&lt;else&gt;&gt;Emilia greets people as they pass by. She looks at you with a knowing look. She probably won&#39;t let you pass.
+
+[[H0: Lobby]]&lt;&lt;/if&gt;&gt;
+</tw-passagedata><tw-passagedata pid="15" name="H0: Service Room" tags="" position="812,847" size="100,100">you get into the service room with an elevator.
 
 [[H0: Lobby]]
 [[H0: Service Elevator]]
@@ -197,10 +258,12 @@ Sweet talk the &lt;&lt;nobr&gt;&gt;
 &lt;&lt;set $heistTime to $heistTime + 1&gt;&gt;</tw-passagedata><tw-passagedata pid="16" name="H0: Main Elevator" tags="" position="960,988" size="100,100">you take the elevator up. marcellus gives a speech here as you change clothes.
 
 [[H1: Cubicles West (3)]]
-&lt;&lt;set $heistTime to $heistTime + 1&gt;&gt;</tw-passagedata><tw-passagedata pid="17" name="H0: Service Elevator" tags="" position="964,850" size="100,100">you take the elevator up. marcellus gives a speech here as you change clothes.
+&lt;&lt;set $heistTime to $heistTime + 1&gt;&gt;
+&lt;&lt;set $heistFloor to 1&gt;&gt;</tw-passagedata><tw-passagedata pid="17" name="H0: Service Elevator" tags="" position="964,850" size="100,100">you take the elevator up. marcellus gives a speech here as you change clothes.
 
 [[H1: Employee Floor Service Closet]]
-&lt;&lt;set $heistTime to $heistTime + 1&gt;&gt;</tw-passagedata><tw-passagedata pid="18" name="H1: Employee Floor Service Closet" tags="" position="1151,861" size="100,100">&lt;&lt;silently&gt;&gt;
+&lt;&lt;set $heistTime to $heistTime + 1&gt;&gt;
+&lt;&lt;set $heistFloor to 1&gt;&gt;</tw-passagedata><tw-passagedata pid="18" name="H1: Employee Floor Service Closet" tags="" position="1151,861" size="100,100">&lt;&lt;silently&gt;&gt;
 	&lt;&lt;script&gt;&gt;
 		window.UpdateGuardPositionEmployee()
 	&lt;&lt;/script&gt;&gt;
@@ -213,9 +276,7 @@ you&#39;re in the service closet for the employee floor. you hear a guard outsid
 &lt;&lt;if window.GetGuardPositionEmployee() is 0&gt;&gt;you see a guard right outside the door. you should wait a moment.&lt;&lt;/if&gt;&gt;
 
 [[H1: Cubicles North (0)]]
-[[&gt; wait|H1: Employee Floor Service Closet]]
-
-</tw-passagedata><tw-passagedata pid="19" name="H1: Cubicles West (3)" tags="" position="1177,1011" size="100,100">&lt;&lt;silently&gt;&gt;
+[[&gt; wait|H1: Employee Floor Service Closet]]</tw-passagedata><tw-passagedata pid="19" name="H1: Cubicles West (3)" tags="" position="1177,1011" size="100,100">&lt;&lt;silently&gt;&gt;
 	&lt;&lt;script&gt;&gt;
 		window.UpdateGuardPositionEmployee()
 	&lt;&lt;/script&gt;&gt;
@@ -233,11 +294,15 @@ western cubicle section. the main elevator doors are to the west. you see a &lt;
 	&lt;&lt;/replace&gt;&gt;
 &lt;&lt;/link&gt;&gt;&lt;&lt;/nobr&gt;&gt; that&#39;s slightly left ajar.
 
-&lt;span id=&quot;description-text&quot;&gt;&lt;/span&gt;
+&lt;span id=&quot;description-text&quot;&gt;&lt;&lt;if $guardPosition is 3 &amp;&amp; $employeeGuardDown&gt;&gt;There&#39;s a guard stuffed in a nearby cubicle.&lt;&lt;/if&gt;&gt;&lt;/span&gt;
 
 &lt;span id=&quot;link-h1surveillanceRoom&quot;&gt;&lt;&lt;if $h1surveillanceRoom&gt;&gt;[[H1: Surveillance Room]]&lt;&lt;/if&gt;&gt;&lt;/span&gt;
-[[H1: Cubicles South (2)]]
-[[H1: Cubicles North (0)]]</tw-passagedata><tw-passagedata pid="20" name="H1: Cubicles North (0)" tags="" position="1329,878" size="100,100">&lt;&lt;silently&gt;&gt;
+[[H1: Cubicles South (2)]]&lt;&lt;nobr&gt;&gt;
+&lt;&lt;if $guardPosition is 2 &amp;&amp; !$employeeGuardDown&gt;&gt; You hear footsteps from this direction.&lt;&lt;/if&gt;&gt;
+&lt;&lt;/nobr&gt;&gt;
+[[H1: Cubicles North (0)]]&lt;&lt;nobr&gt;&gt;
+&lt;&lt;if $guardPosition is 0 &amp;&amp; !$employeeGuardDown&gt;&gt; You hear footsteps from this direction.&lt;&lt;/if&gt;&gt;
+&lt;&lt;/nobr&gt;&gt;</tw-passagedata><tw-passagedata pid="20" name="H1: Cubicles North (0)" tags="" position="1329,878" size="100,100">&lt;&lt;silently&gt;&gt;
 	&lt;&lt;script&gt;&gt;
 		window.UpdateGuardPositionEmployee()
 	&lt;&lt;/script&gt;&gt;
@@ -264,10 +329,14 @@ north cubicle section. you can go east and west. there&#39;s a &lt;&lt;nobr&gt;&
 	&lt;&lt;/replace&gt;&gt;
 &lt;&lt;/link&gt;&gt;&lt;&lt;/nobr&gt;&gt; to the northwest.
 
-&lt;span id=&quot;description-text&quot;&gt;&lt;/span&gt;
+&lt;span id=&quot;description-text&quot;&gt;&lt;&lt;if $guardPosition is 0 &amp;&amp; $employeeGuardDown&gt;&gt;There&#39;s a guard stuffed in a nearby cubicle.&lt;&lt;/if&gt;&gt;&lt;/span&gt;
 
-[[H1: Cubicles East (1)]]
-[[H1: Cubicles West (3)]]
+[[H1: Cubicles East (1)]]&lt;&lt;nobr&gt;&gt;
+&lt;&lt;if $guardPosition is 1 &amp;&amp; !$employeeGuardDown&gt;&gt; You hear footsteps from this direction.&lt;&lt;/if&gt;&gt;
+&lt;&lt;/nobr&gt;&gt;
+[[H1: Cubicles West (3)]]&lt;&lt;nobr&gt;&gt;
+&lt;&lt;if $guardPosition is 3 &amp;&amp; !$employeeGuardDown&gt;&gt; You hear footsteps from this direction.&lt;&lt;/if&gt;&gt;
+&lt;&lt;/nobr&gt;&gt;
 &lt;span id=&quot;link-h1conferenceRoom&quot;&gt;&lt;&lt;if $h1conferenceRoom&gt;&gt;[[H1: Conference Room]]&lt;&lt;/if&gt;&gt;&lt;/span&gt;
 &lt;span id=&quot;link-h1serviceCloset&quot;&gt;&lt;&lt;if $h1serviceCloset&gt;&gt;[[H1: Employee Floor Service Closet]]&lt;&lt;/if&gt;&gt;&lt;/span&gt;</tw-passagedata><tw-passagedata pid="21" name="H1: Cubicles East (1)" tags="" position="1458,996" size="100,100">&lt;&lt;silently&gt;&gt;
 	&lt;&lt;script&gt;&gt;
@@ -287,11 +356,15 @@ east cubicle section. there&#39;s a &lt;&lt;nobr&gt;&gt;
 	&lt;&lt;/replace&gt;&gt;
 &lt;&lt;/link&gt;&gt;&lt;&lt;/nobr&gt;&gt; to the north.
 
-&lt;span id=&quot;description-text&quot;&gt;&lt;/span&gt;
+&lt;span id=&quot;description-text&quot;&gt;&lt;&lt;if $guardPosition is 1 &amp;&amp; $employeeGuardDown&gt;&gt;There&#39;s a guard stuffed in a nearby cubicle.&lt;&lt;/if&gt;&gt;&lt;/span&gt;
 
 &lt;span id=&quot;link-h1robertsOffice&quot;&gt;&lt;&lt;if $h1robertsOffice&gt;&gt;[[H1: Robert&#39;s Office]]&lt;&lt;/if&gt;&gt;&lt;/span&gt;
-[[H1: Cubicles North (0)]]
-[[H1: Cubicles South (2)]]</tw-passagedata><tw-passagedata pid="22" name="H1: Cubicles South (2)" tags="" position="1318,1126" size="100,100">&lt;&lt;silently&gt;&gt;
+[[H1: Cubicles North (0)]]&lt;&lt;nobr&gt;&gt;
+&lt;&lt;if $guardPosition is 0 &amp;&amp; !$employeeGuardDown&gt;&gt; You hear footsteps from this direction.&lt;&lt;/if&gt;&gt;
+&lt;&lt;/nobr&gt;&gt;
+[[H1: Cubicles South (2)]]&lt;&lt;nobr&gt;&gt;
+&lt;&lt;if $guardPosition is 2 &amp;&amp; !$employeeGuardDown&gt;&gt; You hear footsteps from this direction.&lt;&lt;/if&gt;&gt;
+&lt;&lt;/nobr&gt;&gt;</tw-passagedata><tw-passagedata pid="22" name="H1: Cubicles South (2)" tags="" position="1318,1126" size="100,100">&lt;&lt;silently&gt;&gt;
 	&lt;&lt;script&gt;&gt;
 		window.UpdateGuardPositionEmployee()
 	&lt;&lt;/script&gt;&gt;
@@ -309,11 +382,15 @@ south cubicle section. you see &lt;&lt;nobr&gt;&gt;
 	&lt;&lt;/replace&gt;&gt;
 &lt;&lt;/link&gt;&gt;&lt;&lt;/nobr&gt;&gt; from a cubicle to the south.
 
-&lt;span id=&quot;description-text&quot;&gt;&lt;/span&gt;
+&lt;span id=&quot;description-text&quot;&gt;&lt;&lt;if $guardPosition is 2 &amp;&amp; $employeeGuardDown&gt;&gt;There&#39;s a guard stuffed in a nearby cubicle.&lt;&lt;/if&gt;&gt;&lt;/span&gt;
 
 &lt;span id=&quot;link-h1officeCubicle&quot;&gt;&lt;&lt;if $h1officeCubicle&gt;&gt;[[H1: Office Cubicle]]&lt;&lt;/if&gt;&gt;&lt;/span&gt;
-[[H1: Cubicles East (1)]]
-[[H1: Cubicles West (3)]]</tw-passagedata><tw-passagedata pid="23" name="H1: Conference Room" tags="" position="1314,740" size="100,100">futuristic conference room. schematics left up on holograms on walls.
+[[H1: Cubicles East (1)]]&lt;&lt;nobr&gt;&gt;
+&lt;&lt;if $guardPosition is 1 &amp;&amp; !$employeeGuardDown&gt;&gt; You hear footsteps from this direction.&lt;&lt;/if&gt;&gt;
+&lt;&lt;/nobr&gt;&gt;
+[[H1: Cubicles West (3)]]&lt;&lt;nobr&gt;&gt;
+&lt;&lt;if $guardPosition is 3 &amp;&amp; !$employeeGuardDown&gt;&gt; You hear footsteps from this direction.&lt;&lt;/if&gt;&gt;
+&lt;&lt;/nobr&gt;&gt;</tw-passagedata><tw-passagedata pid="23" name="H1: Conference Room" tags="" position="1314,740" size="100,100">futuristic conference room. schematics left up on holograms on walls.
 [[H1: Cubicles North (0)]]</tw-passagedata><tw-passagedata pid="24" name="H1: Robert&#39;s Office" tags="" position="1613,974" size="100,100">&lt;&lt;silently&gt;&gt;
 	&lt;&lt;script&gt;&gt;
 		window.UpdateGuardPositionEmployee()
@@ -330,6 +407,7 @@ big personal reveal wow
 
 [[H1: Cubicles West (3)]]</tw-passagedata><tw-passagedata pid="27" name="H2: Scaling the Building" tags="" position="1746,869" size="100,100">&lt;&lt;silently&gt;&gt;
 	&lt;&lt;set $heistTime to $heistTime + 1&gt;&gt;
+	&lt;&lt;set $heistFloor to 2&gt;&gt;
 &lt;&lt;/silently&gt;&gt;
 you might be scared of heights. the night sky is beautiful.
 
@@ -353,7 +431,7 @@ you&#39;re in an office again. wowie. you can go east and west. there&#39;s a &l
 &lt;&lt;link &quot;door with a window&quot;&gt;&gt;
 	&lt;&lt;set $h2headExit to true&gt;&gt;
 	&lt;&lt;replace #link-h2headExit&gt;&gt;
-		[[H2: Research Hallway North]]
+		[[H2: Research Hallway North (0)]]
 	&lt;&lt;/replace&gt;&gt;
 	&lt;&lt;replace #description-text&gt;&gt;
 		The door looks like it leads out into the hallway.
@@ -362,8 +440,8 @@ you&#39;re in an office again. wowie. you can go east and west. there&#39;s a &l
 
 &lt;span id=&quot;description-text&quot;&gt;&lt;/span&gt;
 
-&lt;span id=&quot;link-h2headExit&quot;&gt;&lt;&lt;if $h2headExit&gt;&gt;[[H2: Research Hallway North]]&lt;&lt;/if&gt;&gt;&lt;/span&gt;
-&lt;span id=&quot;link-h2headComputer&quot;&gt;&lt;&lt;if $h2headComputer&gt;&gt;[[H2: Head Researcher Computer]]&lt;&lt;/if&gt;&gt;&lt;/span&gt;</tw-passagedata><tw-passagedata pid="29" name="H2: Research Hallway North" tags="" position="2065,952" size="100,100">&lt;&lt;silently&gt;&gt;
+&lt;span id=&quot;link-h2headExit&quot;&gt;&lt;&lt;if $h2headExit&gt;&gt;[[H2: Research Hallway North (0)]]&lt;&lt;/if&gt;&gt;&lt;/span&gt;
+&lt;span id=&quot;link-h2headComputer&quot;&gt;&lt;&lt;if $h2headComputer&gt;&gt;[[H2: Head Researcher Computer]]&lt;&lt;/if&gt;&gt;&lt;/span&gt;</tw-passagedata><tw-passagedata pid="29" name="H2: Research Hallway North (0)" tags="" position="2065,952" size="100,100">&lt;&lt;silently&gt;&gt;
 	&lt;&lt;script&gt;&gt;
 		window.UpdateGuardPositionResearch()
 	&lt;&lt;/script&gt;&gt;
@@ -372,10 +450,10 @@ you&#39;re in an office again. wowie. you can go east and west. there&#39;s a &l
 &lt;&lt;/silently&gt;&gt;
 research hallway. head researcher&#39;s office is to the west. you can go south.
 
-&lt;span id=&quot;description-text&quot;&gt;&lt;/span&gt;
+&lt;span id=&quot;description-text&quot;&gt;&lt;&lt;if $guardPosition is 0 &amp;&amp; $researchGuardDown&gt;&gt;There&#39;s a guard laying on the ground.&lt;&lt;/if&gt;&gt;&lt;/span&gt;
 
-[[H2: Research Hallway West]]
-[[H2: Head Researcher&#39;s Office]]</tw-passagedata><tw-passagedata pid="30" name="H2: Research Hallway West" tags="" position="2191,1040" size="100,100">&lt;&lt;silently&gt;&gt;
+[[H2: Research Hallway West (1)]]&lt;&lt;if $guardPosition is 1 &amp;&amp; !$researchGuardDown&gt;&gt; You hear footsteps from this direction.&lt;&lt;/if&gt;&gt;
+[[H2: Head Researcher&#39;s Office]]</tw-passagedata><tw-passagedata pid="30" name="H2: Research Hallway West (1)" tags="" position="2191,1040" size="100,100">&lt;&lt;silently&gt;&gt;
 	&lt;&lt;script&gt;&gt;
 		window.UpdateGuardPositionResearch()
 	&lt;&lt;/script&gt;&gt;
@@ -393,10 +471,10 @@ research hallway. there&#39;s a set of &lt;&lt;nobr&gt;&gt;
 	&lt;&lt;/replace&gt;&gt;
 &lt;&lt;/link&gt;&gt;&lt;&lt;/nobr&gt;&gt; to the west. you can go south or north.
 
-&lt;span id=&quot;description-text&quot;&gt;&lt;/span&gt;
+&lt;span id=&quot;description-text&quot;&gt;&lt;&lt;if $guardPosition is 1 &amp;&amp; $researchGuardDown&gt;&gt;There&#39;s a guard laying on the ground.&lt;&lt;/if&gt;&gt;&lt;/span&gt;
 
-[[H2: Research Hallway South]]
-[[H2: Research Hallway North]]
+[[H2: Research Hallway South (2)]]&lt;&lt;if $guardPosition is 2 &amp;&amp; !$employeeGuardDown&gt;&gt; You hear footsteps from this direction.&lt;&lt;/if&gt;&gt;
+[[H2: Research Hallway North (0)]]&lt;&lt;if $guardPosition is 0 &amp;&amp; !$employeeGuardDown&gt;&gt; You hear footsteps from this direction.&lt;&lt;/if&gt;&gt;
 &lt;span id=&quot;link-h2researchLab&quot;&gt;&lt;&lt;if $h2researchLab&gt;&gt;[[H2: Research Lab Alpha]]&lt;&lt;/if&gt;&gt;&lt;/span&gt;
 
 </tw-passagedata><tw-passagedata pid="31" name="H2: Research Lab Alpha" tags="" position="2041,1117" size="100,100">&lt;&lt;silently&gt;&gt;
@@ -446,11 +524,11 @@ it&#39;s a research lab full of things. you see a &lt;&lt;nobr&gt;&gt;
 
 &lt;span id=&quot;description-text&quot;&gt;&lt;/span&gt;
 
-[[H2: Research Hallway West]]
+[[H2: Research Hallway West (1)]]
 &lt;span id=&quot;link-h2vent&quot;&gt;&lt;&lt;if $h2vent&gt;&gt;[[H2: Vent]]&lt;&lt;/if&gt;&gt;&lt;/span&gt;
 &lt;span id=&quot;link-h2gun&quot;&gt;&lt;&lt;if $h2gun&gt;&gt;[[H2: Gun]]&lt;&lt;/if&gt;&gt;&lt;/span&gt;
 &lt;span id=&quot;link-h2android&quot;&gt;&lt;&lt;if $h2android&gt;&gt;[[H2: Android]]&lt;&lt;/if&gt;&gt;&lt;/span&gt;
-&lt;span id=&quot;link-h2camera&quot;&gt;&lt;&lt;if $h2camera&gt;&gt;[[H2: Camera]]&lt;&lt;/if&gt;&gt;&lt;/span&gt;</tw-passagedata><tw-passagedata pid="32" name="H2: Research Hallway South" tags="" position="2365,1145" size="100,100">&lt;&lt;silently&gt;&gt;
+&lt;span id=&quot;link-h2camera&quot;&gt;&lt;&lt;if $h2camera&gt;&gt;[[H2: Camera]]&lt;&lt;/if&gt;&gt;&lt;/span&gt;</tw-passagedata><tw-passagedata pid="32" name="H2: Research Hallway South (2)" tags="" position="2365,1145" size="100,100">&lt;&lt;silently&gt;&gt;
 	&lt;&lt;script&gt;&gt;
 		window.UpdateGuardPositionResearch()
 	&lt;&lt;/script&gt;&gt;
@@ -459,10 +537,10 @@ it&#39;s a research lab full of things. you see a &lt;&lt;nobr&gt;&gt;
 &lt;&lt;/silently&gt;&gt;
 research hallway. the security checkpoint&#39;s to the south, through one-sided glass.
 
-&lt;span id=&quot;description-text&quot;&gt;&lt;/span&gt;
+&lt;span id=&quot;description-text&quot;&gt;&lt;&lt;if $guardPosition is 3 &amp;&amp; $researchGuardDown&gt;&gt;There&#39;s a guard laying on the ground.&lt;&lt;/if&gt;&gt;&lt;/span&gt;
 
 &lt;span id=&quot;link-h2securityCheckpoint&quot;&gt;&lt;&lt;if $h2securityCheckpoint&gt;&gt;[[H2: Security Checkpoint]]&lt;&lt;/if&gt;&gt;&lt;/span&gt;
-[[H2: Research Hallway West]]
+[[H2: Research Hallway West (1)]]&lt;&lt;if $guardPosition is 1 &amp;&amp; !$employeeGuardDown&gt;&gt; You hear footsteps from this direction.&lt;&lt;/if&gt;&gt;
 [[H2: Sterilization Room]]</tw-passagedata><tw-passagedata pid="33" name="H2: Vent" tags="" position="2104,1255" size="100,100">[[H2: Research Lab Alpha]]
 [[H2: Security Checkpoint]]</tw-passagedata><tw-passagedata pid="34" name="H2: Security Checkpoint" tags="" position="2288,1308" size="100,100">&lt;&lt;silently&gt;&gt;
 	&lt;&lt;script&gt;&gt;
@@ -475,7 +553,7 @@ you have a confrontation here. there&#39;s a &lt;&lt;nobr&gt;&gt;
 &lt;&lt;link &quot;glass door&quot;&gt;&gt;
 	&lt;&lt;set $h2securityCheckpoint to true&gt;&gt;
 	&lt;&lt;replace #link-h2securityCheckpoint&gt;&gt;
-		[[H2: Research Hallway South]]
+		[[H2: Research Hallway South (2)]]
 	&lt;&lt;/replace&gt;&gt;
 	&lt;&lt;replace #description-text&gt;&gt;
 		looks like you can go out this way now.
@@ -485,7 +563,9 @@ you have a confrontation here. there&#39;s a &lt;&lt;nobr&gt;&gt;
 &lt;span id=&quot;description-text&quot;&gt;&lt;/span&gt;
 
 [[H2: Vent]]
-&lt;span id=&quot;link-h2securityCheckpoint&quot;&gt;&lt;&lt;if $h2securityCheckpoint&gt;&gt;[[H2: Research Hallway South]]&lt;&lt;/if&gt;&gt;&lt;/span&gt;</tw-passagedata><tw-passagedata pid="35" name="H2: Sterilization Room" tags="" position="2510,1250" size="100,100">[[H2: Biokey Vault]]</tw-passagedata><tw-passagedata pid="36" name="H2: Biokey Vault" tags="" position="2461,975" size="100,100">Double-click this passage to edit it.</tw-passagedata><tw-passagedata pid="37" name="H1: Office Cubicle" tags="" position="1320,1278" size="100,100">cubicle hiding place.
+&lt;span id=&quot;link-h2securityCheckpoint&quot;&gt;&lt;&lt;if $h2securityCheckpoint&gt;&gt;[[H2: Research Hallway South (2)]]&lt;&lt;/if&gt;&gt;&lt;/span&gt;</tw-passagedata><tw-passagedata pid="35" name="H2: Sterilization Room" tags="" position="2510,1250" size="100,100">You enter the sterilization room. From here, the heist continues to the theft of the biokey...
+
+To be continued.</tw-passagedata><tw-passagedata pid="36" name="H2: Biokey Vault" tags="" position="2461,975" size="100,100">Double-click this passage to edit it.</tw-passagedata><tw-passagedata pid="37" name="H1: Office Cubicle" tags="" position="1320,1278" size="100,100">cubicle hiding place.
 
 [[H1: Emails]]
 [[H1: Cubicles South (2)]]</tw-passagedata><tw-passagedata pid="38" name="H2: Head Researcher Computer" tags="" position="1939,718" size="100,100">maybe you need to find a password in the lab to access this?
@@ -582,7 +662,7 @@ fancy camera. quite scary. nearby there&#39;s also a &lt;&lt;nobr&gt;&gt;
 
 [[H2: Research Lab Alpha]]
 &lt;span id=&quot;link-h2gun&quot;&gt;&lt;&lt;if $h2gun&gt;&gt;[[H2: Gun]]&lt;&lt;/if&gt;&gt;&lt;/span&gt;
-&lt;span id=&quot;link-h2android&quot;&gt;&lt;&lt;if $h2android&gt;&gt;[[H2: Android]]&lt;&lt;/if&gt;&gt;&lt;/span&gt;</tw-passagedata><tw-passagedata pid="42" name="H0: Emilia Dialogue 00" tags="" position="538.6666666666666,1127.9999999999998" size="100,100">You step up to the receptionist counter.
+&lt;span id=&quot;link-h2android&quot;&gt;&lt;&lt;if $h2android&gt;&gt;[[H2: Android]]&lt;&lt;/if&gt;&gt;&lt;/span&gt;</tw-passagedata><tw-passagedata pid="42" name="H0: Emilia Dialogue 00" tags="" position="538,1127" size="100,100">You step up to the receptionist counter.
 
 &quot;Miss Trucy!&quot; says the receptionist-- named Emilia, if you remember correctly. &quot;It&#39;s lovely to see you this evening, need me to call you a lift up to the suite?&quot;
 
@@ -599,7 +679,7 @@ fancy camera. quite scary. nearby there&#39;s also a &lt;&lt;nobr&gt;&gt;
 		&lt;&lt;include [[H0: Emilia Dialogue B0]]&gt;&gt;
 	&lt;&lt;/replace&gt;&gt;
 	&lt;&lt;/link&gt;&gt;
-&lt;&lt;/nobr&gt;&gt;&lt;/span&gt;</tw-passagedata><tw-passagedata pid="43" name="H0: Emilia Dialogue A0" tags="" position="643.888905843099,1156.3333333333333" size="100,100">&quot;No, actually. I was wondering if you could let me up to floor 34?&quot; you tell her.
+&lt;&lt;/nobr&gt;&gt;&lt;/span&gt;</tw-passagedata><tw-passagedata pid="43" name="H0: Emilia Dialogue A0" tags="" position="643,1156" size="100,100">&quot;No, actually. I was wondering if you could let me up to floor 34?&quot; you tell her.
 
 &quot;Floor 34?&quot; says Emilia, surprised. &quot;Why, that&#39;s an office floor, Miss Trucy. I hate to say this, but I don&#39;t believe you&#39;re allowed up there.&quot;
 
@@ -616,17 +696,17 @@ fancy camera. quite scary. nearby there&#39;s also a &lt;&lt;nobr&gt;&gt;
 			&lt;&lt;include [[H0: Emilia Dialogue AB]]&gt;&gt;
 		&lt;&lt;/replace&gt;&gt;
 	&lt;&lt;/link&gt;&gt;
-&lt;&lt;/nobr&gt;&gt;&lt;/span&gt;</tw-passagedata><tw-passagedata pid="44" name="H0: Emilia Dialogue AA" tags="" position="755.5555725097656,1108" size="100,100">&quot;Your father&#39;s orders, Miss Trucy. I&#39;m sure he&#39;s told you.&quot; says Emilia, firmly. &quot;Want me to call you a lift to the suite after all?&quot;
+&lt;&lt;/nobr&gt;&gt;&lt;/span&gt;</tw-passagedata><tw-passagedata pid="44" name="H0: Emilia Dialogue AA" tags="" position="755,1108" size="100,100">&quot;Your father&#39;s orders, Miss Trucy. I&#39;m sure he&#39;s told you.&quot; says Emilia, firmly. &quot;Want me to call you a lift to the suite after all?&quot;
 
 &quot;No, I&#39;m okay. Thank you, Emilia.&quot; you say.
 
-[[H0: Emilia Dialogue Fail]]</tw-passagedata><tw-passagedata pid="45" name="H0: Emilia Dialogue AB" tags="" position="697.2222391764324,1276.3333333333333" size="100,100">&quot;But, I left my bag up there...&quot; you tell her, feigning nervousness.
+[[H0: Emilia Dialogue Fail]]</tw-passagedata><tw-passagedata pid="45" name="H0: Emilia Dialogue AB" tags="" position="697,1276" size="100,100">&quot;But, I left my bag up there...&quot; you tell her, feigning nervousness.
 
 &quot;Oh, did you? Why didn&#39;t you say so earlier?&quot; she laughs. &quot;And you seem to already have an escort, good. Be quick now, okay?&quot;
 
 &quot;Thank you, Ms. Emilia.&quot; you say, relieved.
 
-[[H0: Emilia Dialogue Success]]</tw-passagedata><tw-passagedata pid="46" name="H0: Emilia Dialogue B0" tags="" position="442.22223917643237,1247.9999999999998" size="100,100">&quot;Not yet, I actually left my bag on one of the office floors...&quot; you tell her, feigning nervousness.
+[[H0: Emilia Dialogue Success]]</tw-passagedata><tw-passagedata pid="46" name="H0: Emilia Dialogue B0" tags="" position="442,1247" size="100,100">&quot;Not yet, I actually left my bag on one of the office floors...&quot; you tell her, feigning nervousness.
 
 &quot;Oh, did you? What were you doing up there?&quot; says Emilia, puzzled. &quot;Last I checked you weren&#39;t allowed up on the office floors yet.&quot;
 
@@ -643,23 +723,68 @@ fancy camera. quite scary. nearby there&#39;s also a &lt;&lt;nobr&gt;&gt;
 			&lt;&lt;include [[H0: Emilia Dialogue BB]]&gt;&gt;
 		&lt;&lt;/replace&gt;&gt;
 	&lt;&lt;/link&gt;&gt;
-&lt;&lt;/nobr&gt;&gt;&lt;/span&gt;</tw-passagedata><tw-passagedata pid="47" name="H0: Emilia Dialogue BA" tags="" position="573.8889058430991,1276.3333333333333" size="100,100">&quot;I was just exploring, that&#39;s all.&quot; you tell her.
+&lt;&lt;/nobr&gt;&gt;&lt;/span&gt;</tw-passagedata><tw-passagedata pid="47" name="H0: Emilia Dialogue BA" tags="" position="573,1276" size="100,100">&quot;I was just exploring, that&#39;s all.&quot; you tell her.
 
 &quot;Just exploring, were you?&quot; says Emilia. &quot;I&#39;ll send someone to search for your bag on the office floors. Want me to call you a lift to the suite instead?&quot;
 
 &quot;No, I&#39;m okay. Thank you, Emilia.&quot; you say.
 
-[[H0: Emilia Dialogue Fail]]</tw-passagedata><tw-passagedata pid="48" name="H0: Emilia Dialogue Success" tags="" position="950.5555725097656,1389.6666666666665" size="100,100">success
+[[H0: Emilia Dialogue Fail]]</tw-passagedata><tw-passagedata pid="48" name="H0: Emilia Dialogue Success" tags="" position="976,1357" size="100,100">success
 
-[[H0: Main Elevator]]</tw-passagedata><tw-passagedata pid="49" name="H0: Emilia Dialogue Fail" tags="" position="870.5555725097657,1168" size="100,100">fail
+[[H0: Main Elevator]]</tw-passagedata><tw-passagedata pid="49" name="H0: Emilia Dialogue Fail" tags="" position="870,1168" size="100,100">fail
 
-[[H0: Lobby]]</tw-passagedata><tw-passagedata pid="50" name="H0: Emilia Dialogue BB" tags="" position="535.5555725097657,1396.3333333333333" size="100,100">&quot;Cecil was showing me around yesterday,&quot; you say.
+[[H0: Lobby]]</tw-passagedata><tw-passagedata pid="50" name="H0: Emilia Dialogue BB" tags="" position="535,1396" size="100,100">&quot;Cecil was showing me around yesterday,&quot; you say.
 
 &quot;Oh, was he now? I suppose you&#39;re at that age where you should really get to know the place,&quot; she says. &quot;Wow, they grow up so fast. You already have an escort, go on through.&quot;
 
 &quot;Thank you, Ms. Emilia.&quot; you say, relieved.
 
-[[H0: Emilia Dialogue Success]]</tw-passagedata></tw-storydata>
+[[H0: Emilia Dialogue Success]]</tw-passagedata><tw-passagedata pid="51" name="H1: Employee Guard" tags="" position="2807,811" size="100,100">Amongst the beige fabric cubicles, you feel the light of a flashlight wash over you.
+
+&quot;Stop!&quot; you hear from the behind the blinding light, &quot;Who are you, you aren&#39;t supposed to be up here!&quot;
+
+Better act fast.
+
+[[&gt; &quot;Oh, hi, my name is Trucy...&quot;|H1: Employee Guard Death]]
+[[&gt; Try to run away.|H1: Employee Guard Stun]]
+
+</tw-passagedata><tw-passagedata pid="52" name="H1: Employee Guard Death" tags="" position="2732,961" size="100,100">&quot;Oh, hi, my name is Trucy...&quot; you start to say, hoping to diffuse the situation. Before you get a chance to finish your thought though, a green flash fills the air, and you see that guard before you fall motionless to the ground.
+
+Marcellus blows smoke off his plasma pistol.
+
+[[&gt; &quot;Did- did you kill him?&quot;|H1: Employee Guard Death 2]]</tw-passagedata><tw-passagedata pid="53" name="H1: Employee Guard Stun" tags="" position="2882,961" size="100,100">You turn tail and try to run away, but faster than you can swivel, a bright green burst of plasma races past you. The guard falls over with a dull thud, while Marcellus blows smoke off the barrel of his plasma pistol.
+
+[[&gt; &quot;...What?&quot;|H1: Employee Guard Stun 2]]</tw-passagedata><tw-passagedata pid="54" name="H1: Employee Guard Stun 2" tags="" position="2882,1111" size="100,100">&quot;...What?&quot; you say with a pause. Marcellus sighs.
+
+&quot;Can&#39;t be getting caught like that, Trucy,&quot; he says, holstering his pistol. &quot;At least you didn&#39;t tell him who you are. Stuff him in that cubicle and let&#39;s get moving.&quot;
+
+&lt;&lt;nobr&gt;&gt;
+&lt;&lt;set $employeeGuardDown to true&gt;&gt;
+&lt;&lt;set _nextPassage to window.PreGuardPassage()&gt;&gt;
+&lt;&lt;link &quot;&gt; Stuff him in that cubicle and get moving.&quot; _nextPassage&gt;&gt;&lt;&lt;/link&gt;&gt;
+&lt;&lt;/nobr&gt;&gt;</tw-passagedata><tw-passagedata pid="55" name="H1: Employee Guard Death 2" tags="" position="2732,1111" size="100,100">&quot;Did- did you kill him?&quot; you stammer out, feeling shocked and betrayed.
+
+&quot;It&#39;s your fault, you know.&quot; he says, holstering his pistol. &quot;Had you kept your damn mouth shout this wouldn&#39;t have happened. Stuff him in that cubicle and let&#39;s get moving.&quot;
+
+&lt;&lt;nobr&gt;&gt;
+&lt;&lt;set $employeeGuardDown to true&gt;&gt;
+&lt;&lt;set _nextPassage to window.PreGuardPassage()&gt;&gt;
+&lt;&lt;link &quot;&gt; Stuff him in that cubicle and get moving.&quot; _nextPassage&gt;&gt;&lt;&lt;/link&gt;&gt;
+&lt;&lt;/nobr&gt;&gt;</tw-passagedata><tw-passagedata pid="56" name="H2: Research Guard" tags="" position="3108,817" size="100,100">You hear the whirring of a plasma rifle behind you.
+
+&quot;Hands up, intruder. State your name and employee ID number.&quot; you hear from behind you. You start to turn around, hands raised.
+
+&quot;Trucy...? Is that-&quot; he starts. &lt;&lt;if $employeeGuardDown&gt;&gt;Once again, you hear&lt;&lt;else&gt;&gt;You hear&lt;&lt;/if&gt;&gt; a sound of a plasma rifle ring out behind you. The guard looks at you, clutching the new hole in his gut, and collapses to the ground.
+
+[[&gt; &quot;You killed him...&quot;|H2: Research Guard Down]]</tw-passagedata><tw-passagedata pid="57" name="H2: Research Guard Down" tags="" position="3108,967" size="100,100">&quot;You killed him...&quot; you trail off, looking at Marcellus.
+
+&quot;We can&#39;t let him get away. Not this late into the mission, Trucy.&quot; says Marcellus, sheathing his pistol. &quot;You know this. Let&#39;s get going, before someone finds the body.&quot;
+
+&lt;&lt;nobr&gt;&gt;
+&lt;&lt;set $researchGuardDown to true&gt;&gt;
+&lt;&lt;set _nextPassage to window.PreGuardPassage()&gt;&gt;
+&lt;&lt;link &quot;&gt; Get going.&quot; _nextPassage&gt;&gt;&lt;&lt;/link&gt;&gt;
+&lt;&lt;/nobr&gt;&gt;</tw-passagedata></tw-storydata>
 	<script id="script-sugarcube" type="text/javascript">
 	/*! SugarCube JS */
 	if(document.documentElement.getAttribute("data-init")==="loading"){!function(window,document,jQuery,undefined){"use strict";function _classCallCheck(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}function _toConsumableArray(e){if(Array.isArray(e)){for(var t=0,r=Array(e.length);t<e.length;t++)r[t]=e[t];return r}return Array.from(e)}var _createClass=function(){function e(e,t){for(var r=0;r<t.length;r++){var n=t[r];n.enumerable=n.enumerable||!1,n.configurable=!0,"value"in n&&(n.writable=!0),Object.defineProperty(e,n.key,n)}}return function(t,r,n){return r&&e(t.prototype,r),n&&e(t,n),t}}(),_slicedToArray=function(){function e(e,t){var r=[],n=!0,a=!1,i=undefined;try{for(var o,s=e[Symbol.iterator]();!(n=(o=s.next()).done)&&(r.push(o.value),!t||r.length!==t);n=!0);}catch(e){a=!0,i=e}finally{try{!n&&s.return&&s.return()}finally{if(a)throw i}}return r}return function(t,r){if(Array.isArray(t))return t;if(Symbol.iterator in Object(t))return e(t,r);throw new TypeError("Invalid attempt to destructure non-iterable instance")}}(),_typeof="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(e){return typeof e}:function(e){return e&&"function"==typeof Symbol&&e.constructor===Symbol&&e!==Symbol.prototype?"symbol":typeof e},errorPrologRegExp=/^(?:(?:uncaught\s+(?:exception:\s+)?)?\w*(?:error|exception|_err):\s+)+/i,Alert=function(){function e(e,t,r,n){var a="fatal"===e,i="Apologies! "+(a?"A fatal":"An")+" error has occurred.";i+=a?" Aborting.":" You may be able to continue, but some parts may not work properly.",null==t&&null==r||(i+="\n\nError",null!=t&&(i+=" ["+t+"]"),i+=null!=r?": "+r.replace(errorPrologRegExp,"")+".":": unknown error."),"object"===(void 0===n?"undefined":_typeof(n))&&null!==n&&n.stack&&(i+="\n\nStack Trace:\n"+n.stack),window.alert(i)}function t(t,r,n){e(null,t,r,n)}function r(t,r,n){e("fatal",t,r,n)}return function(e){window.onerror=function(n,a,i,o,s){"complete"===document.readyState?t(null,n,s):(r(null,n,s),window.onerror=e,"function"==typeof window.onerror&&window.onerror.apply(this,arguments))}}(window.onerror),Object.freeze(Object.defineProperties({},{error:{value:t},fatal:{value:r}}))}(),Patterns=function(){var e=function(){var e=new Map([[" ","\\u0020"],["\f","\\f"],["\n","\\n"],["\r","\\r"],["\t","\\t"],["\v","\\v"],[" ","\\u00a0"],[" ","\\u1680"],["᠎","\\u180e"],[" ","\\u2000"],[" ","\\u2001"],[" ","\\u2002"],[" ","\\u2003"],[" ","\\u2004"],[" ","\\u2005"],[" ","\\u2006"],[" ","\\u2007"],[" ","\\u2008"],[" ","\\u2009"],[" ","\\u200a"],["\u2028","\\u2028"],["\u2029","\\u2029"],[" ","\\u202f"],[" ","\\u205f"],["　","\\u3000"],["\ufeff","\\ufeff"]]),t=/^\s$/,r="";return e.forEach(function(e,n){t.test(n)||(r+=e)}),r?"[\\s"+r+"]":"\\s"}(),t="[\\u0020\\f\\t\\v\\u00a0\\u1680\\u180e\\u2000-\\u200a\\u202f\\u205f\\u3000\\ufeff]",r="\\s"===e?"\\S":e.replace(/^\[/,"[^"),n="[0-9A-Z_a-z\\-\\u00c0-\\u00d6\\u00d8-\\u00f6\\u00f8-\\u00ff\\u0150\\u0170\\u0151\\u0171]",a=n.replace("\\-",""),i=function(){var e="(?:[\\x2D.0-9A-Z_a-z\\xB7\\xC0-\\xD6\\xD8-\\xF6\\xF8-\\u037D\\u037F-\\u1FFF\\u200C\\u200D\\u203F\\u2040\\u2070-\\u218F\\u2C00-\\u2FEF\\u3001-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFFD]|[\\uD800-\\uDB7F][\\uDC00-\\uDFFF])";return"[A-Za-z](?:"+e+"*-"+e+"*|[0-9A-Za-z]*)"}(),o=function(){return"("+n+"+)\\(([^\\)\\|\\n]+)\\):|"+t+"*("+n+"+)"+t+"*:([^;\\|\\n]+);|"+t+"*((?:[#.]"+n+"+"+t+"*)+);"}();return Object.freeze({space:e,spaceNoTerminator:t,lineTerminator:"[\\n\\r\\u2028\\u2029]",notSpace:r,anyChar:"(?:.|[\\n\\r\\u2028\\u2029])",anyLetter:n,anyLetterStrict:a,identifierFirstChar:"[$A-Z_a-z]",identifierNextChar:"[$0-9A-Z_a-z]",identifier:"[$A-Z_a-z][$0-9A-Z_a-z]*",variableSigil:"[$_]",variable:"[$_][$A-Z_a-z][$0-9A-Z_a-z]*",macroName:"[A-Za-z][\\w-]*|[=-]",templateName:"[A-Za-z][\\w-]*",htmlTagName:i,cssIdOrClassSigil:"[#.]",cssImage:"\\[[<>]?[Ii][Mm][Gg]\\[(?:\\s|\\S)*?\\]\\]+",inlineCss:o,url:"(?:file|https?|mailto|ftp|javascript|irc|news|data):[^\\s'\"]+"})}();!function(){function e(e,t){var r=Number.parseInt(e,10)||0;if(r<1)return"";var n=void 0===t?"":String(t);for(""===n&&(n=" ");n.length<r;){var a=n.length,i=r-a;n+=a>i?n.slice(0,i):n}return n.length>r&&(n=n.slice(0,r)),n}var t=function(){function e(e,n){var a=String(e);if(!a)return a;switch(n){case"start":return t.test(a)?a.replace(t,""):a;case"end":return r.test(a)?a.replace(r,""):a;default:throw new Error('_trimString called with incorrect where parameter value: "'+n+'"')}}var t=new RegExp("^"+Patterns.space+Patterns.space+"*"),r=new RegExp(""+Patterns.space+Patterns.space+"*$");return e}();Array.prototype.flat||Object.defineProperty(Array.prototype,"flat",{configurable:!0,writable:!0,value:function(){function e(){if(null==this)throw new TypeError("Array.prototype.flat called on null or undefined");var t=0===arguments.length?1:Number(arguments[0])||0;return t<1?Array.prototype.slice.call(this):Array.prototype.reduce.call(this,function(r,n){return n instanceof Array?r.push.apply(r,_toConsumableArray(e.call(n,t-1))):r.push(n),r},[])}return e}()}),Array.prototype.flatMap||Object.defineProperty(Array.prototype,"flatMap",{configurable:!0,writable:!0,value:function(){if(null==this)throw new TypeError("Array.prototype.flatMap called on null or undefined");return Array.prototype.map.apply(this,arguments).flat()}}),Array.prototype.includes||Object.defineProperty(Array.prototype,"includes",{configurable:!0,writable:!0,value:function(){if(null==this)throw new TypeError("Array.prototype.includes called on null or undefined");if(0===arguments.length)return!1;var e=this.length>>>0;if(0===e)return!1;var t=arguments[0],r=Number(arguments[1])||0;for(r<0&&(r=Math.max(0,e+r));r<e;++r){var n=this[r];if(n===t||n!==n&&t!==t)return!0}return!1}}),Object.entries||Object.defineProperty(Object,"entries",{configurable:!0,writable:!0,value:function(e){if("object"!==(void 0===e?"undefined":_typeof(e))||null===e)throw new TypeError("Object.entries object parameter must be an object");return Object.keys(e).map(function(t){return[t,e[t]]})}}),Object.fromEntries||Object.defineProperty(Object,"fromEntries",{configurable:!0,writable:!0,value:function(e){return Array.from(e).reduce(function(e,t){if(Object(t)!==t)throw new TypeError("Object.fromEntries iterable parameter must yield objects");return t[0]in e?Object.defineProperty(e,t[0],{configurable:!0,enumerable:!0,writable:!0,value:t[1]}):e[t[0]]=t[1],e},{})}}),Object.getOwnPropertyDescriptors||Object.defineProperty(Object,"getOwnPropertyDescriptors",{configurable:!0,writable:!0,value:function(e){if(null==e)throw new TypeError("Object.getOwnPropertyDescriptors object parameter is null or undefined");var t=Object(e);return Reflect.ownKeys(t).reduce(function(e,r){var n=Object.getOwnPropertyDescriptor(t,r);return void 0!==n&&(r in e?Object.defineProperty(e,r,{configurable:!0,enumerable:!0,writable:!0,value:n}):e[r]=n),e},{})}}),Object.values||Object.defineProperty(Object,"values",{configurable:!0,writable:!0,value:function(e){if("object"!==(void 0===e?"undefined":_typeof(e))||null===e)throw new TypeError("Object.values object parameter must be an object");return Object.keys(e).map(function(t){return e[t]})}}),String.prototype.padStart||Object.defineProperty(String.prototype,"padStart",{configurable:!0,writable:!0,value:function(t,r){if(null==this)throw new TypeError("String.prototype.padStart called on null or undefined");var n=String(this),a=n.length,i=Number.parseInt(t,10);return i<=a?n:e(i-a,r)+n}}),String.prototype.padEnd||Object.defineProperty(String.prototype,"padEnd",{configurable:!0,writable:!0,value:function(t,r){if(null==this)throw new TypeError("String.prototype.padEnd called on null or undefined");var n=String(this),a=n.length,i=Number.parseInt(t,10);return i<=a?n:n+e(i-a,r)}}),String.prototype.trimStart||Object.defineProperty(String.prototype,"trimStart",{configurable:!0,writable:!0,value:function(){if(null==this)throw new TypeError("String.prototype.trimStart called on null or undefined");return t(this,"start")}}),String.prototype.trimLeft||Object.defineProperty(String.prototype,"trimLeft",{configurable:!0,writable:!0,value:function(){if(null==this)throw new TypeError("String.prototype.trimLeft called on null or undefined");return t(this,"start")}}),String.prototype.trimEnd||Object.defineProperty(String.prototype,"trimEnd",{configurable:!0,writable:!0,value:function(){if(null==this)throw new TypeError("String.prototype.trimEnd called on null or undefined");return t(this,"end")}}),String.prototype.trimRight||Object.defineProperty(String.prototype,"trimRight",{configurable:!0,writable:!0,value:function(){if(null==this)throw new TypeError("String.prototype.trimRight called on null or undefined");return t(this,"end")}})}(),function(){function _random(){var e=void 0,t=void 0;switch(arguments.length){case 0:throw new Error("_random called with insufficient parameters");case 1:e=0,t=arguments[0];break;default:e=arguments[0],t=arguments[1]}if(e>t){var r=[t,e];e=r[0],t=r[1]}return Math.floor(_nativeMathRandom()*(t-e+1))+e}function _randomIndex(e,t){var r=void 0,n=void 0;switch(t.length){case 1:r=0,n=e-1;break;case 2:r=0,n=Math.trunc(t[1]);break;default:r=Math.trunc(t[1]),n=Math.trunc(t[2])}return Number.isNaN(r)?r=0:!Number.isFinite(r)||r>=e?r=e-1:r<0&&(r=e+r)<0&&(r=0),Number.isNaN(n)?n=0:!Number.isFinite(n)||n>=e?n=e-1:n<0&&(n=e+n)<0&&(n=e-1),_random(r,n)}function _getCodePointStartAndEnd(e,t){var r=e.charCodeAt(t);if(Number.isNaN(r))return{char:"",start:-1,end:-1};if(r<55296||r>57343)return{char:e.charAt(t),start:t,end:t};if(r>=55296&&r<=56319){var n=t+1;if(n>=e.length)throw new Error("high surrogate without trailing low surrogate");var a=e.charCodeAt(n);if(a<56320||a>57343)throw new Error("high surrogate without trailing low surrogate");return{char:e.charAt(t)+e.charAt(n),start:t,end:n}}if(0===t)throw new Error("low surrogate without leading high surrogate");var i=t-1,o=e.charCodeAt(i);if(o<55296||o>56319)throw new Error("low surrogate without leading high surrogate");return{char:e.charAt(i)+e.charAt(t),start:i,end:t}}var _nativeMathRandom=Math.random;Object.defineProperty(Array,"random",{configurable:!0,writable:!0,value:function(e){if("object"!==(void 0===e?"undefined":_typeof(e))||null===e||!Object.prototype.hasOwnProperty.call(e,"length"))throw new TypeError("Array.random array parameter must be an array or array-lke object");var t=e.length>>>0;if(0!==t){return e[0===arguments.length?_random(0,t-1):_randomIndex(t,Array.prototype.slice.call(arguments,1))]}}}),Object.defineProperty(Array.prototype,"concatUnique",{configurable:!0,writable:!0,value:function(){if(null==this)throw new TypeError("Array.prototype.concatUnique called on null or undefined");var e=Array.from(this);if(0===arguments.length)return e;var t=Array.prototype.reduce.call(arguments,function(e,t){return e.concat(t)},[]),r=t.length;if(0===r)return e;for(var n=Array.prototype.indexOf,a=Array.prototype.push,i=0;i<r;++i){var o=t[i];-1===n.call(e,o)&&a.call(e,o)}return e}}),Object.defineProperty(Array.prototype,"count",{configurable:!0,writable:!0,value:function(){if(null==this)throw new TypeError("Array.prototype.count called on null or undefined");for(var e=Array.prototype.indexOf,t=arguments[0],r=Number(arguments[1])||0,n=0;-1!==(r=e.call(this,t,r));)++n,++r;return n}}),Object.defineProperty(Array.prototype,"delete",{configurable:!0,writable:!0,value:function(){if(null==this)throw new TypeError("Array.prototype.delete called on null or undefined");if(0===arguments.length)return[];var e=this.length>>>0;if(0===e)return[];for(var t=Array.prototype.concat.apply([],arguments),r=t.length,n=[],a=0;a<e;++a)for(var i=this[a],o=0;o<r;++o){var s=t[o];if(i===s||i!==i&&s!==s){n.push(a);break}}for(var u=[],l=0,c=n.length;l<c;++l)u[l]=this[n[l]];for(var d=Array.prototype.splice,f=n.length-1;f>=0;--f)d.call(this,n[f],1);return u}}),Object.defineProperty(Array.prototype,"deleteAt",{configurable:!0,writable:!0,value:function(){if(null==this)throw new TypeError("Array.prototype.deleteAt called on null or undefined");if(0===arguments.length)return[];var e=this.length>>>0;if(0===e)return[];for(var t=Array.prototype.splice,r=[].concat(_toConsumableArray(new Set(Array.prototype.concat.apply([],arguments).map(function(t){return t<0?Math.max(0,e+t):t})).values())),n=[].concat(_toConsumableArray(r)).sort(function(e,t){return t-e}),a=[],i=0,o=r.length;i<o;++i)a[i]=this[r[i]];for(var s=0,u=n.length;s<u;++s)t.call(this,n[s],1);return a}}),Object.defineProperty(Array.prototype,"deleteWith",{configurable:!0,writable:!0,value:function(e,t){if(null==this)throw new TypeError("Array.prototype.deleteWith called on null or undefined");if("function"!=typeof e)throw new Error("Array.prototype.deleteWith predicate parameter must be a function");var r=this.length>>>0;if(0===r)return[];for(var n=Array.prototype.splice,a=[],i=[],o=0;o<r;++o)e.call(t,this[o],o,this)&&(i.push(this[o]),a.push(o));for(var s=a.length-1;s>=0;--s)n.call(this,a[s],1);return i}}),Object.defineProperty(Array.prototype,"first",{configurable:!0,writable:!0,value:function(){if(null==this)throw new TypeError("Array.prototype.first called on null or undefined");if(0!=this.length>>>0)return this[0]}}),Object.defineProperty(Array.prototype,"includesAll",{configurable:!0,writable:!0,value:function(){if(null==this)throw new TypeError("Array.prototype.includesAll called on null or undefined");if(1===arguments.length)return Array.isArray(arguments[0])?Array.prototype.includesAll.apply(this,arguments[0]):Array.prototype.includes.apply(this,arguments);for(var e=0,t=arguments.length;e<t;++e)if(!Array.prototype.some.call(this,function(e){return e===this.val||e!==e&&this.val!==this.val},{val:arguments[e]}))return!1;return!0}}),Object.defineProperty(Array.prototype,"includesAny",{configurable:!0,writable:!0,value:function(){if(null==this)throw new TypeError("Array.prototype.includesAny called on null or undefined");if(1===arguments.length)return Array.isArray(arguments[0])?Array.prototype.includesAny.apply(this,arguments[0]):Array.prototype.includes.apply(this,arguments);for(var e=0,t=arguments.length;e<t;++e)if(Array.prototype.some.call(this,function(e){return e===this.val||e!==e&&this.val!==this.val},{val:arguments[e]}))return!0;return!1}}),Object.defineProperty(Array.prototype,"last",{configurable:!0,writable:!0,value:function(){if(null==this)throw new TypeError("Array.prototype.last called on null or undefined");var e=this.length>>>0;if(0!==e)return this[e-1]}}),Object.defineProperty(Array.prototype,"pluck",{configurable:!0,writable:!0,value:function(){if(null==this)throw new TypeError("Array.prototype.pluck called on null or undefined");var e=this.length>>>0;if(0!==e){var t=0===arguments.length?_random(0,e-1):_randomIndex(e,[].concat(Array.prototype.slice.call(arguments)));return Array.prototype.splice.call(this,t,1)[0]}}}),Object.defineProperty(Array.prototype,"pluckMany",{configurable:!0,writable:!0,value:function(e){if(null==this)throw new TypeError("Array.prototype.pluckMany called on null or undefined");var t=this.length>>>0;if(0===t)return[];var r=Math.trunc(e);if(!Number.isInteger(r))throw new Error("Array.prototype.pluckMany want parameter must be an integer");if(r<1)return[];r>t&&(r=t);var n=Array.prototype.splice,a=[],i=t-1;do{a.push(n.call(this,_random(0,i--),1)[0])}while(a.length<r);return a}}),Object.defineProperty(Array.prototype,"pushUnique",{configurable:!0,writable:!0,value:function(){if(null==this)throw new TypeError("Array.prototype.pushUnique called on null or undefined");var e=arguments.length;if(0===e)return this.length>>>0;for(var t=Array.prototype.indexOf,r=Array.prototype.push,n=0;n<e;++n){var a=arguments[n];-1===t.call(this,a)&&r.call(this,a)}return this.length>>>0}}),Object.defineProperty(Array.prototype,"random",{configurable:!0,writable:!0,value:function(){if(null==this)throw new TypeError("Array.prototype.random called on null or undefined");var e=this.length>>>0;if(0!==e){return this[0===arguments.length?_random(0,e-1):_randomIndex(e,[].concat(Array.prototype.slice.call(arguments)))]}}}),Object.defineProperty(Array.prototype,"randomMany",{configurable:!0,writable:!0,value:function(e){if(null==this)throw new TypeError("Array.prototype.randomMany called on null or undefined");var t=this.length>>>0;if(0===t)return[];var r=Math.trunc(e);if(!Number.isInteger(r))throw new Error("Array.prototype.randomMany want parameter must be an integer");if(r<1)return[];r>t&&(r=t);var n=new Map,a=[],i=t-1;do{var o=void 0;do{o=_random(0,i)}while(n.has(o));n.set(o,!0),a.push(this[o])}while(a.length<r);return a}}),Object.defineProperty(Array.prototype,"shuffle",{configurable:!0,writable:!0,value:function(){if(null==this)throw new TypeError("Array.prototype.shuffle called on null or undefined");var e=this.length>>>0;if(0===e)return this;for(var t=e-1;t>0;--t){var r=Math.floor(_nativeMathRandom()*(t+1));if(t!==r){var n=this[t];this[t]=this[r],this[r]=n}}return this}}),Object.defineProperty(Array.prototype,"unshiftUnique",{configurable:!0,writable:!0,value:function(){if(null==this)throw new TypeError("Array.prototype.unshiftUnique called on null or undefined");var e=arguments.length;if(0===e)return this.length>>>0;for(var t=Array.prototype.indexOf,r=Array.prototype.unshift,n=0;n<e;++n){var a=arguments[n];-1===t.call(this,a)&&r.call(this,a)}return this.length>>>0}}),Object.defineProperty(Function.prototype,"partial",{configurable:!0,writable:!0,value:function(){if(null==this)throw new TypeError("Function.prototype.partial called on null or undefined");var e=Array.prototype.slice,t=this,r=e.call(arguments,0);return function(){for(var n=[],a=0,i=0;i<r.length;++i)n.push(r[i]===undefined?arguments[a++]:r[i]);return t.apply(this,n.concat(e.call(arguments,a)))}}}),Object.defineProperty(Math,"clamp",{configurable:!0,writable:!0,value:function(e,t,r){var n=Number(e);return Number.isNaN(n)?NaN:n.clamp(t,r)}}),Object.defineProperty(Math,"easeInOut",{configurable:!0,writable:!0,value:function(e){return 1-(Math.cos(Number(e)*Math.PI)+1)/2}}),Object.defineProperty(Number.prototype,"clamp",{configurable:!0,writable:!0,value:function(){if(null==this)throw new TypeError("Number.prototype.clamp called on null or undefined");if(2!==arguments.length)throw new Error("Number.prototype.clamp called with an incorrect number of parameters");var e=Number(arguments[0]),t=Number(arguments[1]);if(e>t){var r=[t,e];e=r[0],t=r[1]}return Math.min(Math.max(this,e),t)}}),RegExp.escape||function(){var e=/[\\^$*+?.()|[\]{}]/g,t=new RegExp(e.source);Object.defineProperty(RegExp,"escape",{configurable:!0,writable:!0,value:function(r){var n=String(r);return n&&t.test(n)?n.replace(e,"\\$&"):n}})}(),function(){var e=/{(\d+)(?:,([+-]?\d+))?}/g,t=new RegExp(e.source);Object.defineProperty(String,"format",{configurable:!0,writable:!0,value:function(r){function n(e,t,r){if(!t)return e;var n=Math.abs(t)-e.length;if(n<1)return e;var a=String(r).repeat(n);return t<0?e+a:a+e}if(arguments.length<2)return 0===arguments.length?"":r;var a=2===arguments.length&&Array.isArray(arguments[1])?[].concat(_toConsumableArray(arguments[1])):Array.prototype.slice.call(arguments,1);return 0===a.length?r:t.test(r)?(e.lastIndex=0,r.replace(e,function(e,t,r){var i=a[t];if(null==i)return"";for(;"function"==typeof i;)i=i();switch(void 0===i?"undefined":_typeof(i)){case"string":break;case"object":i=JSON.stringify(i);break;default:i=String(i)}return n(i,r?Number.parseInt(r,10):0," ")})):r}})}(),Object.defineProperty(String.prototype,"contains",{configurable:!0,writable:!0,value:function(){if(null==this)throw new TypeError("String.prototype.contains called on null or undefined");return-1!==String.prototype.indexOf.apply(this,arguments)}}),Object.defineProperty(String.prototype,"count",{configurable:!0,writable:!0,value:function(){if(null==this)throw new TypeError("String.prototype.count called on null or undefined");var e=String(arguments[0]||"");if(""===e)return 0;for(var t=String.prototype.indexOf,r=e.length,n=Number(arguments[1])||0,a=0;-1!==(n=t.call(this,e,n));)++a,n+=r;return a}}),Object.defineProperty(String.prototype,"first",{configurable:!0,writable:!0,value:function(){if(null==this)throw new TypeError("String.prototype.first called on null or undefined");return _getCodePointStartAndEnd(String(this),0).char}}),Object.defineProperty(String.prototype,"last",{configurable:!0,writable:!0,value:function(){if(null==this)throw new TypeError("String.prototype.last called on null or undefined");var e=String(this);return _getCodePointStartAndEnd(e,e.length-1).char}}),Object.defineProperty(String.prototype,"splice",{configurable:!0,writable:!0,value:function(e,t,r){if(null==this)throw new TypeError("String.prototype.splice called on null or undefined");var n=this.length>>>0;if(0===n)return"";var a=Number(e);Number.isSafeInteger(a)?a<0&&(a+=n)<0&&(a=0):a=0,a>n&&(a=n);var i=Number(t);(!Number.isSafeInteger(i)||i<0)&&(i=0);var o=this.slice(0,a);return void 0!==r&&(o+=r),a+i<n&&(o+=this.slice(a+i)),o}}),Object.defineProperty(String.prototype,"splitOrEmpty",{configurable:!0,writable:!0,value:function(){if(null==this)throw new TypeError("String.prototype.splitOrEmpty called on null or undefined");return""===String(this)?[]:String.prototype.split.apply(this,arguments)}}),Object.defineProperty(String.prototype,"toLocaleUpperFirst",{configurable:!0,writable:!0,value:function(){if(null==this)throw new TypeError("String.prototype.toLocaleUpperFirst called on null or undefined");var e=String(this),t=_getCodePointStartAndEnd(e,0),r=t.char,n=t.end;return-1===n?"":r.toLocaleUpperCase()+e.slice(n+1)}}),Object.defineProperty(String.prototype,"toUpperFirst",{configurable:!0,writable:!0,value:function(){if(null==this)throw new TypeError("String.prototype.toUpperFirst called on null or undefined");var e=String(this),t=_getCodePointStartAndEnd(e,0),r=t.char,n=t.end;return-1===n?"":r.toUpperCase()+e.slice(n+1)}}),Object.defineProperty(Date.prototype,"toJSON",{configurable:!0,writable:!0,value:function(){return["(revive:date)",this.toISOString()]}}),Object.defineProperty(Function.prototype,"toJSON",{configurable:!0,writable:!0,value:function(){return["(revive:eval)","("+this.toString()+")"]}}),Object.defineProperty(Map.prototype,"toJSON",{configurable:!0,writable:!0,value:function(){return["(revive:map)",[].concat(_toConsumableArray(this))]}}),Object.defineProperty(RegExp.prototype,"toJSON",{configurable:!0,writable:!0,value:function(){return["(revive:eval)",this.toString()]}}),Object.defineProperty(Set.prototype,"toJSON",{configurable:!0,writable:!0,value:function(){return["(revive:set)",[].concat(_toConsumableArray(this))]}}),Object.defineProperty(JSON,"reviveWrapper",{configurable:!0,writable:!0,value:function(e,t){if("string"!=typeof e)throw new TypeError("JSON.reviveWrapper code parameter must be a string");return["(revive:eval)",[e,t]]}}),Object.defineProperty(JSON,"_real_stringify",{value:JSON.stringify}),Object.defineProperty(JSON,"stringify",{configurable:!0,writable:!0,value:function(e,t,r){return JSON._real_stringify(e,function(e,r){var n=r;if("function"==typeof t)try{n=t(e,n)}catch(e){}return void 0===n&&(n=["(revive:eval)","undefined"]),n},r)}}),Object.defineProperty(JSON,"_real_parse",{value:JSON.parse}),Object.defineProperty(JSON,"parse",{configurable:!0,writable:!0,value:function value(text,reviver){return JSON._real_parse(text,function(key,val){var value=val;if(Array.isArray(value)&&2===value.length)switch(value[0]){case"(revive:set)":value=new Set(value[1]);break;case"(revive:map)":value=new Map(value[1]);break;case"(revive:date)":value=new Date(value[1]);break;case"(revive:eval)":try{if(Array.isArray(value[1])){var $ReviveData$=value[1][1];value=eval(value[1][0])}else value=eval(value[1])}catch(e){}}else if("string"==typeof value&&"@@revive@@"===value.slice(0,10))try{value=eval(value.slice(10))}catch(e){}if("function"==typeof reviver)try{value=reviver(key,value)}catch(e){}return value})}}),Object.defineProperty(Array.prototype,"contains",{configurable:!0,writable:!0,value:function(){if(null==this)throw new TypeError("Array.prototype.contains called on null or undefined");return Array.prototype.includes.apply(this,arguments)}}),Object.defineProperty(Array.prototype,"containsAll",{configurable:!0,writable:!0,value:function(){if(null==this)throw new TypeError("Array.prototype.containsAll called on null or undefined");return Array.prototype.includesAll.apply(this,arguments)}}),Object.defineProperty(Array.prototype,"containsAny",{configurable:!0,writable:!0,value:function(){if(null==this)throw new TypeError("Array.prototype.containsAny called on null or undefined");return Array.prototype.includesAny.apply(this,arguments)}}),Object.defineProperty(Array.prototype,"flatten",{configurable:!0,writable:!0,value:function(){if(null==this)throw new TypeError("Array.prototype.flatten called on null or undefined");return Array.prototype.flat.call(this,1/0)}}),Object.defineProperty(String.prototype,"readBracketedList",{configurable:!0,writable:!0,value:function(){if(null==this)throw new TypeError("String.prototype.readBracketedList called on null or undefined");for(var e=new RegExp("(?:\\[\\[((?:\\s|\\S)*?)\\]\\])|([^\"'\\s]\\S*)","gm"),t=[],r=void 0;null!==(r=e.exec(this));)r[1]?t.push(r[1]):r[2]&&t.push(r[2]);return t}})}();var Browser=function(){var e=navigator.userAgent.toLowerCase(),t=e.includes("windows phone"),r=Object.freeze({Android:!t&&e.includes("android"),BlackBerry:/blackberry|bb10/.test(e),iOS:!t&&/ip(?:hone|ad|od)/.test(e),Opera:!t&&("object"===_typeof(window.operamini)||e.includes("opera mini")),Windows:t||/iemobile|wpdesktop/.test(e),any:function(){return r.Android||r.BlackBerry||r.iOS||r.Opera||r.Windows}}),n=!r.Windows&&!/khtml|trident|edge/.test(e)&&e.includes("gecko"),a=!e.includes("opera")&&/msie|trident/.test(e),i=a?function(){var t=/(?:msie\s+|rv:)(\d+\.\d)/.exec(e);return t?Number(t[1]):0}():null,o=e.includes("opera")||e.includes(" opr/"),s=o?function(){var t=new RegExp((/khtml|chrome/.test(e)?"opr":"version")+"\\/(\\d+\\.\\d+)"),r=t.exec(e);return r?Number(r[1]):0}():null,u=e.includes("vivaldi");return Object.freeze({userAgent:e,isMobile:r,isGecko:n,isIE:a,ieVersion:i,isOpera:o,operaVersion:s,isVivaldi:u})}(),Has=function(){var e=function(){try{return"function"==typeof document.createElement("audio").canPlayType}catch(e){}return!1}(),t=function(){try{return"Blob"in window&&"File"in window&&"FileList"in window&&"FileReader"in window&&(!Browser.isOpera||Browser.operaVersion>=15)}catch(e){}return!1}(),r=function(){try{return"geolocation"in navigator&&"function"==typeof navigator.geolocation.getCurrentPosition&&"function"==typeof navigator.geolocation.watchPosition}catch(e){}return!1}(),n=function(){try{return"MutationObserver"in window&&"function"==typeof window.MutationObserver}catch(e){}return!1}(),a=function(){try{return"performance"in window&&"function"==typeof window.performance.now}catch(e){}return!1}(),i=function(){try{return"ontouchstart"in window||!!window.DocumentTouch&&document instanceof window.DocumentTouch||!!navigator.maxTouchPoints||!!navigator.msMaxTouchPoints}catch(e){}return!1}(),o=function(){try{for(var e=new Map([["transition","transitionend"],["MSTransition","msTransitionEnd"],["WebkitTransition","webkitTransitionEnd"],["MozTransition","transitionend"]]),t=[].concat(_toConsumableArray(e.keys())),r=document.createElement("div"),n=0;n<t.length;++n)if(r.style[t[n]]!==undefined)return e.get(t[n])}catch(e){}return!1}();return Object.freeze({audio:e,fileAPI:t,geolocation:r,mutationObserver:n,performance:a,touch:i,transitionEndEvent:o})}(),Visibility=function(){function e(){return a}function t(){return a&&document[a.stateProperty]||"visible"}function r(){return Boolean(a)}function n(){return Boolean(a&&document[a.hiddenProperty])}var a=function(){try{return Object.freeze([{hiddenProperty:"hidden",stateProperty:"visibilityState",changeEvent:"visibilitychange"},{hiddenProperty:"webkitHidden",stateProperty:"webkitVisibilityState",changeEvent:"webkitvisibilitychange"},{hiddenProperty:"mozHidden",stateProperty:"mozVisibilityState",changeEvent:"mozvisibilitychange"},{hiddenProperty:"msHidden",stateProperty:"msVisibilityState",changeEvent:"msvisibilitychange"}].find(function(e){return e.hiddenProperty in document}))}catch(e){}return undefined}();return Object.freeze(Object.defineProperties({},{vendor:{get:e},state:{get:t},isEnabled:{value:r},isHidden:{value:n},hiddenProperty:{value:a&&a.hiddenProperty},stateProperty:{value:a&&a.stateProperty},changeEvent:{value:a&&a.changeEvent}}))}(),Fullscreen=function(){function e(e){var t=e||document.documentElement;return t===document.documentElement&&("msRequestFullscreen"===f.requestFn||Browser.isOpera&&Browser.operaVersion<15)&&(t=document.body),t}function t(){return f}function r(){return(f||null)&&document[f.element]}function n(){return Boolean(f&&document[f.isEnabled])}function a(){return Boolean(f&&document[f.element])}function i(t,r){var n=this;if(!f)return Promise.reject(new Error("fullscreen not supported"));var i=e(r);if("function"!=typeof i[f.requestFn])return Promise.reject(new Error("fullscreen not supported"));if(a())return Promise.resolve();if(p())return i[f.requestFn](t);var o=".Fullscreen_requestFullscreen";return new Promise(function(e,r){jQuery(i).off(o).one(""+f.errorEvent+o+" "+f.changeEvent+o,function(t){jQuery(n).off(o),t.type===f.errorEvent?r(new Error("unknown fullscreen request error")):e()}),i[f.requestFn](t)})}function o(){var e=this;if(!f||"function"!=typeof document[f.exitFn])return Promise.reject(new TypeError("fullscreen not supported"));if(!a())return Promise.reject(new TypeError("fullscreen mode not active"));if(p())return document[f.exitFn]();var t=".Fullscreen_exitFullscreen";return new Promise(function(r,n){jQuery(document).off(t).one(""+f.errorEvent+t+" "+f.changeEvent+t,function(a){jQuery(e).off(t),a.type===f.errorEvent?n(new Error("unknown fullscreen exit error")):r()}),document[f.exitFn]()})}function s(e,t){return a()?o():i(e,t)}function u(t,r){if(f){var n=e(r);$(n).on(f.changeEvent,t)}}function l(t,r){if(f){var n=e(r);t?$(n).off(f.changeEvent,t):$(n).off(f.changeEvent)}}function c(t,r){if(f){var n=e(r);$(n).on(f.errorEvent,t)}}function d(t,r){if(f){var n=e(r);t?$(n).off(f.errorEvent,t):$(n).off(f.errorEvent)}}var f=function(){try{return Object.freeze([{isEnabled:"fullscreenEnabled",element:"fullscreenElement",requestFn:"requestFullscreen",exitFn:"exitFullscreen",changeEvent:"fullscreenchange",errorEvent:"fullscreenerror"},{isEnabled:"webkitFullscreenEnabled",element:"webkitFullscreenElement",requestFn:"webkitRequestFullscreen",exitFn:"webkitExitFullscreen",changeEvent:"webkitfullscreenchange",errorEvent:"webkitfullscreenerror"},{isEnabled:"mozFullScreenEnabled",element:"mozFullScreenElement",requestFn:"mozRequestFullScreen",exitFn:"mozCancelFullScreen",changeEvent:"mozfullscreenchange",errorEvent:"mozfullscreenerror"},{isEnabled:"msFullscreenEnabled",element:"msFullscreenElement",requestFn:"msRequestFullscreen",exitFn:"msExitFullscreen",changeEvent:"MSFullscreenChange",errorEvent:"MSFullscreenError"}].find(function(e){return e.isEnabled in document}))}catch(e){}return undefined}(),p=function(){function e(){if(null!==t)return t;if(t=!1,f)try{var e=document.exitFullscreen();e.catch(function(){}),t=e instanceof Promise}catch(e){}return t}var t=null;return e}();return Object.freeze(Object.defineProperties({},{vendor:{get:t},element:{get:r},isEnabled:{value:n},isFullscreen:{value:a},request:{value:i},exit:{value:o},toggle:{value:s},onChange:{value:u},offChange:{value:l},onError:{value:c},offError:{value:d}}))}(),_ref3=function(){function e(e){for(var t=e.cloneNode(!0),r=document.createDocumentFragment(),n=void 0;null!==(n=t.firstChild);){if(n.nodeType===Node.ELEMENT_NODE)switch(n.nodeName.toUpperCase()){case"BR":case"DIV":case"P":r.appendChild(document.createTextNode(" "))}r.appendChild(n)}return r.textContent}function t(e){if("object"!==(void 0===e?"undefined":_typeof(e))||null===e)return e;if(e instanceof String)return String(e);if(e instanceof Number)return Number(e);if(e instanceof Boolean)return Boolean(e)
