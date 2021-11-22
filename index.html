@@ -253,7 +253,7 @@ Nearby stands you two companions on this job: Marcellus, normally the rugged and
 &lt;&lt;set $heistTime to $heistTime + 1&gt;&gt;</tw-passagedata><tw-passagedata pid="14" name="H0: Receptionist" tags="" position="817,977" size="100,100">&lt;&lt;set $heistTime to $heistTime + 1&gt;&gt;
 &lt;&lt;if !$talkedToReceptionist&gt;&gt;&lt;&lt;set $talkedToReceptionist to true&gt;&gt;&lt;&lt;include [[H0: Emilia Dialogue 00]]&gt;&gt;&lt;&lt;else&gt;&gt;Emilia greets people as they pass by. She looks at you with a knowing look. She probably won&#39;t let you pass.
 
-[[H0: Lobby]]&lt;&lt;/if&gt;&gt;
+[[&gt; Head back to the lobby.|H0: Lobby]]&lt;&lt;/if&gt;&gt;
 </tw-passagedata><tw-passagedata pid="15" name="H0: Service Room" tags="" position="810,853" size="100,100">&lt;&lt;if visited() &lt;= 1&gt;&gt;You and your &quot;butlers&quot; quickly dart into the service room. You look back at Emilia and she seems surprised and a bit suspicious as she looks over at you, and you see her raise a phone to her ear.&lt;&lt;/if&gt;&gt;
 
 You&#39;re in a service room. It&#39;s pretty dingy and grey, with signs of frequent use. Much to your surprise, there&#39;s another elevator here.
@@ -341,7 +341,7 @@ You&#39;re in the northern part of the office floor. To the north there&#39;s &l
 &lt;&lt;link &quot;fine oak door&quot;&gt;&gt;
 	&lt;&lt;set $h1conferenceRoom to true&gt;&gt;
 	&lt;&lt;replace #link-h1conferenceRoom&gt;&gt;
-		[[H1: Conference Room]]
+		[[&gt; Enter the conference room.|H1: Conference Room]]
 	&lt;&lt;/replace&gt;&gt;
 	&lt;&lt;replace #description-text&gt;&gt;
 		The fine oak door is labelled &quot;Conference Room 16&quot;.
@@ -542,7 +542,7 @@ You&#39;re in an office of what can only be some sort of scientist. The walls ar
 &lt;&lt;link &quot;an ancient-looking computer&quot;&gt;&gt;
 	&lt;&lt;if $h2researchPassword&gt;&gt;
 		&lt;&lt;set $h2researchAccess to true&gt;&gt;
-		&lt;&lt;replace #link-h2research&gt;&gt;
+		&lt;&lt;replace #link-h2headComputer&gt;&gt;
 			[[&gt; Log on.|H2: Head Researcher Computer]]
 		&lt;&lt;/replace&gt;&gt;
 		&lt;&lt;replace #description-text&gt;&gt;
@@ -749,7 +749,7 @@ Strange.</tw-passagedata><tw-passagedata pid="42" name="H0: Emilia Dialogue 00" 
 	&lt;&lt;/link&gt;&gt;
 &lt;&lt;/nobr&gt;&gt;
 &lt;&lt;nobr&gt;&gt;. 
-	&lt;&lt;link &quot;\&quot;Not yet, I actually left my bag on one of the office floors...\&quot;&quot;&gt;&gt;
+	&lt;&lt;link &quot;&gt; \&quot;Not yet, I actually left my bag on one of the office floors...\&quot;&quot;&gt;&gt;
 	&lt;&lt;replace &quot;#dialogueH0-emilia00&quot;&gt;&gt;
 		&lt;&lt;include [[H0: Emilia Dialogue B0]]&gt;&gt;
 	&lt;&lt;/replace&gt;&gt;
@@ -798,9 +798,7 @@ Strange.</tw-passagedata><tw-passagedata pid="42" name="H0: Emilia Dialogue 00" 
 
 &quot;Just exploring, were you?&quot; says Emilia. &quot;I&#39;ll send someone to search for your bag on the office floors. Want me to call you a lift to the suite instead?&quot;
 
-&quot;No, I&#39;m okay. Thank you, Emilia.&quot; you say.
-
-[[H0: Emilia Dialogue Fail]]</tw-passagedata><tw-passagedata pid="48" name="H0: Emilia Dialogue Success" tags="" position="976,1357" size="100,100">&quot;Thank you, Ms. Emilia.&quot; you say, relieved. The three you walk past.
+[[&gt; &quot;No, I&#39;m okay. Thank you, Emilia.&quot;|H0: Emilia Dialogue Fail]]</tw-passagedata><tw-passagedata pid="48" name="H0: Emilia Dialogue Success" tags="" position="976,1357" size="100,100">&quot;Thank you, Ms. Emilia.&quot; you say, relieved. The three you walk past.
 
 &quot;Nice talkin, Truce,&quot; whispers Violet, elbowing you playfully. &quot;Let&#39;s get upstairs.&quot;
 
@@ -819,7 +817,7 @@ Wish you&#39;d have known that earlier.
 
 &quot;Thank you, Ms. Emilia.&quot; you say, relieved.
 
-[[H0: Emilia Dialogue Success]]</tw-passagedata><tw-passagedata pid="51" name="H1: Employee Guard" tags="" position="2842,974.3333333333334" size="100,100">Amongst the beige fabric cubicles, you feel the light of a flashlight wash over you.
+[[&gt; &quot;Thank you, Ms. Emilia.&quot;|H0: Emilia Dialogue Success]]</tw-passagedata><tw-passagedata pid="51" name="H1: Employee Guard" tags="" position="2842,974.3333333333334" size="100,100">Amongst the beige fabric cubicles, you feel the light of a flashlight wash over you.
 
 &quot;Stop!&quot; you hear from the behind the blinding light, &quot;Who are you, you aren&#39;t supposed to be up here!&quot;
 
