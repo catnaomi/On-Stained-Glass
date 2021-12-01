@@ -315,9 +315,10 @@ v1 - first escape
 &lt;&lt;set $h1confrontedMarcellus to false&gt;&gt;
 &lt;&lt;set $h1bombReady to false&gt;&gt;
 
-&lt;&lt;set $imgNCCAlley to &quot;https://cdn.discordapp.com/attachments/915339883063676938/915355593592688690/neon-alley-crop.png&quot;&gt;&gt;
-&lt;&lt;set $imgNCCLobby to &quot;https://media.discordapp.net/attachments/915339883063676938/915350854285025310/lobby.jpg?width=831&amp;height=467&quot;&gt;&gt;
-&lt;&lt;set $imgNCCOffice to &quot;https://media.discordapp.net/attachments/915338764732235819/915339831767339029/cubicle-crop.jpg&quot;&gt;&gt;
+&lt;&lt;set $imgNCCAlley to &quot;/images/neon-alley-crop.png&quot;&gt;&gt;
+&lt;&lt;set $imgNCCLobby to &quot;/images/lobby-crop.png&quot;&gt;&gt;
+&lt;&lt;set $imgNCCOffice to &quot;/images/cubicle-crop.jpg&quot;&gt;&gt;
+&lt;&lt;set $imgNCCRobertOffice to &quot;/images/dark-office2.png&quot;&gt;&gt;
 &lt;&lt;set $imgCurrent to $imgNCCAlley&gt;&gt;
 &lt;&lt;set $locationCurrent to &quot;Alley outside Nwaeri-Carlisle Building&quot;&gt;&gt;
 &lt;&lt;/silently&gt;&gt;
@@ -587,7 +588,10 @@ Violet walks over the window, looking out over the city. She puts down her bag a
 [[&gt; Check his desk.|H1: Robert&#39;s Desk]]
 [[&gt; Exit the office.|H1: Cubicles East (1)]]
 &lt;&lt;if $h1bombReady&gt;&gt;[[&gt; &quot;I&#39;m ready. Let&#39;s go.&quot;|H1: Blowing the Wall]]&lt;&lt;/if&gt;&gt;
-[[&gt; Hide here for a moment.|H1: Robert&#39;s Office]]</tw-passagedata><tw-passagedata pid="25" name="H1: Emails" tags="heist heist1" position="1341,1249" size="100,100">From: Allison Nwaeri
+[[&gt; Hide here for a moment.|H1: Robert&#39;s Office]]
+
+&lt;&lt;set $imgCurrent to $imgNCCRobertOffice&gt;&gt;
+&lt;&lt;set $locationCurrent to &quot;Nwaeri-Carlisle Building - Robert Carlisle&#39;s Office&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="25" name="H1: Emails" tags="heist heist1" position="1341,1249" size="100,100">From: Allison Nwaeri
 To: Pearson Cole
 cc: Hector Zhang
 
