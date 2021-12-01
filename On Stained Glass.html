@@ -132,6 +132,7 @@ var LZString={_keyStr:"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz01234
   width: 100%;
   height: auto;
   margin-bottom: 1em;
+  transform: translate(0, calc(250px - 100%));
 }
 
 @media only screen and (max-width: 600px) {
@@ -142,6 +143,9 @@ var LZString={_keyStr:"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz01234
   }
   #location-name {
   	font-size: 1em !important;
+  }
+  #img-container img {
+	transform: none;
   }
 }
 
@@ -304,32 +308,11 @@ v1 - first escape
 [[meeting area|E1: Meeting Area]]</tw-passagedata><tw-passagedata pid="9" name="E1: Computer Room" tags="" position="1202,297" size="100,100">Double-click this passage to edit it.</tw-passagedata><tw-passagedata pid="10" name="E1: Meeting Area" tags="" position="833,105" size="100,100">Double-click this passage to edit it.</tw-passagedata><tw-passagedata pid="11" name="Chapter Select" tags="" position="273,573" size="100,100">chapter select
 
 [[escape|E1: Context]]
-[[heist|H0: Context]]</tw-passagedata><tw-passagedata pid="12" name="H0: Context" tags="heist heist-intro" position="236,811" size="100,100">&lt;&lt;nobr&gt;&gt;&lt;&lt;silently&gt;&gt;
-&lt;&lt;set $h0serviceDoor to false&gt;&gt;
-&lt;&lt;set $h0receptionist to false&gt;&gt;
-&lt;&lt;set $heistTime to 0&gt;&gt;
-&lt;&lt;set $employeeGuardDown to false&gt;&gt;
-&lt;&lt;set $researchGuardDown to false&gt;&gt;
-&lt;&lt;set $heistFloor to 0&gt;&gt;
-&lt;&lt;set $talkedToReceptionist to false&gt;&gt;
-&lt;&lt;set $h1confrontedMarcellus to false&gt;&gt;
-&lt;&lt;set $h1bombReady to false&gt;&gt;
-
-&lt;&lt;set $imgNCCAlley to &quot;/images/neon-alley-crop.png&quot;&gt;&gt;
-&lt;&lt;set $imgNCCLobby to &quot;/images/lobby-crop.png&quot;&gt;&gt;
-&lt;&lt;set $imgNCCOffice to &quot;/images/cubicle-crop.jpg&quot;&gt;&gt;
-&lt;&lt;set $imgNCCRobertOffice to &quot;/images/dark-office2.png&quot;&gt;&gt;
-&lt;&lt;set $imgCurrent to $imgNCCAlley&gt;&gt;
-&lt;&lt;set $locationCurrent to &quot;Alley outside Nwaeri-Carlisle Building&quot;&gt;&gt;
-&lt;&lt;/silently&gt;&gt;
-&lt;&lt;/nobr&gt;&gt;
-The familiar and tell-tale whirring of the drones overhead echoes through the walls of the alleyway. You tap your fingers nervously against the brick and patchwork-titanium building behind you, looking nervously around the corner and up into the sky. Before you and your ragtag group of rogues is the Nwaeri-Carlisle Corporation building: the headquarters of one of the five largest companies in the city. But-- and perhaps more importantly-- it&#39;s your home.
+[[heist|H0: Context]]</tw-passagedata><tw-passagedata pid="12" name="H0: Context" tags="heist heist-intro" position="236,811" size="100,100">The familiar and tell-tale whirring of the drones overhead echoes through the walls of the alleyway. You tap your fingers nervously against the brick and patchwork-titanium building behind you, looking nervously around the corner and up into the sky. Before you and your ragtag group of rogues is the Nwaeri-Carlisle Corporation building: the headquarters of one of the five largest companies in the city. But-- and perhaps more importantly-- it&#39;s your home.
 
 Nearby stands your two companions on this job: Marcellus, normally the rugged and confident leader of the Glass Rose, is crammed into a butler&#39;s suit and clearly hates every second of it. Violet, the muscle and newly dear friend of yours, is in a similar modest servant&#39;s attire. It&#39;s slightly too small for her. You hear a crackling of a voice coming from your headset.
 
 [[&gt; Listen.|H0: Context 2]]
-
-
 &lt;&lt;silently&gt;&gt;
 &lt;&lt;set $h0serviceDoor to false&gt;&gt;
 &lt;&lt;set $h0receptionist to false&gt;&gt;
@@ -341,8 +324,12 @@ Nearby stands your two companions on this job: Marcellus, normally the rugged an
 &lt;&lt;set $h1confrontedMarcellus to false&gt;&gt;
 &lt;&lt;set $h1bombReady to false&gt;&gt;
 
-&lt;&lt;set $imgNCCAlley to &quot;https://cdn.discordapp.com/attachments/915339883063676938/915355593592688690/neon-alley-crop.png&quot;&gt;&gt;
-&lt;&lt;set $imgNCCLobby to &quot;https://media.discordapp.net/attachments/915339883063676938/915350854285025310/lobby.jpg?width=831&amp;height=467&quot;&gt;&gt;
+&lt;&lt;set $imgNCCAlley to &quot;https://catnaomi.github.io/On-Stained-Glass/images/neon-alley-crop.png&quot;&gt;&gt;
+&lt;&lt;set $imgNCCLobby to &quot;https://catnaomi.github.io/On-Stained-Glass/images/lobby-crop.png&quot;&gt;&gt;
+&lt;&lt;set $imgNCCOffice to &quot;https://catnaomi.github.io/On-Stained-Glass/images/cubicle-crop.png&quot;&gt;&gt;
+&lt;&lt;set $imgNCCRobertOffice to &quot;https://catnaomi.github.io/On-Stained-Glass/images/dark-office2-crop.png&quot;&gt;&gt;
+&lt;&lt;set $imgCurrent to $imgNCCAlley&gt;&gt;
+&lt;&lt;set $locationCurrent to &quot;Alley outside Nwaeri-Carlisle Building&quot;&gt;&gt;
 &lt;&lt;/silently&gt;&gt;</tw-passagedata><tw-passagedata pid="13" name="H0: Lobby" tags="heist heist0" position="607,894" size="100,100">You&#39;re in the golden, gaudy, and nostalgic lobby of the NCC building. It&#39;s filled with glass cases filled with decommissioned guns and drones, relics of the NCC&#39;s reign over the city. Beneath your feet is an elaborate red carpet stretching from you to &lt;&lt;nobr&gt;&gt;
 &lt;&lt;link &quot;a receptionist&quot;&gt;&gt;
 	&lt;&lt;set $h0receptionist to true&gt;&gt;
@@ -421,7 +408,6 @@ Marcellus and Violet both strip off their servants&#39; attire into the stealth-
 	&lt;&lt;set $guardPosition to window.GetGuardPositionEmployee()&gt;&gt;
 	&lt;&lt;set $heistTime to $heistTime + 1&gt;&gt;
 	&lt;&lt;set $h1serviceCloset to true&gt;&gt;
-	&lt;&lt;set $imgNCCOffice to &quot;https://media.discordapp.net/attachments/915338764732235819/915339831767339029/cubicle-crop.jpg&quot;&gt;&gt;
 	&lt;&lt;set $imgCurrent to $imgNCCOffice&gt;&gt;
 &lt;&lt;/silently&gt;&gt;
 You&#39;re in the service closet for the employee floor. It&#39;s dingy and grey-- as you&#39;d expect-- but well-kept. There&#39;s a door out to the cubicles.
