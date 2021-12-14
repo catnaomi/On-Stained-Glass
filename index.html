@@ -2062,12 +2062,10 @@ Marcellus seems antsy next to you. &lt;&lt;if $distrust &gt; 0&gt;&gt;You&#39;re
 
 [[&gt; Wait for the doors to open again.|H3: Biokey Vault]]
 &lt;&lt;silently&gt;&gt;
-&lt;&lt;if $heistTime &gt; 10&gt;&gt;&lt;&lt;set $suspicion to $suspicion + 1&gt;&gt;&lt;&lt;/if&gt;&gt;
-&lt;&lt;if $heistTime &gt; 20&gt;&gt;&lt;&lt;set $suspicion to $suspicion + 1&gt;&gt;&lt;&lt;/if&gt;&gt;
 &lt;&lt;if $heistTime &gt; 30&gt;&gt;&lt;&lt;set $suspicion to $suspicion + 1&gt;&gt;&lt;&lt;/if&gt;&gt;
 &lt;&lt;if $heistTime &gt; 40&gt;&gt;&lt;&lt;set $suspicion to $suspicion + 1&gt;&gt;&lt;&lt;/if&gt;&gt;
 &lt;&lt;if $heistTime &gt; 50&gt;&gt;&lt;&lt;set $suspicion to $suspicion + 1&gt;&gt;&lt;&lt;/if&gt;&gt;
-&lt;&lt;/silently&gt;&gt;&lt;&lt;set $locationCurrent to &quot;Nwaeri-Carlisle Building - Sterilization Room&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="190" name="H3: Biokey Vault 2" tags="heist3" position="2523,3283" size="100,100">&quot;Finally,&quot; says Marcellus. &quot;We&#39;re finally here.&quot;
+&lt;&lt;/silently&gt;&gt;&lt;&lt;set $locationCurrent to &quot;Nwaeri-Carlisle Building - Sterilization Room&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="190" name="H3: Biokey Vault 2" tags="heist3" position="2523,3283" size="100,100">&lt;&lt;if $heistTime &gt;= 50&gt;&gt;&quot;That took a minute, but,&quot;&lt;&lt;else&gt;&gt;&quot;Looks like we made good time.&quot;&lt;&lt;/if&gt;&gt; says Marcellus. &quot;We&#39;re finally here.&quot;
 
 He takes out his set of harnesses and ropes from his bag, with the climbing device that he used to get you up onto this floor. He takes out a hook looking contraption and swings it up, miraculously missing the lasers and landing on a support beam above. He clicks some sort of switch on the device, and he is lifted off the ground towards the key.
 
