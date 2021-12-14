@@ -166,11 +166,65 @@ body {
  --accent-color: #0066CC;
  --text-color2: #CCCCCC;
 }
-.heist-intro {
+
+.heist2 {
+  --main-bg-color: #111122;
+  --accent-color: #57bee6;
+  --text-color1: #ffffff;
+  --text-color2: #b4e1f3;
+  
+  background-color: var(--main-bg-color);
+}
+
+.heist-intro,
+.intro0,
+.outside {
   	--main-bg-color: #070021;
   	--accent-color: #c36fd6;
   	--text-color1: #ffffff;
   	--text-color2: #efadff;
+  
+  background-color: var(--main-bg-color);
+}
+
+.escape0,
+.escape1,
+.escape3 {
+  --main-bg-color: #48453d;
+  --accent-color: #479498;
+  --text-color1: #ffffff;
+  --text-color2: #c7e0d0;
+  
+  background-color: var(--main-bg-color);
+}
+
+.escape2 {
+  --main-bg-color: #41403b;
+  --accent-color: #479863;
+  --text-color1: #ffffff;
+  --text-color2: #91e0ac;
+  
+  background-color: var(--main-bg-color);
+}
+
+
+
+.heist3,
+.title {
+  --main-bg-color: #06162f;
+  --accent-color: #98c8d7;
+  --text-color1: #ffffff;
+  --text-color2: #cccccc;
+  
+  background-color: var(--main-bg-color);
+}
+
+.nccsuite {
+
+  --main-bg-color: #3b3835;
+  --accent-color: #ddb1d1;
+  --text-color1: #ffffff;
+  --text-color2: #f3e1ee;
   
   background-color: var(--main-bg-color);
 }
@@ -192,16 +246,16 @@ body {
 	--main-bg-color: #4f0101;
   	--accent-color: #ffd269;
   	--text-color1: #ffffff;
-  	--text-color2: #ffedc4;
+  	--text-color2: #daf7f9;
   
   background-color: var(--main-bg-color);
 }
 
 .heist1 {
-	--main-bg-color: #333333;
-  	--accent-color: #3b56db;
+	--main-bg-color: #111111;
+  	--accent-color: #0071a5;
   	--text-color1: #ffffff;
-  	--text-color2: #a1b0ff;
+  	--text-color2: #00a8f6;
   
   background-color: var(--main-bg-color);
 }
@@ -298,13 +352,10 @@ window.GetPosFromDestination = function(d) {
 	return -1;
 }
 
-</script><tw-tag name="ending" color="red"></tw-tag>,<tw-tag name="heist" color="gray"></tw-tag>,<tw-tag name="heist-intro" color="red"></tw-tag>,<tw-tag name="heist0" color="red"></tw-tag>,<tw-tag name="heist1" color="red"></tw-tag>,<tw-tag name="heist2" color="red"></tw-tag>,<tw-tag name="heist3" color="orange"></tw-tag>,<tw-tag name="nccsuite" color="yellow"></tw-tag>,<tw-tag name="livingroom" color="purple"></tw-tag>,<tw-tag name="distrust-up" color="yellow"></tw-tag>,<tw-tag name="distrust-down" color="green"></tw-tag>,<tw-tag name="escape1" color="blue"></tw-tag>,<tw-tag name="escape2" color="blue"></tw-tag>,<tw-tag name="escape3" color="blue"></tw-tag>,<tw-tag name="suspicion-up" color="purple"></tw-tag><tw-passagedata pid="1" name="begin" tags="title" position="259,54" size="100,100">On Stained Glass
+</script><tw-tag name="ending" color="red"></tw-tag>,<tw-tag name="heist" color="gray"></tw-tag>,<tw-tag name="heist-intro" color="red"></tw-tag>,<tw-tag name="heist0" color="red"></tw-tag>,<tw-tag name="heist1" color="red"></tw-tag>,<tw-tag name="heist2" color="red"></tw-tag>,<tw-tag name="heist3" color="orange"></tw-tag>,<tw-tag name="nccsuite" color="yellow"></tw-tag>,<tw-tag name="livingroom" color="purple"></tw-tag>,<tw-tag name="distrust-up" color="yellow"></tw-tag>,<tw-tag name="distrust-down" color="green"></tw-tag>,<tw-tag name="escape1" color="blue"></tw-tag>,<tw-tag name="escape2" color="blue"></tw-tag>,<tw-tag name="escape3" color="blue"></tw-tag>,<tw-tag name="suspicion-up" color="purple"></tw-tag>,<tw-tag name="intro0" color="gray"></tw-tag>,<tw-tag name="escape0" color="blue"></tw-tag><tw-passagedata pid="1" name="begin" tags="title" position="259,52.333333333333336" size="100,100">&lt;h1&gt;On Stained Glass&lt;/h1&gt;
 by cat naomi
 
-[[&gt; Begin.|I0: Opening]]
-
-&lt;&lt;set $distrust to 0&gt;&gt;
-&lt;&lt;set $suspicion to 0&gt;&gt;</tw-passagedata><tw-passagedata pid="2" name="E1: Closet" tags="escape1" position="2333.6666666666665,696.3333333333334" size="100,100">You&#39;re alone in the closet of your captors. Now that Vivian has gone to get some water, now should be your best opportunity to escape.&lt;&lt;if !$e1Free&gt;&gt; You&#39;re currently &lt;&lt;nobr&gt;&gt;
+[[&gt; Begin.|I0: Opening]]</tw-passagedata><tw-passagedata pid="2" name="E1: Closet" tags="escape1" position="2333.6666666666665,696.3333333333334" size="100,100">You&#39;re alone in the closet of your captors. Now that Vivian has gone to get some water, now should be your best opportunity to escape.&lt;&lt;if !$e1Free&gt;&gt; You&#39;re currently &lt;&lt;nobr&gt;&gt;
 &lt;&lt;link &quot;bound by your wrists&quot;&gt;&gt;
 	&lt;&lt;set $e1Wrists to true&gt;&gt;
 	&lt;&lt;replace #link-e1Wrists t8n &gt;&gt;
@@ -329,7 +380,8 @@ by cat naomi
 &lt;&lt;if !$e1Free&gt;&gt;&lt;span id=&quot;link-e1Wrists&quot;&gt;&lt;&lt;if $e1Wrists&gt;&gt;[[&gt; Wriggle out of your bonds.|E1: Escape]]&lt;&lt;/if&gt;&gt;&lt;/span&gt;
 &lt;&lt;else&gt;&gt;[[&gt; Head outside.|E1: Hallway South]]
 &lt;span id=&quot;link-e1Ceiling&quot;&gt;&lt;&lt;if $e1Ceiling&gt;&gt;[[&gt; Check out the ceiling.|E1: Ceiling]]&lt;&lt;/if&gt;&gt;&lt;/span&gt;&lt;&lt;/if&gt;&gt;
-&lt;&lt;set $locationCurrent to &quot;Dusty Closet&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="3" name="E1: Hallway South" tags="escape1" position="2510,623" size="100,100">You&#39;re in an old hallway. Betweeen the dust, and white light floods in from the ceiling mingling with the pale blue of the mounted lights. You hear &lt;&lt;nobr&gt;&gt;
+&lt;&lt;set $locationCurrent to &quot;Dusty Closet&quot;&gt;&gt;
+&lt;&lt;set $imgCurrent to $imgCloset&gt;&gt;</tw-passagedata><tw-passagedata pid="3" name="E1: Hallway South" tags="escape1" position="2510,623" size="100,100">You&#39;re in an old hallway. Betweeen the dust, and white light floods in from the ceiling mingling with the pale blue of the mounted lights. You hear &lt;&lt;nobr&gt;&gt;
 &lt;&lt;link &quot;talking&quot;&gt;&gt;
 	&lt;&lt;set $e1Eavesdrop to true&gt;&gt;
 	&lt;&lt;replace #link-e1Eavesdrop t8n&gt;&gt;
@@ -346,7 +398,8 @@ by cat naomi
 [[&gt; Go left.|E1: Hallway West]]
 [[&gt; Go right.|E1: Hallway East]]
 &lt;span id=&quot;link-e1Eavesdrop&quot;&gt;&lt;&lt;if $e1Eavesdrop&gt;&gt;[[&gt; Eavesdrop.|E1: Eavesdrop 1]]&lt;&lt;/if&gt;&gt;&lt;/span&gt;
-&lt;&lt;set $locationCurrent to &quot;Old Hallway&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="4" name="E1: Hallway West" tags="escape1" position="2377,511" size="100,100">You step out into the hallway. Immediately though, you see Violet perk up and look at you.
+&lt;&lt;set $locationCurrent to &quot;Old Hallway&quot;&gt;&gt;
+&lt;&lt;set $imgCurrent to $imgGRHallway&gt;&gt;</tw-passagedata><tw-passagedata pid="4" name="E1: Hallway West" tags="escape1" position="2377,511" size="100,100">You step out into the hallway. Immediately though, you see Violet perk up and look at you.
 
 &quot;My, what are you doing up and about?&quot; she says. &quot;Sorry $e0VivianTrucyName, I&#39;ve got to take you back now.&quot;
 
@@ -386,8 +439,7 @@ You enter another hallway. To the west, you _cpuRoomSound &lt;&lt;nobr&gt;&gt;
 &lt;span id=&quot;link-e1FindTheComputerRoom&quot;&gt;&lt;&lt;if $e1FindTheComputerRoom&gt;&gt;[[&gt; Go into the computer room.|E1: Computer Room]]&lt;&lt;/if&gt;&gt;&lt;/span&gt;
 &lt;span id=&quot;link-e1LivingRoom&quot;&gt;&lt;&lt;if $e1LivingRoom&gt;&gt;[[&gt; Check out the living room.|E1: Living Room]]&lt;&lt;/if&gt;&gt;&lt;/span&gt;
 &lt;&lt;set $locationCurrent to &quot;Computer Hallway&quot;&gt;&gt;
-
-</tw-passagedata><tw-passagedata pid="6" name="E1: Computer Room" tags="escape1" position="2820,466" size="100,100">You&#39;re in the computer room. &lt;&lt;if $e1ComputerRoomPower&gt;&gt;In it, you see a wide variety of machines and servers, all whirring to some end. A few of the computers are left on, one of which is &lt;&lt;nobr&gt;&gt;
+&lt;&lt;set $imgCurrent to $imgGRHallway&gt;&gt;</tw-passagedata><tw-passagedata pid="6" name="E1: Computer Room" tags="escape1" position="2820,466" size="100,100">You&#39;re in the computer room. &lt;&lt;if $e1ComputerRoomPower&gt;&gt;In it, you see a wide variety of machines and servers, all whirring to some end. A few of the computers are left on, one of which is &lt;&lt;nobr&gt;&gt;
 &lt;&lt;link &quot;prompting a password&quot;&gt;&gt;
 	&lt;&lt;set $e1CanUnlockCPU to true&gt;&gt;
 	&lt;&lt;replace #link-e1CanUnlockCPU t8n&gt;&gt;
@@ -422,27 +474,19 @@ You enter another hallway. To the west, you _cpuRoomSound &lt;&lt;nobr&gt;&gt;
 	&lt;&lt;/if&gt;&gt;
 &lt;&lt;/nobr&gt;&gt;
 &lt;span id=&quot;link-e1SeeVent&quot;&gt;&lt;&lt;if $e1SeeVent&gt;&gt;[[&gt; Check out the vent.|E1: Vent]]&lt;&lt;/if&gt;&gt;&lt;/span&gt;
-&lt;&lt;set $locationCurrent to &quot;Computer Room&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="7" name="Chapter Select" tags="" position="158,1399" size="100,100">chapter select
+&lt;&lt;set $locationCurrent to &quot;Computer Room&quot;&gt;&gt;
+&lt;&lt;if $e1ComputerRoomPower&gt;&gt;
+	&lt;&lt;set $imgCurrent to $imgGRServerRoom&gt;&gt;
+&lt;&lt;else&gt;&gt;
+	&lt;&lt;set $imgCurrent to $imgGRServerDark&gt;&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="7" name="Chapter Select" tags="" position="158,1399" size="100,100">chapter select
 </tw-passagedata><tw-passagedata pid="8" name="H0: Context" tags="heist heist-intro" position="220,2318" size="100,100">The familiar and tell-tale whirring of the drones overhead echoes through the walls of the alleyway. You tap your fingers nervously against the brick and patchwork-titanium building behind you, looking nervously around the corner and up into the sky. Before you and your ragtag group of rogues is the Nwaeri-Carlisle Corporation building: the headquarters of one of the five largest companies in the city. But-- and perhaps more importantly-- it&#39;s your home.
 
 Nearby stands your two &lt;&lt;if $proposalAccepted&gt;&gt;companions&lt;&lt;else&gt;&gt;captors&lt;&lt;/if&gt;&gt; on this job: Marcellus, normally the rugged and confident leader of the Glass Rose, is crammed into a butler&#39;s suit and clearly hates every second of it. Violet, the muscle and newly dear friend of yours, is in a similar modest servant&#39;s attire. It&#39;s slightly too small for her. You hear a crackling of a voice coming from your headset.
 
 [[&gt; Listen.|H0: Context 2]]
 &lt;&lt;silently&gt;&gt;
-&lt;&lt;set $h0serviceDoor to false&gt;&gt;
-&lt;&lt;set $h0receptionist to false&gt;&gt;
-&lt;&lt;set $heistTime to 0&gt;&gt;
-&lt;&lt;set $employeeGuardDown to false&gt;&gt;
-&lt;&lt;set $researchGuardDown to false&gt;&gt;
-&lt;&lt;set $heistFloor to 0&gt;&gt;
-&lt;&lt;set $talkedToReceptionist to false&gt;&gt;
-&lt;&lt;set $h1confrontedMarcellus to false&gt;&gt;
-&lt;&lt;set $h1bombReady to false&gt;&gt;
 
-&lt;&lt;set $imgNCCAlley to &quot;https://catnaomi.github.io/On-Stained-Glass/images/neon-alley-crop.png&quot;&gt;&gt;
-&lt;&lt;set $imgNCCLobby to &quot;https://catnaomi.github.io/On-Stained-Glass/images/lobby-crop.png&quot;&gt;&gt;
-&lt;&lt;set $imgNCCOffice to &quot;https://catnaomi.github.io/On-Stained-Glass/images/cubicle-crop.png&quot;&gt;&gt;
-&lt;&lt;set $imgNCCRobertOffice to &quot;https://catnaomi.github.io/On-Stained-Glass/images/dark-office2-crop.png&quot;&gt;&gt;
 &lt;&lt;set $imgCurrent to $imgNCCAlley&gt;&gt;
 &lt;&lt;set $locationCurrent to &quot;Alley outside Nwaeri-Carlisle Building&quot;&gt;&gt;
 &lt;&lt;/silently&gt;&gt;</tw-passagedata><tw-passagedata pid="9" name="H0: Lobby" tags="heist heist0" position="623,2470" size="100,100">You&#39;re in the golden, gaudy, and nostalgic lobby of the NCC building. It&#39;s filled with glass cases filled with decommissioned guns and drones, relics of the NCC&#39;s reign over the city. Beneath your feet is an elaborate red carpet stretching from you to &lt;&lt;nobr&gt;&gt;
@@ -489,7 +533,7 @@ You&#39;re in a service room. It&#39;s pretty dingy and grey, with signs of freq
 &lt;&lt;set $heistFloor to 1&gt;&gt;
 &lt;&lt;/silently&gt;&gt;&quot;Great work, team,&quot; says Marcellus to the group. &quot;Get changed.&quot;
 
-Marcellus and Violet both strip off their servants&#39; attire into the stealth-appropriate bodysuits underneath. You nervously fumble with the buttons on your blouse, to change as well, but Marcellus glances over with a &lt;&lt;if $proposalAccepted&gt;&gt;bemused&lt;&lt;else&gt;&gt;annoyed&lt;&lt;/if&gt;&gt; look on his face.
+Marcellus and Violet both strip off their servants&#39; attire into the stealth-appropriate bodysuits underneath. You nervously fumble with the buttons on your blouse, to change as well, but Marcellus glances over with &lt;&lt;if $proposalAccepted&gt;&gt;a bemused&lt;&lt;else&gt;&gt;an annoyed&lt;&lt;/if&gt;&gt; look on his face.
 
 &quot;Unfortunately, now the Kiddie gloves are off. I have a man upstairs disabling the camera feed, but there should be guards patrolling the area,&quot; says Marcellus, with his familiar air of authority. &quot;Do not, under any circumstances, let a guard catch you, understood?&quot;
 
@@ -504,7 +548,7 @@ Marcellus and Violet both strip off their servants&#39; attire into the stealth-
 &lt;&lt;set $heistFloor to 1&gt;&gt;
 &lt;&lt;/silently&gt;&gt;&quot;Well, that could&#39;ve gone better.&quot; says Marcellus to the group. &quot;Get changed.&quot;
 
-Marcellus and Violet both strip off their servants&#39; attire into the stealth-appropriate bodysuits underneath. You nervously fumble with the buttons on your blouse, to change as well, but Marcellus glances over with a &lt;&lt;if $proposalAccepted&gt;&gt;bemused&lt;&lt;else&gt;&gt;annoyed&lt;&lt;/if&gt;&gt; look on his face.
+Marcellus and Violet both strip off their servants&#39; attire into the stealth-appropriate bodysuits underneath. You nervously fumble with the buttons on your blouse, to change as well, but Marcellus glances over with &lt;&lt;if $proposalAccepted&gt;&gt;a bemused&lt;&lt;else&gt;&gt;an annoyed&lt;&lt;/if&gt;&gt; look on his face.
 
 &quot;Unfortunately, now the kiddie gloves are off. I have a man upstairs disabling the camera feed, but there should be guards patrolling the area,&quot; says Marcellus, with his familiar air of authority. &quot;Do not, under any circumstances, let a guard catch you, understood?&quot;
 
@@ -530,7 +574,9 @@ You&#39;re in the service closet for the employee floor. It&#39;s dingy and grey
 &lt;span id=&quot;description-text&quot;&gt;&lt;&lt;if window.GetGuardPositionEmployee() is 0 &amp;&amp; !$employeeGuardDown&gt;&gt;You hear the footsteps of a guard right ouside the door. You should wait and hide here.&lt;&lt;/if&gt;&gt;&lt;/span&gt;
 
 [[&gt; Head outside.|H1: Cubicles North (0)]]
-[[&gt; Hide here for a moment.|H1: Employee Floor Service Closet]]</tw-passagedata><tw-passagedata pid="15" name="H1: Cubicles West (3)" tags="heist heist1" position="1189,2570" size="100,100">&lt;&lt;silently&gt;&gt;
+[[&gt; Hide here for a moment.|H1: Employee Floor Service Closet]]
+
+&lt;&lt;set $locationCurrent to &quot;Nwaeri-Carlisle Building - Floor 34 Service Room&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="15" name="H1: Cubicles West (3)" tags="heist heist1" position="1189,2570" size="100,100">&lt;&lt;silently&gt;&gt;
 	&lt;&lt;script&gt;&gt;
 		window.UpdateGuardPositionEmployee()
 	&lt;&lt;/script&gt;&gt;
@@ -673,7 +719,8 @@ In the middle of the conference room lies a giant table with 8 chairs. They&#39;
 &lt;span id=&quot;description-text&quot;&gt;&lt;&lt;if $guardPosition is 0 &amp;&amp; !$employeeGuardDown&gt;&gt;You hear the footsteps of a guard right ouside the door. You should wait and hide here.&lt;&lt;/if&gt;&gt;&lt;/span&gt;
 [[&gt; Exit the conference room.|H1: Cubicles North (0)]]
 &lt;span id=&quot;link-h1conferenceBoard&quot;&gt;&lt;&lt;if $h1conferenceBoard&gt;&gt;[[&gt; Check the board.|H1: Conference Board]]&lt;&lt;/if&gt;&gt;&lt;/span&gt;
-[[&gt; Hide here for a moment.|H1: Conference Room]]</tw-passagedata><tw-passagedata pid="20" name="H1: Robert&#39;s Office" tags="heist heist1" position="1624,2561" size="100,100">&lt;&lt;silently&gt;&gt;
+[[&gt; Hide here for a moment.|H1: Conference Room]]
+&lt;&lt;set $locationCurrent to &quot;Nwaeri-Carlisle Building - Floor 34 Conference Room&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="20" name="H1: Robert&#39;s Office" tags="heist heist1" position="1624,2561" size="100,100">&lt;&lt;silently&gt;&gt;
 	&lt;&lt;script&gt;&gt;
 		window.UpdateGuardPositionEmployee()
 	&lt;&lt;/script&gt;&gt;
@@ -732,7 +779,8 @@ Allison Nwaeri
 	&lt;&lt;/script&gt;&gt;
 	&lt;&lt;set $guardPosition to window.GetGuardPositionEmployee()&gt;&gt;
 	&lt;&lt;set $heistTime to $heistTime + 1&gt;&gt;
-&lt;&lt;/silently&gt;&gt;</tw-passagedata><tw-passagedata pid="23" name="H2: Scaling the Building" tags="heist heist2" position="1693,2422" size="100,100">&lt;&lt;silently&gt;&gt;
+&lt;&lt;/silently&gt;&gt;
+&lt;&lt;set $locationCurrent to &quot;Nwaeri-Carlisle Building Floor 34 Surveillance Room&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="23" name="H2: Scaling the Building" tags="heist heist2 outside" position="1693,2422" size="100,100">&lt;&lt;silently&gt;&gt;
 	&lt;&lt;set $heistTime to $heistTime + 1&gt;&gt;
 	&lt;&lt;set $heistFloor to 2&gt;&gt;
 	&lt;&lt;set $h2checkpointActive to true&gt;&gt;
@@ -744,7 +792,9 @@ Against your better judgment, you look behind you. You see the expanse of Termin
 
 You&#39;d never seen the city like this before. It&#39;s wonderful. You begin to understand why the Glass Rose feels so passionate about it.
 
-[[&gt; Keep Climbing.|H2: Scaling the Building 2]]</tw-passagedata><tw-passagedata pid="24" name="H2: Head Researcher&#39;s Office" tags="heist heist2" position="1935,2461" size="100,100">&lt;&lt;silently&gt;&gt;
+[[&gt; Keep Climbing.|H2: Scaling the Building 2]]
+&lt;&lt;set $imgCurrent to $imgSkyline&gt;&gt;
+&lt;&lt;set $locationCurrent to &quot;Nwaeri-Carlisle Building - Outside&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="24" name="H2: Head Researcher&#39;s Office" tags="heist heist2" position="1935,2461" size="100,100">&lt;&lt;silently&gt;&gt;
 	&lt;&lt;script&gt;&gt;
 		window.UpdateGuardPositionResearch()
 	&lt;&lt;/script&gt;&gt;
@@ -780,7 +830,9 @@ You&#39;re in an office of what can only be some sort of scientist. The walls ar
 &lt;span id=&quot;description-text&quot;&gt;&lt;&lt;if $guardPosition is 0 &amp;&amp; !$researchGuardDown&gt;&gt;You hear the footsteps of a guard right ouside the door. You should wait and hide here.&lt;&lt;/if&gt;&gt;&lt;/span&gt;
 
 &lt;span id=&quot;link-h2headExit&quot;&gt;&lt;&lt;if $h2headExit&gt;&gt;[[&gt; Head into the hallway.|H2: Research Hallway North (0)]]&lt;&lt;/if&gt;&gt;&lt;/span&gt;
-&lt;span id=&quot;link-h2headComputer&quot;&gt;&lt;&lt;if $h2researchAccess&gt;&gt;[[&gt; Log on.|H2: Head Researcher Computer]]&lt;&lt;/if&gt;&gt;&lt;/span&gt;</tw-passagedata><tw-passagedata pid="25" name="H2: Research Hallway North (0)" tags="heist heist2" position="2081,2528" size="100,100">&lt;&lt;silently&gt;&gt;
+&lt;span id=&quot;link-h2headComputer&quot;&gt;&lt;&lt;if $h2researchAccess&gt;&gt;[[&gt; Log on.|H2: Head Researcher Computer]]&lt;&lt;/if&gt;&gt;&lt;/span&gt;
+&lt;&lt;set $imgCurrent to $imgFutureOffice&gt;&gt;
+&lt;&lt;set $locationCurrent to &quot;Nwaeri-Carlisle Building - Head Researcher&#39;s Office&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="25" name="H2: Research Hallway North (0)" tags="heist heist2" position="2081,2528" size="100,100">&lt;&lt;silently&gt;&gt;
 	&lt;&lt;script&gt;&gt;
 		window.UpdateGuardPositionResearch()
 	&lt;&lt;/script&gt;&gt;
@@ -793,7 +845,9 @@ You can go south.
 &lt;span id=&quot;description-text&quot;&gt;&lt;/span&gt;
 
 [[&gt; Go south.|H2: Research Hallway West (1)]]
-[[&gt; Go into the office.|H2: Head Researcher&#39;s Office]]</tw-passagedata><tw-passagedata pid="26" name="H2: Research Hallway West (1)" tags="heist heist2" position="2216,2625" size="100,100">&lt;&lt;silently&gt;&gt;
+[[&gt; Go into the office.|H2: Head Researcher&#39;s Office]]
+&lt;&lt;set $imgCurrent to $imgScienceHallway&gt;&gt;
+&lt;&lt;set $locationCurrent to &quot;Nwaeri-Carlisle Building - Research Floor&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="26" name="H2: Research Hallway West (1)" tags="heist heist2" position="2216,2625" size="100,100">&lt;&lt;silently&gt;&gt;
 	&lt;&lt;script&gt;&gt;
 		window.UpdateGuardPositionResearch()
 	&lt;&lt;/script&gt;&gt;
@@ -826,8 +880,8 @@ You can go south or north.
 	&lt;&lt;/if&gt;&gt;
 &lt;&lt;/link&gt;&gt;&lt;&lt;/nobr&gt;&gt;&lt;/span&gt;
 &lt;span id=&quot;link-h2researchLab&quot;&gt;&lt;&lt;if $h2researchLab&gt;&gt;[[&gt; Go into the lab.|H2: Research Lab Alpha]]&lt;&lt;/if&gt;&gt;&lt;/span&gt;
-
-</tw-passagedata><tw-passagedata pid="27" name="H2: Research Lab Alpha" tags="heist heist2" position="2233,2419" size="100,100">&lt;&lt;silently&gt;&gt;
+&lt;&lt;set $imgCurrent to $imgScienceHallway&gt;&gt;
+&lt;&lt;set $locationCurrent to &quot;Nwaeri-Carlisle Building - Research Floor&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="27" name="H2: Research Lab Alpha" tags="heist heist2" position="2233,2417.3333333333335" size="100,100">&lt;&lt;silently&gt;&gt;
 	&lt;&lt;script&gt;&gt;
 		window.UpdateGuardPositionResearch()
 	&lt;&lt;/script&gt;&gt;
@@ -857,7 +911,9 @@ You&#39;re in the research lab. Around you are a variety of tables, desks, and w
 
 [[&gt; Leave the lab.|H2: Research Hallway West (1)]]
 &lt;span id=&quot;link-h2trio&quot;&gt;&lt;&lt;if $h2trio&gt;&gt;[[&gt; Look at the research tables|H2: Research Trio]]&lt;&lt;/if&gt;&gt;&lt;/span&gt;
-&lt;span id=&quot;link-h2vent&quot;&gt;&lt;&lt;if $h2vent&gt;&gt;[[&gt; Climb into the vent.|H2: Vent]]&lt;&lt;/if&gt;&gt;&lt;/span&gt;</tw-passagedata><tw-passagedata pid="28" name="H2: Research Hallway South (2)" tags="heist heist2" position="2350,2709" size="100,100">&lt;&lt;silently&gt;&gt;
+&lt;span id=&quot;link-h2vent&quot;&gt;&lt;&lt;if $h2vent&gt;&gt;[[&gt; Climb into the vent.|H2: Vent]]&lt;&lt;/if&gt;&gt;&lt;/span&gt;
+&lt;&lt;set $locationCurrent to &quot;Nwaeri-Carlisle Building - Research Lab Alpha&quot;&gt;&gt;
+&lt;&lt;set $imgCurrent to $imgLab&gt;&gt;</tw-passagedata><tw-passagedata pid="28" name="H2: Research Hallway South (2)" tags="heist heist2" position="2350,2709" size="100,100">&lt;&lt;silently&gt;&gt;
 	&lt;&lt;set $heistTime to $heistTime + 1&gt;&gt;
 &lt;&lt;/silently&gt;&gt;
 You&#39;re in a sterile looking hallway. &lt;&lt;if !$h2checkpointActive&gt;&gt;You now know that the security checkpoint&#39;s to the south, through one-sided glass.&lt;&lt;/if&gt;&gt; To the east, you see a glass door-- to the vault, you believe.
@@ -866,7 +922,9 @@ You&#39;re in a sterile looking hallway. &lt;&lt;if !$h2checkpointActive&gt;&gt;
 
 [[&gt; Go north.|H2: Research Hallway West (1)]]
 &lt;span id=&quot;link-h2securityCheckpoint&quot;&gt;&lt;&lt;if !$h2checkpointActive&gt;&gt;[[&gt; Go into the checkpoint.|H2: Security Checkpoint]]&lt;&lt;/if&gt;&gt;&lt;/span&gt;
-[[&gt; Enter the glass door.|H3: Sterilization Room]]</tw-passagedata><tw-passagedata pid="29" name="H2: Vent" tags="heist heist2" position="2383,2541" size="100,100">The two of you climb into the vents. It&#39;s cramped, you barely fit, and you count your blessings that you are not afflicted with claustrophobia.
+[[&gt; Enter the glass door.|H3: Sterilization Room]]
+&lt;&lt;set $imgCurrent to $imgScienceHallway&gt;&gt;
+&lt;&lt;set $locationCurrent to &quot;Nwaeri-Carlisle Building - Research Floor&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="29" name="H2: Vent" tags="heist heist2" position="2383,2541" size="100,100">The two of you climb into the vents. It&#39;s cramped, you barely fit, and you count your blessings that you are not afflicted with claustrophobia.
 
 [[&gt; Go back to the lab.|H2: Research Lab Alpha]]
 &lt;&lt;nobr&gt;&gt;&lt;&lt;if $h2checkpointActive&gt;&gt;
@@ -905,7 +963,9 @@ You&#39;re on the other side of the glass at the security checkpoint. Around you
 
 [[&gt; Climb back up in to the vent.|H2: Vent]]
 &lt;span id=&quot;link-h2securityCheckpoint&quot;&gt;&lt;&lt;if $h2securityCheckpoint&gt;&gt;[[&gt; Head back out to the hallway.|H2: Research Hallway South (2)]]&lt;&lt;/if&gt;&gt;&lt;/span&gt;
-&lt;span id=&quot;link-h2research2FA&quot;&gt;&lt;&lt;if $h2research2FA&gt;&gt;[[&gt; Pick up the device.|H2: Two-Factor Device]]&lt;&lt;/if&gt;&gt;&lt;/span&gt;</tw-passagedata><tw-passagedata pid="31" name="H3: Sterilization Room" tags="heist heist3" position="2496,2812" size="100,100">You approach the sterilization room. From here, the three of you will move on to obtain the Biokey.
+&lt;span id=&quot;link-h2research2FA&quot;&gt;&lt;&lt;if $h2research2FA&gt;&gt;[[&gt; Pick up the device.|H2: Two-Factor Device]]&lt;&lt;/if&gt;&gt;&lt;/span&gt;
+&lt;&lt;set $imgCurrent to $imgScienceHallway&gt;&gt;
+&lt;&lt;set $locationCurrent to &quot;Nwaeri-Carlisle Building - Vault Security Checkpoint&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="31" name="H3: Sterilization Room" tags="heist heist2" position="2494.3333333333335,2813.6666666666665" size="100,100">You approach the sterilization room. From here, the three of you will move on to obtain the Biokey.
 
 &quot;Trucy, darling,&quot; says a voice crackling from your headset. You recognize it quickly as Vivian&#39;s. &quot;I&#39;m seeing on Oculus&#39;s little setup that you&#39;re almost at the vault? No?&quot;
 
@@ -914,14 +974,15 @@ You&#39;re on the other side of the glass at the security checkpoint. Around you
 Go back?
 [[&gt; Yes, go back.|H2: Research Hallway South (2)]]
 [[&gt; No, continue.|H3: Sterilization Room 2]]
-&lt;&lt;set $suspicionThreshold to 5&gt;&gt;</tw-passagedata><tw-passagedata pid="32" name="H3: Biokey Vault" tags="heist heist3" position="2523,3133" size="100,100">The doors hiss and open after a few minutes, revealing the vault of the Biokey. The vault is massive, easily a few stories tall, and immaculately white. In the center of the room lies a reinforced plexiglass pedestal, but you can&#39;t see the top. You know from the plans that on top of this pedestal, though, should be the housing for the Biokey.
+&lt;&lt;set $suspicionThreshold to 5&gt;&gt;</tw-passagedata><tw-passagedata pid="32" name="H3: Biokey Vault" tags="heist heist3" position="2521.3333333333335,3133" size="100,100">The doors hiss and open after a few minutes, revealing the vault of the Biokey. The vault is massive, easily a few stories tall, and immaculately white. In the center of the room lies a reinforced plexiglass pedestal, but you can&#39;t see the top. You know from the plans that on top of this pedestal, though, should be the housing for the Biokey.
 
 Around it, though, the upper levels of the room are lined with red hot lasers, aimed in various locations in an immaculate lattice. Touching them will both set off the alarms, and probably relieve you of a limb. Or worse.
 
 You&#39;re nervous just thinking about it. Marcellus, however, grins, and opens his bag.
 
 [[&gt; Watch Marcellus.|H3: Biokey Vault 2]]
-&lt;&lt;set $locationCurrent to &quot;Nwaeri-Carlisle Building - Bio-encryption Key Vault&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="33" name="H1: Office Cubicle" tags="heist heist1" position="1511,2749" size="100,100">&lt;&lt;silently&gt;&gt;
+&lt;&lt;set $locationCurrent to &quot;Nwaeri-Carlisle Building - Bio-encryption Key Vault&quot;&gt;&gt;
+&lt;&lt;set $imgCurrent to $imgVault&gt;&gt;</tw-passagedata><tw-passagedata pid="33" name="H1: Office Cubicle" tags="heist heist1" position="1511,2749" size="100,100">&lt;&lt;silently&gt;&gt;
 	&lt;&lt;script&gt;&gt;
 		window.UpdateGuardPositionEmployee()
 	&lt;&lt;/script&gt;&gt;
@@ -1145,6 +1206,10 @@ You look at the board filled maps. The board is labelled &quot;Problematic Areas
 	&lt;&lt;script&gt;&gt;
 		window.UpdateGuardPositionEmployee()
 	&lt;&lt;/script&gt;&gt;
+	&lt;&lt;if !$h1BoardSable&gt;&gt;
+		&lt;&lt;set $distrust to $distrust + 1&gt;&gt;
+		&lt;&lt;set $h1BoardSable to true&gt;&gt;
+	&lt;&lt;/if&gt;&gt;
 	&lt;&lt;set $guardPosition to window.GetGuardPositionEmployee()&gt;&gt;
 	&lt;&lt;set $heistTime to $heistTime + 1&gt;&gt;
 &lt;&lt;/link&gt;&gt;&lt;&lt;/nobr&gt;&gt;
@@ -1156,6 +1221,10 @@ You look at the board filled maps. The board is labelled &quot;Problematic Areas
 	&lt;&lt;script&gt;&gt;
 		window.UpdateGuardPositionEmployee()
 	&lt;&lt;/script&gt;&gt;
+	&lt;&lt;if !$h1BoardNorth&gt;&gt;
+		&lt;&lt;set $distrust to $distrust - 1&gt;&gt;
+		&lt;&lt;set $h1BoardNorth to true&gt;&gt;
+	&lt;&lt;/if&gt;&gt;
 	&lt;&lt;set $guardPosition to window.GetGuardPositionEmployee()&gt;&gt;
 	&lt;&lt;set $heistTime to $heistTime + 1&gt;&gt;
 &lt;&lt;/link&gt;&gt;&lt;&lt;/nobr&gt;&gt;
@@ -1165,8 +1234,7 @@ You look at the board filled maps. The board is labelled &quot;Problematic Areas
 Perhaps you all aren&#39;t as unnoticed as you originally thought. You really hope no one gets hurt because of this.</tw-passagedata><tw-passagedata pid="62" name="H1: Sable Square" tags="heist heist1 distrust-up" position="1136,2060" size="100,100">Sable Square, the hotbed of advertising and glamour is also listed here. Beneath it, it says &quot;Evidence of Tampered Security Footage. Recommendation: Internal Investigation into Security Personnel&quot;
 
 You wonder if Marcellus has anything to do with this too. Sure is a lot he doesn&#39;t seem to be telling you.
-
-&lt;&lt;set $distrust to $distrust + 1&gt;&gt;</tw-passagedata><tw-passagedata pid="63" name="H1: Northern Reaches" tags="heist heist1 distrust-down" position="1252,2024.3333333333333" size="100,100">You see a place you don&#39;t recognize on the northern end of the city. It&#39;s far enough that you didn&#39;t even realize that part of the city is inhabitable. Beneath it, it says &quot;High Casualty Count due to External Clime Exposure. Recommendation: No action required.&quot;
+</tw-passagedata><tw-passagedata pid="63" name="H1: Northern Reaches" tags="heist heist1 distrust-down" position="1252,2024.3333333333333" size="100,100">You see a place you don&#39;t recognize on the northern end of the city. It&#39;s far enough that you didn&#39;t even realize that part of the city is inhabitable. Beneath it, it says &quot;High Casualty Count due to External Clime Exposure. Recommendation: No action required.&quot;
 
 You hadn&#39;t realized your family&#39;s company cared so //little// about people. Aren&#39;t they supposed to be keeping them safe?
 
@@ -1300,13 +1368,15 @@ Marcellus takes off his pack and starts unwrapping some rope, before walking ove
 
 &quot;You&#39;re up, Trucy.&quot; he says, turning to you.
 
-[[&gt; Climb.|H2: Scaling the Building]]</tw-passagedata><tw-passagedata pid="80" name="H2: Scaling the Building 2" tags="heist heist2" position="1783,2311" size="100,100">As the motor brings you up to the top, you see an open window of what looks like another office. This one, however, seems much less sophisticated. You could almost describe it as, scientific, maybe?
+[[&gt; Climb.|H2: Scaling the Building]]</tw-passagedata><tw-passagedata pid="80" name="H2: Scaling the Building 2" tags="heist heist2 outside" position="1783,2311" size="100,100">As the motor brings you up to the top, you see an open window of what looks like another office. This one, however, seems much less sophisticated. You could almost describe it as, scientific, maybe?
 
 &quot;Good luck, Truce!&quot; you hear a call out from beneath you. You look behind, and Violet flies off on a metal sheet. The underside of it glows blue and you see some small flecks of flame.
 
 You hope she gets back safe.
 
-[[&gt; Enter the office.|H2: Head Researcher&#39;s Office]]</tw-passagedata><tw-passagedata pid="81" name="H2: Research Trio" tags="heist heist2 distrust-down" position="2226,2279" size="100,100">&lt;&lt;silently&gt;&gt;
+[[&gt; Enter the office.|H2: Head Researcher&#39;s Office]]
+&lt;&lt;set $imgCurrent to $imgSkyline&gt;&gt;
+&lt;&lt;set $locationCurrent to &quot;Nwaeri-Carlisle Building - Outside&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="81" name="H2: Research Trio" tags="heist heist2 distrust-down" position="2254.3333333333335,2289" size="100,100">&lt;&lt;silently&gt;&gt;
 	&lt;&lt;script&gt;&gt;
 		window.UpdateGuardPositionResearch()
 	&lt;&lt;/script&gt;&gt;
@@ -1325,6 +1395,10 @@ You approach the set of research tables. A few prototypes are laid out on these 
 	&lt;&lt;script&gt;&gt;
 		window.UpdateGuardPositionResearch()
 	&lt;&lt;/script&gt;&gt;
+	&lt;&lt;if !$h2TrioGun&gt;&gt;
+		&lt;&lt;set $distrust to $distrust - 1&gt;&gt;
+		&lt;&lt;set $h2TrioGun to true&gt;&gt;
+	&lt;&lt;/if&gt;&gt;
 	&lt;&lt;set $guardPosition to window.GetGuardPositionResearch()&gt;&gt;
 	&lt;&lt;set $heistTime to $heistTime + 1&gt;&gt;
 &lt;&lt;/link&gt;&gt;&lt;&lt;/nobr&gt;&gt;
@@ -1336,6 +1410,10 @@ You approach the set of research tables. A few prototypes are laid out on these 
 	&lt;&lt;script&gt;&gt;
 		window.UpdateGuardPositionResearch()
 	&lt;&lt;/script&gt;&gt;
+	&lt;&lt;if !$h2TrioCamera&gt;&gt;
+		&lt;&lt;set $distrust to $distrust - 1&gt;&gt;
+		&lt;&lt;set $h2TrioCamera to true&gt;&gt;
+	&lt;&lt;/if&gt;&gt;
 	&lt;&lt;set $guardPosition to window.GetGuardPositionResearch()&gt;&gt;
 	&lt;&lt;set $heistTime to $heistTime + 1&gt;&gt;
 &lt;&lt;/link&gt;&gt;&lt;&lt;/nobr&gt;&gt;
@@ -1344,14 +1422,17 @@ You approach the set of research tables. A few prototypes are laid out on these 
 	&lt;&lt;replace &quot;#h2-triotext&quot; t8n &gt;&gt;
 		&lt;&lt;include [[H2: Android]]&gt;&gt;
 	&lt;&lt;/replace&gt;&gt;
+	&lt;&lt;if !$h2TrioAndroid&gt;&gt;
+		&lt;&lt;set $distrust to $distrust - 1&gt;&gt;
+		&lt;&lt;set $h2TrioAndroid to true&gt;&gt;
+	&lt;&lt;/if&gt;&gt;
 	&lt;&lt;script&gt;&gt;
 		window.UpdateGuardPositionResearch()
 	&lt;&lt;/script&gt;&gt;
 	&lt;&lt;set $guardPosition to window.GetGuardPositionResearch()&gt;&gt;
 	&lt;&lt;set $heistTime to $heistTime + 1&gt;&gt;
 &lt;&lt;/link&gt;&gt;&lt;&lt;/nobr&gt;&gt;
-[[&gt; Stop looking at the prototypes.|H2: Research Lab Alpha]]
-&lt;&lt;if visited() &lt;= 1&gt;&gt;&lt;&lt;set $distrust to $distrust - 3&gt;&gt;&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="82" name="H2: Marcellus Warning" tags="heist heist2" position="2064.6666666666665,2725" size="100,100">Marcellus grabs your shoulder. &quot;Easy, Trucy. There&#39;s a security checkpoint ahead, behind one-way glass. You go any further, they&#39;ll shut down the whole building,&quot; he tells you.
+[[&gt; Stop looking at the prototypes.|H2: Research Lab Alpha]]</tw-passagedata><tw-passagedata pid="82" name="H2: Marcellus Warning" tags="heist heist2" position="2064.6666666666665,2725" size="100,100">Marcellus grabs your shoulder. &quot;Easy, Trucy. There&#39;s a security checkpoint ahead, behind one-way glass. You go any further, they&#39;ll shut down the whole building,&quot; he tells you.
 
 &lt;span id=&quot;dialogueH2-marcellus&quot;&gt;&lt;&lt;nobr&gt;&gt;&lt;&lt;if !$proposalAccepted&gt;&gt;
 	&lt;&lt;link &quot;&gt; \&quot;Well what are we supposed to do instead?\&quot;&quot;&gt;&gt;
@@ -1364,10 +1445,6 @@ You approach the set of research tables. A few prototypes are laid out on these 
 &lt;&lt;/if&gt;&gt;&lt;&lt;/nobr&gt;&gt;
 &lt;&lt;nobr&gt;&gt;&lt;&lt;if $proposalAccepted&gt;&gt;
 	&lt;&lt;link &quot;&gt; \&quot;Oh dear, what now, then?\&quot;&quot;&gt;&gt;
-		&lt;&lt;prepend &quot;#dialogueH2-marcellus&quot;&gt;&gt;
-			&quot;Oh dear,&quot; you say, worried. &quot;What now, then?&quot;
-			
-		&lt;&lt;/prepend&gt;&gt;
 		&lt;&lt;replace &quot;#dialogueH2-marcellus&quot; t8n &gt;&gt;
 			&quot;Oh dear,&quot; you say, worried. &quot;What now, then?&quot;
 			
@@ -1376,6 +1453,7 @@ You approach the set of research tables. A few prototypes are laid out on these 
 	&lt;&lt;/link&gt;&gt;&lt;&lt;/if&gt;&gt;
 &lt;&lt;/nobr&gt;&gt;&lt;/span&gt;
 &lt;&lt;set $h2lookingforVent to true&gt;&gt;</tw-passagedata><tw-passagedata pid="83" name="H2: Marcellus Warning 2" tags="heist heist2" position="2102.6666666666665,2902" size="100,100">
+
 &quot;Should be a way around,&quot; he says. &quot;Like a vent, or something. Look around.&quot;
 
 [[&gt; Look around.|H2: Research Hallway West (1)]]</tw-passagedata><tw-passagedata pid="84" name="H2: Checkpoint Confrontation" tags="heist heist2" position="2377.6666666666665,2410.6666666666665" size="100,100">&quot;Alright, Trucy,&quot; whispers Marcellus. &quot;What do you see?&quot;
@@ -1385,7 +1463,9 @@ You approach the set of research tables. A few prototypes are laid out on these 
 &quot;Damn, here&#39;s the deal, then,&quot; you feel metal tapping your side. You look back, and Marcellus is handing you his plasma pistol. &quot;I can&#39;t get in front of you like this, and they&#39;ll definitely notice if we try to get out of here. You&#39;ve gotta take them out.&quot;
 
 [[&gt; Take the pistol.|H2: Checkpoint Confrontation 2]]
-&lt;&lt;/linkreplace&gt;&gt;</tw-passagedata><tw-passagedata pid="85" name="H2: Checkpoint Confrontation 2" tags="heist heist2" position="2377,2275" size="100,100">Your hand quivers with the gun. You&#39;ve studied how they work, how they&#39;re constructed, and the guidelines surrounding weapon possession and use. But, you&#39;ve never had to shoot one before.
+&lt;&lt;/linkreplace&gt;&gt;
+&lt;&lt;set $imgCurrent to $imgScienceHallway&gt;&gt;
+&lt;&lt;set $locationCurrent to &quot;Nwaeri-Carlisle Building - Vault Security Checkpoint&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="85" name="H2: Checkpoint Confrontation 2" tags="heist heist2" position="2377,2275" size="100,100">Your hand quivers with the gun. You&#39;ve studied how they work, how they&#39;re constructed, and the guidelines surrounding weapon possession and use. But, you&#39;ve never had to shoot one before.
 
 On the side of the gun, you see a dial. This should be the switch to switch from stun to kill.
 
@@ -1417,7 +1497,7 @@ On your right, you see the guard now collapsed. The skin on his neck glows a fad
 
 &quot;Good try, kid. Sorry about the push,&quot; he says, offering you a hand.
 
-[[&gt; Take his hand.|H2: Security Checkpoint]]</tw-passagedata><tw-passagedata pid="92" name="H2: Checkpoint Confrontation Talk A" tags="heist heist2 suspicion-up" position="2728,2234" size="100,100">&lt;span class=&quot;you-say&quot;&gt;&quot;Hi,&quot;&lt;/span&gt; you say, raising your hands diplomatically. &lt;span class=&quot;you-say&quot;&gt;&quot;My name is-&quot;&lt;/span&gt;
+&lt;&lt;if $distrust&lt;=0&gt;&gt;[[&gt; Take his hand.|H2: Security Checkpoint]]&lt;&lt;else&gt;&gt;[[&gt; Get up.|H2: Security Checkpoint]]&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="92" name="H2: Checkpoint Confrontation Talk A" tags="heist heist2 suspicion-up" position="2728,2234" size="100,100">&lt;span class=&quot;you-say&quot;&gt;&quot;Hi,&quot;&lt;/span&gt; you say, raising your hands diplomatically. &lt;span class=&quot;you-say&quot;&gt;&quot;My name is-&quot;&lt;/span&gt;
 
 Before you can finish your introduction, a shot rings out from above you. The guard grabs his neck, yelps out in pain, then collapses onto his desk.
 
@@ -1451,14 +1531,15 @@ Minh
 Head Researcher
 
 [[&gt; Look away.|H2: Head Researcher&#39;s Office]]
-&lt;&lt;if visited() &lt;= 1&gt;&gt;&lt;&lt;set $distrust to $distrust + 1&gt;&gt;&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="97" name="PassageHeader" tags="" position="1554,2171" size="100,100">&lt;div id=&quot;img-container&quot;&gt;[img[$imgCurrent]]&lt;/div&gt;&lt;div id=&quot;location-name&quot;&gt;$locationCurrent&lt;/div&gt;
-</tw-passagedata><tw-passagedata pid="98" name="PassageDone" tags="" position="1554,2299" size="100,100">&lt;&lt;replace &quot;#img-container&quot;&gt;&gt;[img[$imgCurrent]]&lt;&lt;/replace&gt;&gt;
-&lt;&lt;replace &quot;#location-name&quot;&gt;&gt;$locationCurrent&lt;&lt;/replace&gt;&gt;</tw-passagedata><tw-passagedata pid="99" name="I0: Opening" tags="intro0" position="688,172" size="100,100">Through your bleary and tear-filled eyes, the lights of the square are blinding. The streaks of lights and color bleed together as if through a dirty window, over-illuminating the streets, stores, and abundance of people on the square.
+&lt;&lt;if visited() &lt;= 1&gt;&gt;&lt;&lt;set $distrust to $distrust + 1&gt;&gt;&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="97" name="PassageHeader" tags="" position="290.6666666666665,1057.6666666666665" size="100,100">&lt;div id=&quot;img-container&quot;&gt;[img[$imgCurrent]]&lt;/div&gt;&lt;div id=&quot;location-name&quot;&gt;$locationCurrent&lt;/div&gt;
+</tw-passagedata><tw-passagedata pid="98" name="PassageDone" tags="" position="467.33333333333326,1049" size="100,100">&lt;&lt;replace &quot;#img-container&quot;&gt;&gt;[img[$imgCurrent]]&lt;&lt;/replace&gt;&gt;
+&lt;&lt;replace &quot;#location-name&quot;&gt;&gt;$locationCurrent&lt;&lt;/replace&gt;&gt;</tw-passagedata><tw-passagedata pid="99" name="I0: Opening" tags="intro0" position="678,173.66666666666669" size="100,100">Through your bleary and tear-filled eyes, the lights of the square are blinding. The streaks of lights and color bleed together as if through a dirty window, over-illuminating the streets, stores, and abundance of people on the square.
 
 Your name is Trucy, and so far, you&#39;re having a pretty lousy day.
 
 [[&gt; Wipe your eyes.|I0: Opening 2]]
-&lt;&lt;set $locationCurrent to &quot;Sable Square&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="100" name="I0: Opening 2" tags="intro0" position="688,322" size="100,100">But, of course, it won&#39;t do for someone of your stature to crying in public, and you wipe your eyes on a hankerchief. You open them to see that your brother, Cecil, is handing you an ice cream cone. The top is flecked with faux-gold like he usually likes it, and he seems to be taking special care not to get any of the melting dessert on his new suit.
+&lt;&lt;set $locationCurrent to &quot;Sable Square&quot;&gt;&gt;
+&lt;&lt;set $imgCurrent to $imgSableSquare&gt;&gt;</tw-passagedata><tw-passagedata pid="100" name="I0: Opening 2" tags="intro0" position="688,322" size="100,100">But, of course, it won&#39;t do for someone of your stature to crying in public, and you wipe your eyes on a hankerchief. You open them to see that your brother, Cecil, is handing you an ice cream cone. The top is flecked with faux-gold like he usually likes it, and he seems to be taking special care not to get any of the melting dessert on his new suit.
 
 &quot;Here, Trucy,&quot; he says, &quot;This is the kind you like, right? Strawberry?&quot;
 
@@ -1513,9 +1594,9 @@ Your tears of pain and sadness quickly burn into anger, and you look your brothe
 
 Instead, you look around, and glance off to the side and the bright lights. Out of the corner of your eye, though, you see something coming towards you.
 
-[[&gt; Turn around!|I0: Opening 5]]</tw-passagedata><tw-passagedata pid="107" name="I0: Opening 4A" tags="" position="658,922" size="100,100">You move in to hug your brother- but, all of a sudden, there&#39;s yelling behind you. You stop in your tracks and make eye contact, only to find the abject horror in his eyes as he freezes.
+[[&gt; Turn around!|I0: Opening 5]]</tw-passagedata><tw-passagedata pid="107" name="I0: Opening 4A" tags="intro0" position="658,920.3333333333334" size="100,100">You move in to hug your brother- but, all of a sudden, there&#39;s yelling behind you. You stop in your tracks and make eye contact, only to find the abject horror in his eyes as he freezes.
 
-[[&gt; Turn around.|I0: Opening 5]]</tw-passagedata><tw-passagedata pid="108" name="I0: Opening 5" tags="" position="807,1045" size="100,100">You turn around quickly to see what&#39;s behind you, but you only get a glimpse before you feel burlap being flung over your head. You lose your balance, start falling towards the ground, and rough hands start shoving, pulling, and carrying you somewhere.
+[[&gt; Turn around.|I0: Opening 5]]</tw-passagedata><tw-passagedata pid="108" name="I0: Opening 5" tags="intro0" position="807,1045" size="100,100">You turn around quickly to see what&#39;s behind you, but you only get a glimpse before you feel burlap being flung over your head. You lose your balance, start falling towards the ground, and rough hands start shoving, pulling, and carrying you somewhere.
 
 [[&gt; &quot;Cecil!&quot;|I0: Opening 6]]</tw-passagedata><tw-passagedata pid="109" name="I0: Opening 6" tags="intro0" position="808,1192" size="100,100">&lt;span class=&quot;you-say&quot;&gt;&quot;Cecil!&quot;&lt;/span&gt; you yell out, as best you can. The hands on you are rough and hurried and you stumble and lose your balance.
 
@@ -1523,13 +1604,14 @@ Instead, you look around, and glance off to the side and the bright lights. Out 
 
 You hear a click of something whirring in front of your face.
 
-[[&gt; Hold your breath!|I0: Opening 7]]</tw-passagedata><tw-passagedata pid="110" name="I0: Opening 7" tags="" position="807,1344" size="100,100">You shut your lips and do your best not to take a breath. A metal and unseen device is pressed onto your face, and it clicks and makes a harrowing hissing noise.
+[[&gt; Hold your breath!|I0: Opening 7]]</tw-passagedata><tw-passagedata pid="110" name="I0: Opening 7" tags="intro0" position="807,1344" size="100,100">You shut your lips and do your best not to take a breath. A metal and unseen device is pressed onto your face, and it clicks and makes a harrowing hissing noise.
 
 But, try as you might, the stress of being dragged and shoved gets to you, and your lungs wail in pain. Against your will, you gasp out, body desperate for air. Immediately, your senses begin to feel hazy and dulled, as if you&#39;ve been covered in a heavy blanked.
 
 The last thing you remember is the feeling of landing onto hard metal.
 
-[[&gt; ...|E0: Whispers]]</tw-passagedata><tw-passagedata pid="111" name="E0: Whispers" tags="escape0" position="1642,180" size="100,100">You stir in your unconsciousness, faintly hearing voices whispering in the darkness.
+[[&gt; ...|E0: Whispers]]
+&lt;&lt;set $imgCurrent to $imgSableSquareDark&gt;&gt;</tw-passagedata><tw-passagedata pid="111" name="E0: Whispers" tags="escape0" position="1642,180" size="100,100">You stir in your unconsciousness, faintly hearing voices whispering in the darkness.
 
 &quot;The hell are we supposed to do with her? Who even is she?&quot;
 
@@ -1539,16 +1621,19 @@ The last thing you remember is the feeling of landing onto hard metal.
 
 [[&gt; Keep sleeping.|E0: Intro 1]]
 &lt;&lt;set $e0VivianTrucyName to &quot;hun&quot;&gt;&gt;
-&lt;&lt;set $locationCurrent to &quot;?&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="112" name="E0: Intro 1" tags="escape0" position="1642,330" size="100,100">The voices fade, and you hear footsteps walk out of the door. Your entire body aches and whines, dulled only by your diminishing unconsciousness. You begin to feel the bonds on your hands, surprisingly smooth and loose, as if it were a poor knot made out of high quality material. The chair you&#39;re placed in feels hard and uncomfortable underneath you.
+&lt;&lt;set $locationCurrent to &quot;?&quot;&gt;&gt;
+&lt;&lt;set $imgCurrent to $imgBlack&gt;&gt;</tw-passagedata><tw-passagedata pid="112" name="E0: Intro 1" tags="escape0" position="1642,330" size="100,100">The voices fade, and you hear footsteps walk out of the door. Your entire body aches and whines, dulled only by your diminishing unconsciousness. You begin to feel the bonds on your hands, surprisingly smooth and loose, as if it were a poor knot made out of high quality material. The chair you&#39;re placed in feels hard and uncomfortable underneath you.
 
-[[&gt; Open your eyes.|E0: Intro 2]]</tw-passagedata><tw-passagedata pid="113" name="E0: Intro 2" tags="escape0" position="1642,480" size="100,100">With some effort, you manage to lift your eyelids and look up. You&#39;re in a small, dark room, the only light being a faint amount of sun leaking in from cracks in the ceiling. You look around, trying to get your bearings, but after a delay you notice that there&#39;s a figure in the dark, looking at you.
+[[&gt; Open your eyes.|E0: Intro 2]]
+</tw-passagedata><tw-passagedata pid="113" name="E0: Intro 2" tags="escape0" position="1642,480" size="100,100">With some effort, you manage to lift your eyelids and look up. You&#39;re in a small, dark room, the only light being a faint amount of sun leaking in from cracks in the ceiling. You look around, trying to get your bearings, but after a delay you notice that there&#39;s a figure in the dark, looking at you.
 
 [[&gt; Scream in fear.|E0: Intro 3A]]
 [[&gt; &quot;Untie me, ruffian! Wait until my father hears about this!&quot;|E0: Intro 3B]]
 [[&gt; &quot;Hello?&quot;|E0: Intro 3C]]
 
 &lt;&lt;set $vivTrucyName to &quot;hun&quot;&gt;&gt;
-&lt;&lt;set $locationCurrent to &quot;Dusty Closet&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="114" name="E0: Intro 3A" tags="escape0" position="1492,630" size="100,100">You yell out in your shrillest, loudest voice you can manage. It echoes through the room and what you can only assume is the greater building, echoing through the old wooden walls.
+&lt;&lt;set $locationCurrent to &quot;Dusty Closet&quot;&gt;&gt;
+&lt;&lt;set $imgCurrent to $imgCloset&gt;&gt;</tw-passagedata><tw-passagedata pid="114" name="E0: Intro 3A" tags="escape0" position="1492,630" size="100,100">You yell out in your shrillest, loudest voice you can manage. It echoes through the room and what you can only assume is the greater building, echoing through the old wooden walls.
 
 A minute passes, and your throat is sore and scratchy, and your yells fade into silence.
 
@@ -1602,19 +1687,17 @@ The woman is dressed in a fair plain vest and some worker&#39;s pants. Out of th
 
 &quot;Call me Violet, I&#39;ll be your guard this morning. Can I get you some water, love?&quot; she says.
 
-[[&gt; &quot;Um. Sure?&quot;|E0: Intro 5]]</tw-passagedata><tw-passagedata pid="119" name="E0: Intro 3B2" tags="" position="1658,779" size="100,100">&lt;span class=&quot;you-say&quot;&gt;&quot;Are you listening to me?&quot;&lt;/span&gt; you ask the figure.
+[[&gt; &quot;Um. Sure?&quot;|E0: Intro 5]]</tw-passagedata><tw-passagedata pid="119" name="E0: Intro 3B2" tags="escape0" position="1658,779" size="100,100">&lt;span class=&quot;you-say&quot;&gt;&quot;Are you listening to me?&quot;&lt;/span&gt; you ask the figure.
 
 &quot;Oh no, darling, I&#39;m listening,&quot; says the voice. &quot;Just not particularly frightened, is all.&quot;
 
-[[&gt; &quot;What? Who are you? Where am I?&quot;|E0: Intro 4]]</tw-passagedata><tw-passagedata pid="120" name="E0: Intro 5" tags="" position="1650,1090" size="100,100">&lt;span class=&quot;you-say&quot;&gt;&quot;Um,&quot;&lt;/span&gt; you stammer, certainly not expecting that this is how you&#39;d be spending your morning. &lt;span class=&quot;you-say&quot;&gt;&quot;Sure?&quot;&lt;/span&gt;
+[[&gt; &quot;What? Who are you? Where am I?&quot;|E0: Intro 4]]</tw-passagedata><tw-passagedata pid="120" name="E0: Intro 5" tags="escape0" position="1650,1090" size="100,100">&lt;span class=&quot;you-say&quot;&gt;&quot;Um,&quot;&lt;/span&gt; you stammer, certainly not expecting that this is how you&#39;d be spending your morning. &lt;span class=&quot;you-say&quot;&gt;&quot;Sure?&quot;&lt;/span&gt;
 
 &quot;Lovely!&quot; says Vivian, clapping her hands together. &quot;I&#39;ll be right back, stay right here, now.&quot;
 
 She heads out the door. Now&#39;s probably the best opportunity you&#39;ll get to get out of here.
 
-[[&gt; Assess your situation.|E1: Closet]]
-&lt;&lt;set $e1ComputerRoomPower to true&gt;&gt;
-&lt;&lt;set $e1Marcie to false&gt;&gt;</tw-passagedata><tw-passagedata pid="121" name="E1: Escape" tags="escape1" position="2262,843" size="100,100">You manage to wiggle your thin wrists through the shoddily tied knots around them. After a few minutes of struggle, you manage to get a hand free. In short order, you free your other hand.
+[[&gt; Assess your situation.|E1: Closet]]</tw-passagedata><tw-passagedata pid="121" name="E1: Escape" tags="escape1" position="2262,843" size="100,100">You manage to wiggle your thin wrists through the shoddily tied knots around them. After a few minutes of struggle, you manage to get a hand free. In short order, you free your other hand.
 
 Cecil had always told you to be resourceful. You didn&#39;t realize this is what he meant.
 
@@ -1689,7 +1772,8 @@ Instead, though, she reaches towards you, lifts you up, and throws you over her 
 
 [[&gt; Get tied up again.|E1: Closet]]</tw-passagedata><tw-passagedata pid="133" name="E1: Living Room" tags="escape1" position="2534,341" size="100,100">You peer through the door to the living room. It&#39;s a pretty cozy looking place, nothing as lavish as the room in your suite back home, though. Across the room, however, you see Violet and (someone you don&#39;t recognize/Oculus) on the other side, still talking. You probably don&#39;t want to go through here, lest you get caught.
 
-[[&gt; Go back.|E1: Hallway East]]</tw-passagedata><tw-passagedata pid="134" name="E1: Computer Locked" tags="escape1" position="3157,379" size="100,100">You walk over to the PC and look around. As very frequently cited in your cybersecurity classes, users themselves are the most common security vulnerability. There&#39;s probably a password around here somewhere.
+[[&gt; Go back.|E1: Hallway East]]
+&lt;&lt;set $imgCurrent to $imgGRLivingRoom&gt;&gt;</tw-passagedata><tw-passagedata pid="134" name="E1: Computer Locked" tags="escape1" position="3157,379" size="100,100">You walk over to the PC and look around. As very frequently cited in your cybersecurity classes, users themselves are the most common security vulnerability. There&#39;s probably a password around here somewhere.
 
 Sure enough, you find a scrap of paper half covered by an ancient-looking keyboard. It has a password written on it.
 
@@ -1831,7 +1915,8 @@ Now that you&#39;re up here, you hear the bustle of a storefront above you.
 Now that you&#39;re up here, you can clearly see the store above you, the vent seems to placed in a pretty innocuous place in the area.
 
 [[&gt; Climb into the store.|E2: Grocery]]
-&lt;&lt;set $locationCurrent to &quot;Grocery Store&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="155" name="E2: Grocery" tags="escape2" position="3073,1137" size="100,100">You push the vent up and quickly scurry yourself up onto the shop floor. A few onlookers normally shopping pause to look at you in bewildered confusion. You&#39;d be embarassed, but you&#39;re far too elated about your escape to really care about that. Time to find an exit.
+&lt;&lt;set $locationCurrent to &quot;Grocery Store&quot;&gt;&gt;
+&lt;&lt;set $imgCurrent to $imgGrocery&gt;&gt;</tw-passagedata><tw-passagedata pid="155" name="E2: Grocery" tags="escape2" position="3078,1143.6666666666667" size="100,100">You push the vent up and quickly scurry yourself up onto the shop floor. A few onlookers normally shopping pause to look at you in bewildered confusion. You&#39;d be embarassed, but you&#39;re far too elated about your escape to really care about that. Time to find an exit.
 
 [[&gt; Look for an exit.|E2: Grocery 2]]</tw-passagedata><tw-passagedata pid="156" name="E2: Grocery 2" tags="escape2" position="3216,1119" size="100,100">You look around. The store-- a grocery store, you think-- is filled with measely amounts of produce and large amounts of dust. You&#39;re surprised, this isn&#39;t anything like the stores back home, in the rare occassion you even got to go shopping. Instead, you see boxes of barely labeled food products, all with the ugly Terracorp branding plastered on the front.
 
@@ -1865,18 +1950,21 @@ But behind it though, you can barely see a pair of glass double doors.
 Your eyes dart around, looking for a place to go.
 
 [[&gt; Keep moving!|E2: Grocery Get Shot]]
-&lt;&lt;set $locationCurrent to &quot;Black Marketplace&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="160" name="E2: Grocery Get Shot" tags="escape2 distrust-up" position="2891,1497.6666666666667" size="100,100">You start to run again, to get as far away from your captors as possible. But as you take a step, you feel the hot burning heat against you back, and you&#39;re suddenly aware of every nerve in your body. It burns, hotter than anything you&#39;ve ever experienced, and you start to fall forwards.
+&lt;&lt;set $locationCurrent to &quot;Black Marketplace&quot;&gt;&gt;
+&lt;&lt;set $imgCurrent to $imgBlackMarket&gt;&gt;</tw-passagedata><tw-passagedata pid="160" name="E2: Grocery Get Shot" tags="escape2 distrust-up" position="2891,1497.6666666666667" size="100,100">You start to run again, to get as far away from your captors as possible. But as you take a step, you feel the hot burning heat against you back, and you&#39;re suddenly aware of every nerve in your body. It burns, hotter than anything you&#39;ve ever experienced, and you start to fall forwards.
 
 You don&#39;t remember hitting the ground.
 
 [[&gt; ...|E3: Waking Up]]
 &lt;&lt;set $distrust to $distrust + 1&gt;&gt;
-&lt;&lt;set $e2GotShot to true&gt;&gt;</tw-passagedata><tw-passagedata pid="161" name="E3: Waking Up" tags="escape3" position="2628,1501" size="100,100">You eventually start to stir, and slowly manage to break yourself out of another haze. Unlike the last time, every nerve in your body seems to continue to smoulder, and every movement or breath you take feels faintly like fire.
+&lt;&lt;set $e2GotShot to true&gt;&gt;
+&lt;&lt;set $imgCurrent to $imgBlackMarketDark&gt;&gt;</tw-passagedata><tw-passagedata pid="161" name="E3: Waking Up" tags="escape3" position="2628,1501" size="100,100">You eventually start to stir, and slowly manage to break yourself out of another haze. Unlike the last time, every nerve in your body seems to continue to smoulder, and every movement or breath you take feels faintly like fire.
 
 &quot;Oh, she&#39;s awake,&quot; says a voice&lt;&lt;if $e2Marcellus&gt;&gt;-- Marcellus, you remember now&lt;&lt;/if&gt;&gt;. &quot;Sorry about that Trucy, couldn&#39;t have you running out on us like that.&quot;
 
 [[&gt; &quot;What do you want from me?&quot;|E3: Stunned 2]]
-&lt;&lt;set $locationCurrent to &quot;Dusty Living Room&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="162" name="E2: Marcellus 2A" tags="escape2" position="3211,1482" size="100,100">&lt;span class=&quot;you-say&quot;&gt;&quot;Are you...&quot;&lt;/span&gt; you start, looking him over. &lt;span class=&quot;you-say&quot;&gt;&quot;Marcie?&quot;&lt;/span&gt;
+&lt;&lt;set $locationCurrent to &quot;Dusty Living Room&quot;&gt;&gt;
+&lt;&lt;set $imgCurrent to $imgBlack&gt;&gt;</tw-passagedata><tw-passagedata pid="162" name="E2: Marcellus 2A" tags="escape2" position="3211,1482" size="100,100">&lt;span class=&quot;you-say&quot;&gt;&quot;Are you...&quot;&lt;/span&gt; you start, looking him over. &lt;span class=&quot;you-say&quot;&gt;&quot;Marcie?&quot;&lt;/span&gt;
 
 His composure breaks for a second, and a flash of anger passes over his glasses. &quot;Marcie?! Dammit who the hell-&quot;
 
@@ -1908,7 +1996,8 @@ Before he continues, though, he collects himself. &quot;No. My name is Marcellus
 &quot;Friends, I&#39;d like to introduce you to Trucy Carlisle, our new guest here at the Glass Rose,&quot; announces Marcellus as he enters. &quot;Let&#39;s give her a warm welcome, shall we?&quot;
 
 [[&gt; &quot;Hello?&quot;|E3: Proposal 1]]
-&lt;&lt;set $locationCurrent to &quot;Glass Rose Headquarters - Living Room&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="167" name="E3: Proposal 1" tags="escape3" position="2470,1652" size="100,100">&lt;span class=&quot;you-say&quot;&gt;&quot;Hello?&quot;&lt;/span&gt; you call out meekly. From being unconcious to now being greeted by your captors, this is definitely a shock.
+&lt;&lt;set $locationCurrent to &quot;Glass Rose Headquarters - Living Room&quot;&gt;&gt;
+&lt;&lt;set $imgCurrent to $imgLivingRoom&gt;&gt;</tw-passagedata><tw-passagedata pid="167" name="E3: Proposal 1" tags="escape3" position="2470,1652" size="100,100">&lt;span class=&quot;you-say&quot;&gt;&quot;Hello?&quot;&lt;/span&gt; you call out meekly. From being unconcious to now being greeted by your captors, this is definitely a shock.
 
 &quot;Trucy //Carlisle//? Of the Nwaeri-Carlisles?&quot; says Violet, surprised. &quot;And here I thought you were just a lost rich girl, my my.&quot;
 
@@ -1932,7 +2021,8 @@ Marcellus grins.
 
 Marcellus sighs.
 
-[[&gt; Listen.|E3: Proposal 2]]</tw-passagedata><tw-passagedata pid="170" name="E3: Proposal 3" tags="escape3" position="2138,1502" size="100,100">&lt;span class=&quot;you-say&quot;&gt;&quot;F-father?&quot;&lt;/span&gt; you say, &lt;&lt;if $e2GotShot&gt;&gt;managing to sit yourself up on the couch&lt;&lt;else&gt;&gt;sitting down on the couch&lt;&lt;/if&gt;&gt;. &quot;You spoke to my father?&quot;
+[[&gt; Listen.|E3: Proposal 2]]
+&lt;&lt;set $imgCurrent to $imgLivingRoom&gt;&gt;</tw-passagedata><tw-passagedata pid="170" name="E3: Proposal 3" tags="escape3" position="2138,1502" size="100,100">&lt;span class=&quot;you-say&quot;&gt;&quot;F-father?&quot;&lt;/span&gt; you say, &lt;&lt;if $e2GotShot&gt;&gt;managing to sit yourself up on the couch&lt;&lt;else&gt;&gt;sitting down on the couch&lt;&lt;/if&gt;&gt;. &lt;span class=&quot;you-say&gt;&quot;You spoke to my father?&quot;&lt;/span&gt;
 
 &quot;I did. You know we had planned to just ransom you back, make a quick buck, you know?&quot; says Marcellus, &quot;But would you believe it, dude said-- and I quote:&quot;
 
@@ -2056,7 +2146,7 @@ You spend the next week pondering over your own plan.
 
 A week passes as you and the Glass Rose prepare for the mission.
 
-[[&gt; Continue.|H0: Context]]</tw-passagedata><tw-passagedata pid="189" name="H3: Sterilization Room 2" tags="heist3 suspicion-up" position="2276,3017" size="100,100">After some time, the glass doors of the sterilization room close, and release some sort of gas. You remember this from the plans: the NCC needs to prevent the Biokey from being contaminated, lest it compromise it&#39;s function.
+[[&gt; Continue.|H0: Context]]</tw-passagedata><tw-passagedata pid="189" name="H3: Sterilization Room 2" tags="suspicion-up heist2" position="2276,3017" size="100,100">After some time, the glass doors of the sterilization room close, and release some sort of gas. You remember this from the plans: the NCC needs to prevent the Biokey from being contaminated, lest it compromise it&#39;s function.
 
 Marcellus seems antsy next to you. &lt;&lt;if $distrust &gt; 0&gt;&gt;You&#39;re uncomfortable, being so close to him. You don&#39;t think you&#39;re going to be able to go through with this.&lt;&lt;else&gt;&gt;You&#39;re excited, being so close to the end. Now&#39;s your chance to really make a difference.&lt;&lt;/if&gt;&gt;
 
@@ -2065,6 +2155,7 @@ Marcellus seems antsy next to you. &lt;&lt;if $distrust &gt; 0&gt;&gt;You&#39;re
 &lt;&lt;if $heistTime &gt; 30&gt;&gt;&lt;&lt;set $suspicion to $suspicion + 1&gt;&gt;&lt;&lt;/if&gt;&gt;
 &lt;&lt;if $heistTime &gt; 40&gt;&gt;&lt;&lt;set $suspicion to $suspicion + 1&gt;&gt;&lt;&lt;/if&gt;&gt;
 &lt;&lt;if $heistTime &gt; 50&gt;&gt;&lt;&lt;set $suspicion to $suspicion + 1&gt;&gt;&lt;&lt;/if&gt;&gt;
+&lt;&lt;if $heistTime &gt; 60&gt;&gt;&lt;&lt;set $suspicion to $suspicion + 1&gt;&gt;&lt;&lt;/if&gt;&gt;
 &lt;&lt;/silently&gt;&gt;&lt;&lt;set $locationCurrent to &quot;Nwaeri-Carlisle Building - Sterilization Room&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="190" name="H3: Biokey Vault 2" tags="heist3" position="2523,3283" size="100,100">&lt;&lt;if $heistTime &gt;= 50&gt;&gt;&quot;That took a minute, but,&quot;&lt;&lt;else&gt;&gt;&quot;Looks like we made good time.&quot;&lt;&lt;/if&gt;&gt; says Marcellus. &quot;We&#39;re finally here.&quot;
 
 He takes out his set of harnesses and ropes from his bag, with the climbing device that he used to get you up onto this floor. He takes out a hook looking contraption and swings it up, miraculously missing the lasers and landing on a support beam above. He clicks some sort of switch on the device, and he is lifted off the ground towards the key.
@@ -2150,7 +2241,8 @@ Feeling braver than ever before, you jump off the edge of the building. Again, y
 Violet comes down the stairs, holding a plastic tray. &quot;I ordered a cake before we left, figured we could use the opportunity to celebrate!&quot;
 
 [[&gt; Smile.|END: Lo Distrust Hi Suspicion 2]]
-&lt;&lt;set $locationCurrent to &quot;Glass Rose Headquarters - Living Room&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="208" name="H3: Biokey Vault - Lo Distrust Lo Suspicion 2" tags="heist3" position="2379.333333333333,4437.666666666666" size="100,100">&lt;span class=&quot;you-say&quot;&gt;&quot;Oh,&quot;&lt;/span&gt; you say. Your cheeks feel a bit warm from embarassment, and you pull yourself away from Marcellus.
+&lt;&lt;set $locationCurrent to &quot;Glass Rose Headquarters - Living Room&quot;&gt;&gt;
+&lt;&lt;set $imgCurrent to $imgLivingRoom&gt;&gt;</tw-passagedata><tw-passagedata pid="208" name="H3: Biokey Vault - Lo Distrust Lo Suspicion 2" tags="heist3" position="2379.333333333333,4437.666666666666" size="100,100">&lt;span class=&quot;you-say&quot;&gt;&quot;Oh,&quot;&lt;/span&gt; you say. Your cheeks feel a bit warm from embarassment, and you pull yourself away from Marcellus.
 
 &quot;Hah! You&#39;re a funny one, Trucy,&quot; says Marcellus, teasingly. He puts a finger up to his ear, and his tone of voice shifts. &quot;Oculus! Mission&#39;s a success, we&#39;re on our way out.
 
@@ -2175,7 +2267,8 @@ Violet comes down the stairs, holding a plastic tray. &quot;I ordered a cake bef
 &quot;Sources say a strange figure was seen leaving the Nwaeri-Carlisle Building last night, seen running towards Sable Square station in the dead of the evening. NCC Authorities have not commented on this rumoured security breach, and no arrests have been publicized,&quot; says the reporter onscreen. It&#39;s the only thing keeping the room from being completely silent, but it hurts to be reminded of what&#39;s happened.
 
 [[&gt; Turn off the screen.|END: Lo Distrust Lo Suspicion 2]]
-&lt;&lt;set $locationCurrent to &quot;Nwaeri-Carlisle Building - Carlisle Suite&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="213" name="H3: Biokey Vault - Hi Distrust 3" tags="heist3" position="2654,4138" size="100,100">You take a step away from him, lifting your hands into the air. &lt;&lt;if $e2GotShot&gt;&gt;It wouldn&#39;t be the first time he&#39;s shot you with this thing, but you&#39;re pretty sure this time it won&#39;t be set to stun.&lt;&lt;/if&gt;&gt; He looks furious now, his usual cool facade broken.
+&lt;&lt;set $locationCurrent to &quot;Nwaeri-Carlisle Building - Carlisle Suite&quot;&gt;&gt;
+&lt;&lt;set $imgCurrent to $imgSuite&gt;&gt;</tw-passagedata><tw-passagedata pid="213" name="H3: Biokey Vault - Hi Distrust 3" tags="heist3" position="2654,4138" size="100,100">You take a step away from him, lifting your hands into the air. &lt;&lt;if $e2GotShot&gt;&gt;It wouldn&#39;t be the first time he&#39;s shot you with this thing, but you&#39;re pretty sure this time it won&#39;t be set to stun.&lt;&lt;/if&gt;&gt; He looks furious now, his usual cool facade broken.
 
 &quot;Do not do this, Marcellus,&quot; you hear a crackle in your ear from Oculus. &quot;Killing Trucy would only cause us trouble, and kill your dream before it even begins.&quot;
 
@@ -2207,7 +2300,8 @@ Instead, unbidden, you hear yourself start to scream.
 
 You fall to your knees, looking up at your father. He looks horrified, surprised, and deeply angry all at once as he looks at you. Voices crackle into your ear, from behind you, from in front of you, but they all sound so dull and distant. Your vision starts go to dark, and you&#39;re suddenly so- so tired.
 
-[[&gt; &quot;I&#39;m sorry, father.&quot;|END: Hi Distrust Hi Suspicion 2]]</tw-passagedata><tw-passagedata pid="220" name="END: Hi Distrust Hi Suspicion 2" tags="ending heist3" position="2579,5038" size="100,100">&lt;span class=&quot;you-say&quot;&gt;&quot;I-I&#39;m,&quot;&lt;/span&gt; you manage to say. Your collapse down to your hands and knees now, still looking up at your father. But you can barely see him through the darkness, and you have the sinking feeling that this is the last time you&#39;ll be able to make things right. &lt;span class=&quot;you-say&quot;&gt;&quot;-I&#39;m sorry, father.&quot;&lt;/span&gt;
+[[&gt; &quot;I&#39;m sorry, father.&quot;|END: Hi Distrust Hi Suspicion 2]]
+&lt;&lt;set $imgCurrent to $imgVaultDark&gt;&gt;</tw-passagedata><tw-passagedata pid="220" name="END: Hi Distrust Hi Suspicion 2" tags="ending heist3" position="2579,5038" size="100,100">&lt;span class=&quot;you-say&quot;&gt;&quot;I-I&#39;m,&quot;&lt;/span&gt; you manage to say. Your collapse down to your hands and knees now, still looking up at your father. But you can barely see him through the darkness, and you have the sinking feeling that this is the last time you&#39;ll be able to make things right. &lt;span class=&quot;you-say&quot;&gt;&quot;-I&#39;m sorry, father.&quot;&lt;/span&gt;
 
 Your arms give out underneath you, and once again you feel cold metal under your check.
 
@@ -2230,7 +2324,8 @@ He walks back through the door, leaving you alone in the vault.
 &quot;Sources say a strange figure was seen leaving the Nwaeri-Carlisle Building last night, seen running towards Sable Square station in the dead of the evening. NCC Authorities have not commented on this rumoured security breach, and no arrests have been publicized,&quot; says the reporter onscreen. It&#39;s the only thing keeping the room from being completely silent, but it hurts to be reminded of what&#39;s happened.
 
 [[&gt; Turn off the screen.|END: Hi Distrust Lo Suspicion 2]]
-&lt;&lt;set $locationCurrent to &quot;Nwaeri-Carlisle Building - Carlisle Suite&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="225" name="END: Hi Distrust Lo Suspicion 2" tags="ending nccsuite" position="2728,4888" size="100,100">You tap a few buttons on the nearby access panel and the screen shuts off. You and Cecil sit there together in some silence, and you can hear him shuffling in his chair trying to think of something to say.
+&lt;&lt;set $locationCurrent to &quot;Nwaeri-Carlisle Building - Carlisle Suite&quot;&gt;&gt;
+&lt;&lt;set $imgCurrent to $imgSuite&gt;&gt;</tw-passagedata><tw-passagedata pid="225" name="END: Hi Distrust Lo Suspicion 2" tags="ending nccsuite" position="2728,4888" size="100,100">You tap a few buttons on the nearby access panel and the screen shuts off. You and Cecil sit there together in some silence, and you can hear him shuffling in his chair trying to think of something to say.
 
 &quot;Hey... Trucy,&quot; he finally mumbles after a while. &quot;Are you- are you doing okay?&quot;
 
@@ -2309,7 +2404,43 @@ MARCIE: Last thing we need is a tunnel rat
 
 &quot;Hah, just Trucy, huh? That works for me.&quot; says Marcellus, in his usual gruff tone. With some effort, he lifts himself off his chair, and steps over to you. He straightens himself out, as if to address the rest of the room. &quot;I think I speak on behalf of all of us when I say, welcome to the Glass Rose, Trucy. And uh- sorry for kidnapping you.&quot;
 
-[[The End.]]</tw-passagedata></tw-storydata>
+[[The End.]]</tw-passagedata><tw-passagedata pid="239" name="StoryInit" tags="" position="376.66666666666674,932.5000000000002" size="100,100">&lt;&lt;silently&gt;&gt;
+&lt;&lt;set $distrust to 0&gt;&gt;
+&lt;&lt;set $suspicion to 0&gt;&gt;
+&lt;&lt;set $imgSableSquare to &quot;https://catnaomi.github.io/On-Stained-Glass/images/timessquare-crop.png&quot;&gt;&gt;
+&lt;&lt;set $imgSableSquareDark to &quot;https://catnaomi.github.io/On-Stained-Glass/images/timessquare-crop-black.png&quot;&gt;&gt;
+&lt;&lt;set $imgCloset to &quot;https://catnaomi.github.io/On-Stained-Glass/images/dustycloset-crop.png&quot;&gt;&gt;
+&lt;&lt;set $imgGRHallway to &quot;https://catnaomi.github.io/On-Stained-Glass/images/glassrose-hallway-crop.png&quot;&gt;&gt;
+&lt;&lt;set $imgGRServerRoom to &quot;https://catnaomi.github.io/On-Stained-Glass/images/serverroom-crop.png&quot;&gt;&gt;
+&lt;&lt;set $imgGRServerDark to &quot;https://catnaomi.github.io/On-Stained-Glass/images/serverroom-crop-dark.png&quot;&gt;&gt;
+&lt;&lt;set $imgBlack to &quot;https://catnaomi.github.io/On-Stained-Glass/images/black-crop.png&quot;&gt;&gt;
+&lt;&lt;set $imgSuite to &quot;https://catnaomi.github.io/On-Stained-Glass/images/fancyhouse-crop.png&quot;&gt;&gt;
+&lt;&lt;set $imgFutureOffice to &quot;https://catnaomi.github.io/On-Stained-Glass/images/ancientpc-crop.png&quot;&gt;&gt;
+&lt;&lt;set $imgLivingRoom to &quot;https://catnaomi.github.io/On-Stained-Glass/images/livingroom-crop.png&quot;&gt;&gt;
+&lt;&lt;set $imgScienceHallway to &quot;https://catnaomi.github.io/On-Stained-Glass/images/scifihallway-crop.png&quot;&gt;&gt;
+&lt;&lt;set $imgVault to &quot;https://catnaomi.github.io/On-Stained-Glass/images/mirrorsedge-crop.png&quot;&gt;&gt;
+&lt;&lt;set $imgVaultDark to &quot;https://catnaomi.github.io/On-Stained-Glass/images/mirrorsedge-crop-dark.png&quot;&gt;&gt;
+&lt;&lt;set $imgGrocery to &quot;https://catnaomi.github.io/On-Stained-Glass/images/cornerstore-crop.png&quot;&gt;&gt;
+&lt;&lt;set $imgBlackMarket to &quot;https://catnaomi.github.io/On-Stained-Glass/images/blackmarket.png&quot;&gt;&gt;
+&lt;&lt;set $imgBlackMarketDark to &quot;https://catnaomi.github.io/On-Stained-Glass/images/blackmarket-dark.png&quot;&gt;&gt;
+&lt;&lt;set $imgLab to &quot;https://catnaomi.github.io/On-Stained-Glass/images/lab-crop.png&quot;&gt;&gt;
+&lt;&lt;set $imgSkyline to &quot;https://catnaomi.github.io/On-Stained-Glass/images/skyline-crop.png&quot;&gt;&gt;
+&lt;&lt;set $h0serviceDoor to false&gt;&gt;
+&lt;&lt;set $h0receptionist to false&gt;&gt;
+&lt;&lt;set $heistTime to 0&gt;&gt;
+&lt;&lt;set $employeeGuardDown to false&gt;&gt;
+&lt;&lt;set $researchGuardDown to false&gt;&gt;
+&lt;&lt;set $heistFloor to 0&gt;&gt;
+&lt;&lt;set $talkedToReceptionist to false&gt;&gt;
+&lt;&lt;set $h1confrontedMarcellus to false&gt;&gt;
+&lt;&lt;set $h1bombReady to false&gt;&gt;
+&lt;&lt;set $imgNCCAlley to &quot;https://catnaomi.github.io/On-Stained-Glass/images/neon-alley-crop.png&quot;&gt;&gt;
+&lt;&lt;set $imgNCCLobby to &quot;https://catnaomi.github.io/On-Stained-Glass/images/lobby-crop.png&quot;&gt;&gt;
+&lt;&lt;set $imgNCCOffice to &quot;https://catnaomi.github.io/On-Stained-Glass/images/cubicle-crop.png&quot;&gt;&gt;
+&lt;&lt;set $imgNCCRobertOffice to &quot;https://catnaomi.github.io/On-Stained-Glass/images/dark-office2-crop.png&quot;&gt;&gt;
+&lt;&lt;set $e1ComputerRoomPower to true&gt;&gt;
+&lt;&lt;set $e1Marcie to false&gt;&gt;
+&lt;&lt;/silently&gt;&gt;</tw-passagedata></tw-storydata>
 	<script id="script-sugarcube" type="text/javascript">
 	/*! SugarCube JS */
 	if(document.documentElement.getAttribute("data-init")==="loading"){!function(window,document,jQuery,undefined){"use strict";function _classCallCheck(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}function _toConsumableArray(e){if(Array.isArray(e)){for(var t=0,r=Array(e.length);t<e.length;t++)r[t]=e[t];return r}return Array.from(e)}var _createClass=function(){function e(e,t){for(var r=0;r<t.length;r++){var n=t[r];n.enumerable=n.enumerable||!1,n.configurable=!0,"value"in n&&(n.writable=!0),Object.defineProperty(e,n.key,n)}}return function(t,r,n){return r&&e(t.prototype,r),n&&e(t,n),t}}(),_slicedToArray=function(){function e(e,t){var r=[],n=!0,a=!1,i=undefined;try{for(var o,s=e[Symbol.iterator]();!(n=(o=s.next()).done)&&(r.push(o.value),!t||r.length!==t);n=!0);}catch(e){a=!0,i=e}finally{try{!n&&s.return&&s.return()}finally{if(a)throw i}}return r}return function(t,r){if(Array.isArray(t))return t;if(Symbol.iterator in Object(t))return e(t,r);throw new TypeError("Invalid attempt to destructure non-iterable instance")}}(),_typeof="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(e){return typeof e}:function(e){return e&&"function"==typeof Symbol&&e.constructor===Symbol&&e!==Symbol.prototype?"symbol":typeof e},errorPrologRegExp=/^(?:(?:uncaught\s+(?:exception:\s+)?)?\w*(?:error|exception|_err):\s+)+/i,Alert=function(){function e(e,t,r,n){var a="fatal"===e,i="Apologies! "+(a?"A fatal":"An")+" error has occurred.";i+=a?" Aborting.":" You may be able to continue, but some parts may not work properly.",null==t&&null==r||(i+="\n\nError",null!=t&&(i+=" ["+t+"]"),i+=null!=r?": "+r.replace(errorPrologRegExp,"")+".":": unknown error."),"object"===(void 0===n?"undefined":_typeof(n))&&null!==n&&n.stack&&(i+="\n\nStack Trace:\n"+n.stack),window.alert(i)}function t(t,r,n){e(null,t,r,n)}function r(t,r,n){e("fatal",t,r,n)}return function(e){window.onerror=function(n,a,i,o,s){"complete"===document.readyState?t(null,n,s):(r(null,n,s),window.onerror=e,"function"==typeof window.onerror&&window.onerror.apply(this,arguments))}}(window.onerror),Object.freeze(Object.defineProperties({},{error:{value:t},fatal:{value:r}}))}(),Patterns=function(){var e=function(){var e=new Map([[" ","\\u0020"],["\f","\\f"],["\n","\\n"],["\r","\\r"],["\t","\\t"],["\v","\\v"],[" ","\\u00a0"],[" ","\\u1680"],["᠎","\\u180e"],[" ","\\u2000"],[" ","\\u2001"],[" ","\\u2002"],[" ","\\u2003"],[" ","\\u2004"],[" ","\\u2005"],[" ","\\u2006"],[" ","\\u2007"],[" ","\\u2008"],[" ","\\u2009"],[" ","\\u200a"],["\u2028","\\u2028"],["\u2029","\\u2029"],[" ","\\u202f"],[" ","\\u205f"],["　","\\u3000"],["\ufeff","\\ufeff"]]),t=/^\s$/,r="";return e.forEach(function(e,n){t.test(n)||(r+=e)}),r?"[\\s"+r+"]":"\\s"}(),t="[\\u0020\\f\\t\\v\\u00a0\\u1680\\u180e\\u2000-\\u200a\\u202f\\u205f\\u3000\\ufeff]",r="\\s"===e?"\\S":e.replace(/^\[/,"[^"),n="[0-9A-Z_a-z\\-\\u00c0-\\u00d6\\u00d8-\\u00f6\\u00f8-\\u00ff\\u0150\\u0170\\u0151\\u0171]",a=n.replace("\\-",""),i=function(){var e="(?:[\\x2D.0-9A-Z_a-z\\xB7\\xC0-\\xD6\\xD8-\\xF6\\xF8-\\u037D\\u037F-\\u1FFF\\u200C\\u200D\\u203F\\u2040\\u2070-\\u218F\\u2C00-\\u2FEF\\u3001-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFFD]|[\\uD800-\\uDB7F][\\uDC00-\\uDFFF])";return"[A-Za-z](?:"+e+"*-"+e+"*|[0-9A-Za-z]*)"}(),o=function(){return"("+n+"+)\\(([^\\)\\|\\n]+)\\):|"+t+"*("+n+"+)"+t+"*:([^;\\|\\n]+);|"+t+"*((?:[#.]"+n+"+"+t+"*)+);"}();return Object.freeze({space:e,spaceNoTerminator:t,lineTerminator:"[\\n\\r\\u2028\\u2029]",notSpace:r,anyChar:"(?:.|[\\n\\r\\u2028\\u2029])",anyLetter:n,anyLetterStrict:a,identifierFirstChar:"[$A-Z_a-z]",identifierNextChar:"[$0-9A-Z_a-z]",identifier:"[$A-Z_a-z][$0-9A-Z_a-z]*",variableSigil:"[$_]",variable:"[$_][$A-Z_a-z][$0-9A-Z_a-z]*",macroName:"[A-Za-z][\\w-]*|[=-]",templateName:"[A-Za-z][\\w-]*",htmlTagName:i,cssIdOrClassSigil:"[#.]",cssImage:"\\[[<>]?[Ii][Mm][Gg]\\[(?:\\s|\\S)*?\\]\\]+",inlineCss:o,url:"(?:file|https?|mailto|ftp|javascript|irc|news|data):[^\\s'\"]+"})}();!function(){function e(e,t){var r=Number.parseInt(e,10)||0;if(r<1)return"";var n=void 0===t?"":String(t);for(""===n&&(n=" ");n.length<r;){var a=n.length,i=r-a;n+=a>i?n.slice(0,i):n}return n.length>r&&(n=n.slice(0,r)),n}var t=function(){function e(e,n){var a=String(e);if(!a)return a;switch(n){case"start":return t.test(a)?a.replace(t,""):a;case"end":return r.test(a)?a.replace(r,""):a;default:throw new Error('_trimString called with incorrect where parameter value: "'+n+'"')}}var t=new RegExp("^"+Patterns.space+Patterns.space+"*"),r=new RegExp(""+Patterns.space+Patterns.space+"*$");return e}();Array.prototype.flat||Object.defineProperty(Array.prototype,"flat",{configurable:!0,writable:!0,value:function(){function e(){if(null==this)throw new TypeError("Array.prototype.flat called on null or undefined");var t=0===arguments.length?1:Number(arguments[0])||0;return t<1?Array.prototype.slice.call(this):Array.prototype.reduce.call(this,function(r,n){return n instanceof Array?r.push.apply(r,_toConsumableArray(e.call(n,t-1))):r.push(n),r},[])}return e}()}),Array.prototype.flatMap||Object.defineProperty(Array.prototype,"flatMap",{configurable:!0,writable:!0,value:function(){if(null==this)throw new TypeError("Array.prototype.flatMap called on null or undefined");return Array.prototype.map.apply(this,arguments).flat()}}),Array.prototype.includes||Object.defineProperty(Array.prototype,"includes",{configurable:!0,writable:!0,value:function(){if(null==this)throw new TypeError("Array.prototype.includes called on null or undefined");if(0===arguments.length)return!1;var e=this.length>>>0;if(0===e)return!1;var t=arguments[0],r=Number(arguments[1])||0;for(r<0&&(r=Math.max(0,e+r));r<e;++r){var n=this[r];if(n===t||n!==n&&t!==t)return!0}return!1}}),Object.entries||Object.defineProperty(Object,"entries",{configurable:!0,writable:!0,value:function(e){if("object"!==(void 0===e?"undefined":_typeof(e))||null===e)throw new TypeError("Object.entries object parameter must be an object");return Object.keys(e).map(function(t){return[t,e[t]]})}}),Object.fromEntries||Object.defineProperty(Object,"fromEntries",{configurable:!0,writable:!0,value:function(e){return Array.from(e).reduce(function(e,t){if(Object(t)!==t)throw new TypeError("Object.fromEntries iterable parameter must yield objects");return t[0]in e?Object.defineProperty(e,t[0],{configurable:!0,enumerable:!0,writable:!0,value:t[1]}):e[t[0]]=t[1],e},{})}}),Object.getOwnPropertyDescriptors||Object.defineProperty(Object,"getOwnPropertyDescriptors",{configurable:!0,writable:!0,value:function(e){if(null==e)throw new TypeError("Object.getOwnPropertyDescriptors object parameter is null or undefined");var t=Object(e);return Reflect.ownKeys(t).reduce(function(e,r){var n=Object.getOwnPropertyDescriptor(t,r);return void 0!==n&&(r in e?Object.defineProperty(e,r,{configurable:!0,enumerable:!0,writable:!0,value:n}):e[r]=n),e},{})}}),Object.values||Object.defineProperty(Object,"values",{configurable:!0,writable:!0,value:function(e){if("object"!==(void 0===e?"undefined":_typeof(e))||null===e)throw new TypeError("Object.values object parameter must be an object");return Object.keys(e).map(function(t){return e[t]})}}),String.prototype.padStart||Object.defineProperty(String.prototype,"padStart",{configurable:!0,writable:!0,value:function(t,r){if(null==this)throw new TypeError("String.prototype.padStart called on null or undefined");var n=String(this),a=n.length,i=Number.parseInt(t,10);return i<=a?n:e(i-a,r)+n}}),String.prototype.padEnd||Object.defineProperty(String.prototype,"padEnd",{configurable:!0,writable:!0,value:function(t,r){if(null==this)throw new TypeError("String.prototype.padEnd called on null or undefined");var n=String(this),a=n.length,i=Number.parseInt(t,10);return i<=a?n:n+e(i-a,r)}}),String.prototype.trimStart||Object.defineProperty(String.prototype,"trimStart",{configurable:!0,writable:!0,value:function(){if(null==this)throw new TypeError("String.prototype.trimStart called on null or undefined");return t(this,"start")}}),String.prototype.trimLeft||Object.defineProperty(String.prototype,"trimLeft",{configurable:!0,writable:!0,value:function(){if(null==this)throw new TypeError("String.prototype.trimLeft called on null or undefined");return t(this,"start")}}),String.prototype.trimEnd||Object.defineProperty(String.prototype,"trimEnd",{configurable:!0,writable:!0,value:function(){if(null==this)throw new TypeError("String.prototype.trimEnd called on null or undefined");return t(this,"end")}}),String.prototype.trimRight||Object.defineProperty(String.prototype,"trimRight",{configurable:!0,writable:!0,value:function(){if(null==this)throw new TypeError("String.prototype.trimRight called on null or undefined");return t(this,"end")}})}(),function(){function _random(){var e=void 0,t=void 0;switch(arguments.length){case 0:throw new Error("_random called with insufficient parameters");case 1:e=0,t=arguments[0];break;default:e=arguments[0],t=arguments[1]}if(e>t){var r=[t,e];e=r[0],t=r[1]}return Math.floor(_nativeMathRandom()*(t-e+1))+e}function _randomIndex(e,t){var r=void 0,n=void 0;switch(t.length){case 1:r=0,n=e-1;break;case 2:r=0,n=Math.trunc(t[1]);break;default:r=Math.trunc(t[1]),n=Math.trunc(t[2])}return Number.isNaN(r)?r=0:!Number.isFinite(r)||r>=e?r=e-1:r<0&&(r=e+r)<0&&(r=0),Number.isNaN(n)?n=0:!Number.isFinite(n)||n>=e?n=e-1:n<0&&(n=e+n)<0&&(n=e-1),_random(r,n)}function _getCodePointStartAndEnd(e,t){var r=e.charCodeAt(t);if(Number.isNaN(r))return{char:"",start:-1,end:-1};if(r<55296||r>57343)return{char:e.charAt(t),start:t,end:t};if(r>=55296&&r<=56319){var n=t+1;if(n>=e.length)throw new Error("high surrogate without trailing low surrogate");var a=e.charCodeAt(n);if(a<56320||a>57343)throw new Error("high surrogate without trailing low surrogate");return{char:e.charAt(t)+e.charAt(n),start:t,end:n}}if(0===t)throw new Error("low surrogate without leading high surrogate");var i=t-1,o=e.charCodeAt(i);if(o<55296||o>56319)throw new Error("low surrogate without leading high surrogate");return{char:e.charAt(i)+e.charAt(t),start:i,end:t}}var _nativeMathRandom=Math.random;Object.defineProperty(Array,"random",{configurable:!0,writable:!0,value:function(e){if("object"!==(void 0===e?"undefined":_typeof(e))||null===e||!Object.prototype.hasOwnProperty.call(e,"length"))throw new TypeError("Array.random array parameter must be an array or array-lke object");var t=e.length>>>0;if(0!==t){return e[0===arguments.length?_random(0,t-1):_randomIndex(t,Array.prototype.slice.call(arguments,1))]}}}),Object.defineProperty(Array.prototype,"concatUnique",{configurable:!0,writable:!0,value:function(){if(null==this)throw new TypeError("Array.prototype.concatUnique called on null or undefined");var e=Array.from(this);if(0===arguments.length)return e;var t=Array.prototype.reduce.call(arguments,function(e,t){return e.concat(t)},[]),r=t.length;if(0===r)return e;for(var n=Array.prototype.indexOf,a=Array.prototype.push,i=0;i<r;++i){var o=t[i];-1===n.call(e,o)&&a.call(e,o)}return e}}),Object.defineProperty(Array.prototype,"count",{configurable:!0,writable:!0,value:function(){if(null==this)throw new TypeError("Array.prototype.count called on null or undefined");for(var e=Array.prototype.indexOf,t=arguments[0],r=Number(arguments[1])||0,n=0;-1!==(r=e.call(this,t,r));)++n,++r;return n}}),Object.defineProperty(Array.prototype,"delete",{configurable:!0,writable:!0,value:function(){if(null==this)throw new TypeError("Array.prototype.delete called on null or undefined");if(0===arguments.length)return[];var e=this.length>>>0;if(0===e)return[];for(var t=Array.prototype.concat.apply([],arguments),r=t.length,n=[],a=0;a<e;++a)for(var i=this[a],o=0;o<r;++o){var s=t[o];if(i===s||i!==i&&s!==s){n.push(a);break}}for(var u=[],l=0,c=n.length;l<c;++l)u[l]=this[n[l]];for(var d=Array.prototype.splice,f=n.length-1;f>=0;--f)d.call(this,n[f],1);return u}}),Object.defineProperty(Array.prototype,"deleteAt",{configurable:!0,writable:!0,value:function(){if(null==this)throw new TypeError("Array.prototype.deleteAt called on null or undefined");if(0===arguments.length)return[];var e=this.length>>>0;if(0===e)return[];for(var t=Array.prototype.splice,r=[].concat(_toConsumableArray(new Set(Array.prototype.concat.apply([],arguments).map(function(t){return t<0?Math.max(0,e+t):t})).values())),n=[].concat(_toConsumableArray(r)).sort(function(e,t){return t-e}),a=[],i=0,o=r.length;i<o;++i)a[i]=this[r[i]];for(var s=0,u=n.length;s<u;++s)t.call(this,n[s],1);return a}}),Object.defineProperty(Array.prototype,"deleteWith",{configurable:!0,writable:!0,value:function(e,t){if(null==this)throw new TypeError("Array.prototype.deleteWith called on null or undefined");if("function"!=typeof e)throw new Error("Array.prototype.deleteWith predicate parameter must be a function");var r=this.length>>>0;if(0===r)return[];for(var n=Array.prototype.splice,a=[],i=[],o=0;o<r;++o)e.call(t,this[o],o,this)&&(i.push(this[o]),a.push(o));for(var s=a.length-1;s>=0;--s)n.call(this,a[s],1);return i}}),Object.defineProperty(Array.prototype,"first",{configurable:!0,writable:!0,value:function(){if(null==this)throw new TypeError("Array.prototype.first called on null or undefined");if(0!=this.length>>>0)return this[0]}}),Object.defineProperty(Array.prototype,"includesAll",{configurable:!0,writable:!0,value:function(){if(null==this)throw new TypeError("Array.prototype.includesAll called on null or undefined");if(1===arguments.length)return Array.isArray(arguments[0])?Array.prototype.includesAll.apply(this,arguments[0]):Array.prototype.includes.apply(this,arguments);for(var e=0,t=arguments.length;e<t;++e)if(!Array.prototype.some.call(this,function(e){return e===this.val||e!==e&&this.val!==this.val},{val:arguments[e]}))return!1;return!0}}),Object.defineProperty(Array.prototype,"includesAny",{configurable:!0,writable:!0,value:function(){if(null==this)throw new TypeError("Array.prototype.includesAny called on null or undefined");if(1===arguments.length)return Array.isArray(arguments[0])?Array.prototype.includesAny.apply(this,arguments[0]):Array.prototype.includes.apply(this,arguments);for(var e=0,t=arguments.length;e<t;++e)if(Array.prototype.some.call(this,function(e){return e===this.val||e!==e&&this.val!==this.val},{val:arguments[e]}))return!0;return!1}}),Object.defineProperty(Array.prototype,"last",{configurable:!0,writable:!0,value:function(){if(null==this)throw new TypeError("Array.prototype.last called on null or undefined");var e=this.length>>>0;if(0!==e)return this[e-1]}}),Object.defineProperty(Array.prototype,"pluck",{configurable:!0,writable:!0,value:function(){if(null==this)throw new TypeError("Array.prototype.pluck called on null or undefined");var e=this.length>>>0;if(0!==e){var t=0===arguments.length?_random(0,e-1):_randomIndex(e,[].concat(Array.prototype.slice.call(arguments)));return Array.prototype.splice.call(this,t,1)[0]}}}),Object.defineProperty(Array.prototype,"pluckMany",{configurable:!0,writable:!0,value:function(e){if(null==this)throw new TypeError("Array.prototype.pluckMany called on null or undefined");var t=this.length>>>0;if(0===t)return[];var r=Math.trunc(e);if(!Number.isInteger(r))throw new Error("Array.prototype.pluckMany want parameter must be an integer");if(r<1)return[];r>t&&(r=t);var n=Array.prototype.splice,a=[],i=t-1;do{a.push(n.call(this,_random(0,i--),1)[0])}while(a.length<r);return a}}),Object.defineProperty(Array.prototype,"pushUnique",{configurable:!0,writable:!0,value:function(){if(null==this)throw new TypeError("Array.prototype.pushUnique called on null or undefined");var e=arguments.length;if(0===e)return this.length>>>0;for(var t=Array.prototype.indexOf,r=Array.prototype.push,n=0;n<e;++n){var a=arguments[n];-1===t.call(this,a)&&r.call(this,a)}return this.length>>>0}}),Object.defineProperty(Array.prototype,"random",{configurable:!0,writable:!0,value:function(){if(null==this)throw new TypeError("Array.prototype.random called on null or undefined");var e=this.length>>>0;if(0!==e){return this[0===arguments.length?_random(0,e-1):_randomIndex(e,[].concat(Array.prototype.slice.call(arguments)))]}}}),Object.defineProperty(Array.prototype,"randomMany",{configurable:!0,writable:!0,value:function(e){if(null==this)throw new TypeError("Array.prototype.randomMany called on null or undefined");var t=this.length>>>0;if(0===t)return[];var r=Math.trunc(e);if(!Number.isInteger(r))throw new Error("Array.prototype.randomMany want parameter must be an integer");if(r<1)return[];r>t&&(r=t);var n=new Map,a=[],i=t-1;do{var o=void 0;do{o=_random(0,i)}while(n.has(o));n.set(o,!0),a.push(this[o])}while(a.length<r);return a}}),Object.defineProperty(Array.prototype,"shuffle",{configurable:!0,writable:!0,value:function(){if(null==this)throw new TypeError("Array.prototype.shuffle called on null or undefined");var e=this.length>>>0;if(0===e)return this;for(var t=e-1;t>0;--t){var r=Math.floor(_nativeMathRandom()*(t+1));if(t!==r){var n=this[t];this[t]=this[r],this[r]=n}}return this}}),Object.defineProperty(Array.prototype,"unshiftUnique",{configurable:!0,writable:!0,value:function(){if(null==this)throw new TypeError("Array.prototype.unshiftUnique called on null or undefined");var e=arguments.length;if(0===e)return this.length>>>0;for(var t=Array.prototype.indexOf,r=Array.prototype.unshift,n=0;n<e;++n){var a=arguments[n];-1===t.call(this,a)&&r.call(this,a)}return this.length>>>0}}),Object.defineProperty(Function.prototype,"partial",{configurable:!0,writable:!0,value:function(){if(null==this)throw new TypeError("Function.prototype.partial called on null or undefined");var e=Array.prototype.slice,t=this,r=e.call(arguments,0);return function(){for(var n=[],a=0,i=0;i<r.length;++i)n.push(r[i]===undefined?arguments[a++]:r[i]);return t.apply(this,n.concat(e.call(arguments,a)))}}}),Object.defineProperty(Math,"clamp",{configurable:!0,writable:!0,value:function(e,t,r){var n=Number(e);return Number.isNaN(n)?NaN:n.clamp(t,r)}}),Object.defineProperty(Math,"easeInOut",{configurable:!0,writable:!0,value:function(e){return 1-(Math.cos(Number(e)*Math.PI)+1)/2}}),Object.defineProperty(Number.prototype,"clamp",{configurable:!0,writable:!0,value:function(){if(null==this)throw new TypeError("Number.prototype.clamp called on null or undefined");if(2!==arguments.length)throw new Error("Number.prototype.clamp called with an incorrect number of parameters");var e=Number(arguments[0]),t=Number(arguments[1]);if(e>t){var r=[t,e];e=r[0],t=r[1]}return Math.min(Math.max(this,e),t)}}),RegExp.escape||function(){var e=/[\\^$*+?.()|[\]{}]/g,t=new RegExp(e.source);Object.defineProperty(RegExp,"escape",{configurable:!0,writable:!0,value:function(r){var n=String(r);return n&&t.test(n)?n.replace(e,"\\$&"):n}})}(),function(){var e=/{(\d+)(?:,([+-]?\d+))?}/g,t=new RegExp(e.source);Object.defineProperty(String,"format",{configurable:!0,writable:!0,value:function(r){function n(e,t,r){if(!t)return e;var n=Math.abs(t)-e.length;if(n<1)return e;var a=String(r).repeat(n);return t<0?e+a:a+e}if(arguments.length<2)return 0===arguments.length?"":r;var a=2===arguments.length&&Array.isArray(arguments[1])?[].concat(_toConsumableArray(arguments[1])):Array.prototype.slice.call(arguments,1);return 0===a.length?r:t.test(r)?(e.lastIndex=0,r.replace(e,function(e,t,r){var i=a[t];if(null==i)return"";for(;"function"==typeof i;)i=i();switch(void 0===i?"undefined":_typeof(i)){case"string":break;case"object":i=JSON.stringify(i);break;default:i=String(i)}return n(i,r?Number.parseInt(r,10):0," ")})):r}})}(),Object.defineProperty(String.prototype,"contains",{configurable:!0,writable:!0,value:function(){if(null==this)throw new TypeError("String.prototype.contains called on null or undefined");return-1!==String.prototype.indexOf.apply(this,arguments)}}),Object.defineProperty(String.prototype,"count",{configurable:!0,writable:!0,value:function(){if(null==this)throw new TypeError("String.prototype.count called on null or undefined");var e=String(arguments[0]||"");if(""===e)return 0;for(var t=String.prototype.indexOf,r=e.length,n=Number(arguments[1])||0,a=0;-1!==(n=t.call(this,e,n));)++a,n+=r;return a}}),Object.defineProperty(String.prototype,"first",{configurable:!0,writable:!0,value:function(){if(null==this)throw new TypeError("String.prototype.first called on null or undefined");return _getCodePointStartAndEnd(String(this),0).char}}),Object.defineProperty(String.prototype,"last",{configurable:!0,writable:!0,value:function(){if(null==this)throw new TypeError("String.prototype.last called on null or undefined");var e=String(this);return _getCodePointStartAndEnd(e,e.length-1).char}}),Object.defineProperty(String.prototype,"splice",{configurable:!0,writable:!0,value:function(e,t,r){if(null==this)throw new TypeError("String.prototype.splice called on null or undefined");var n=this.length>>>0;if(0===n)return"";var a=Number(e);Number.isSafeInteger(a)?a<0&&(a+=n)<0&&(a=0):a=0,a>n&&(a=n);var i=Number(t);(!Number.isSafeInteger(i)||i<0)&&(i=0);var o=this.slice(0,a);return void 0!==r&&(o+=r),a+i<n&&(o+=this.slice(a+i)),o}}),Object.defineProperty(String.prototype,"splitOrEmpty",{configurable:!0,writable:!0,value:function(){if(null==this)throw new TypeError("String.prototype.splitOrEmpty called on null or undefined");return""===String(this)?[]:String.prototype.split.apply(this,arguments)}}),Object.defineProperty(String.prototype,"toLocaleUpperFirst",{configurable:!0,writable:!0,value:function(){if(null==this)throw new TypeError("String.prototype.toLocaleUpperFirst called on null or undefined");var e=String(this),t=_getCodePointStartAndEnd(e,0),r=t.char,n=t.end;return-1===n?"":r.toLocaleUpperCase()+e.slice(n+1)}}),Object.defineProperty(String.prototype,"toUpperFirst",{configurable:!0,writable:!0,value:function(){if(null==this)throw new TypeError("String.prototype.toUpperFirst called on null or undefined");var e=String(this),t=_getCodePointStartAndEnd(e,0),r=t.char,n=t.end;return-1===n?"":r.toUpperCase()+e.slice(n+1)}}),Object.defineProperty(Date.prototype,"toJSON",{configurable:!0,writable:!0,value:function(){return["(revive:date)",this.toISOString()]}}),Object.defineProperty(Function.prototype,"toJSON",{configurable:!0,writable:!0,value:function(){return["(revive:eval)","("+this.toString()+")"]}}),Object.defineProperty(Map.prototype,"toJSON",{configurable:!0,writable:!0,value:function(){return["(revive:map)",[].concat(_toConsumableArray(this))]}}),Object.defineProperty(RegExp.prototype,"toJSON",{configurable:!0,writable:!0,value:function(){return["(revive:eval)",this.toString()]}}),Object.defineProperty(Set.prototype,"toJSON",{configurable:!0,writable:!0,value:function(){return["(revive:set)",[].concat(_toConsumableArray(this))]}}),Object.defineProperty(JSON,"reviveWrapper",{configurable:!0,writable:!0,value:function(e,t){if("string"!=typeof e)throw new TypeError("JSON.reviveWrapper code parameter must be a string");return["(revive:eval)",[e,t]]}}),Object.defineProperty(JSON,"_real_stringify",{value:JSON.stringify}),Object.defineProperty(JSON,"stringify",{configurable:!0,writable:!0,value:function(e,t,r){return JSON._real_stringify(e,function(e,r){var n=r;if("function"==typeof t)try{n=t(e,n)}catch(e){}return void 0===n&&(n=["(revive:eval)","undefined"]),n},r)}}),Object.defineProperty(JSON,"_real_parse",{value:JSON.parse}),Object.defineProperty(JSON,"parse",{configurable:!0,writable:!0,value:function value(text,reviver){return JSON._real_parse(text,function(key,val){var value=val;if(Array.isArray(value)&&2===value.length)switch(value[0]){case"(revive:set)":value=new Set(value[1]);break;case"(revive:map)":value=new Map(value[1]);break;case"(revive:date)":value=new Date(value[1]);break;case"(revive:eval)":try{if(Array.isArray(value[1])){var $ReviveData$=value[1][1];value=eval(value[1][0])}else value=eval(value[1])}catch(e){}}else if("string"==typeof value&&"@@revive@@"===value.slice(0,10))try{value=eval(value.slice(10))}catch(e){}if("function"==typeof reviver)try{value=reviver(key,value)}catch(e){}return value})}}),Object.defineProperty(Array.prototype,"contains",{configurable:!0,writable:!0,value:function(){if(null==this)throw new TypeError("Array.prototype.contains called on null or undefined");return Array.prototype.includes.apply(this,arguments)}}),Object.defineProperty(Array.prototype,"containsAll",{configurable:!0,writable:!0,value:function(){if(null==this)throw new TypeError("Array.prototype.containsAll called on null or undefined");return Array.prototype.includesAll.apply(this,arguments)}}),Object.defineProperty(Array.prototype,"containsAny",{configurable:!0,writable:!0,value:function(){if(null==this)throw new TypeError("Array.prototype.containsAny called on null or undefined");return Array.prototype.includesAny.apply(this,arguments)}}),Object.defineProperty(Array.prototype,"flatten",{configurable:!0,writable:!0,value:function(){if(null==this)throw new TypeError("Array.prototype.flatten called on null or undefined");return Array.prototype.flat.call(this,1/0)}}),Object.defineProperty(String.prototype,"readBracketedList",{configurable:!0,writable:!0,value:function(){if(null==this)throw new TypeError("String.prototype.readBracketedList called on null or undefined");for(var e=new RegExp("(?:\\[\\[((?:\\s|\\S)*?)\\]\\])|([^\"'\\s]\\S*)","gm"),t=[],r=void 0;null!==(r=e.exec(this));)r[1]?t.push(r[1]):r[2]&&t.push(r[2]);return t}})}();var Browser=function(){var e=navigator.userAgent.toLowerCase(),t=e.includes("windows phone"),r=Object.freeze({Android:!t&&e.includes("android"),BlackBerry:/blackberry|bb10/.test(e),iOS:!t&&/ip(?:hone|ad|od)/.test(e),Opera:!t&&("object"===_typeof(window.operamini)||e.includes("opera mini")),Windows:t||/iemobile|wpdesktop/.test(e),any:function(){return r.Android||r.BlackBerry||r.iOS||r.Opera||r.Windows}}),n=!r.Windows&&!/khtml|trident|edge/.test(e)&&e.includes("gecko"),a=!e.includes("opera")&&/msie|trident/.test(e),i=a?function(){var t=/(?:msie\s+|rv:)(\d+\.\d)/.exec(e);return t?Number(t[1]):0}():null,o=e.includes("opera")||e.includes(" opr/"),s=o?function(){var t=new RegExp((/khtml|chrome/.test(e)?"opr":"version")+"\\/(\\d+\\.\\d+)"),r=t.exec(e);return r?Number(r[1]):0}():null,u=e.includes("vivaldi");return Object.freeze({userAgent:e,isMobile:r,isGecko:n,isIE:a,ieVersion:i,isOpera:o,operaVersion:s,isVivaldi:u})}(),Has=function(){var e=function(){try{return"function"==typeof document.createElement("audio").canPlayType}catch(e){}return!1}(),t=function(){try{return"Blob"in window&&"File"in window&&"FileList"in window&&"FileReader"in window&&(!Browser.isOpera||Browser.operaVersion>=15)}catch(e){}return!1}(),r=function(){try{return"geolocation"in navigator&&"function"==typeof navigator.geolocation.getCurrentPosition&&"function"==typeof navigator.geolocation.watchPosition}catch(e){}return!1}(),n=function(){try{return"MutationObserver"in window&&"function"==typeof window.MutationObserver}catch(e){}return!1}(),a=function(){try{return"performance"in window&&"function"==typeof window.performance.now}catch(e){}return!1}(),i=function(){try{return"ontouchstart"in window||!!window.DocumentTouch&&document instanceof window.DocumentTouch||!!navigator.maxTouchPoints||!!navigator.msMaxTouchPoints}catch(e){}return!1}(),o=function(){try{for(var e=new Map([["transition","transitionend"],["MSTransition","msTransitionEnd"],["WebkitTransition","webkitTransitionEnd"],["MozTransition","transitionend"]]),t=[].concat(_toConsumableArray(e.keys())),r=document.createElement("div"),n=0;n<t.length;++n)if(r.style[t[n]]!==undefined)return e.get(t[n])}catch(e){}return!1}();return Object.freeze({audio:e,fileAPI:t,geolocation:r,mutationObserver:n,performance:a,touch:i,transitionEndEvent:o})}(),Visibility=function(){function e(){return a}function t(){return a&&document[a.stateProperty]||"visible"}function r(){return Boolean(a)}function n(){return Boolean(a&&document[a.hiddenProperty])}var a=function(){try{return Object.freeze([{hiddenProperty:"hidden",stateProperty:"visibilityState",changeEvent:"visibilitychange"},{hiddenProperty:"webkitHidden",stateProperty:"webkitVisibilityState",changeEvent:"webkitvisibilitychange"},{hiddenProperty:"mozHidden",stateProperty:"mozVisibilityState",changeEvent:"mozvisibilitychange"},{hiddenProperty:"msHidden",stateProperty:"msVisibilityState",changeEvent:"msvisibilitychange"}].find(function(e){return e.hiddenProperty in document}))}catch(e){}return undefined}();return Object.freeze(Object.defineProperties({},{vendor:{get:e},state:{get:t},isEnabled:{value:r},isHidden:{value:n},hiddenProperty:{value:a&&a.hiddenProperty},stateProperty:{value:a&&a.stateProperty},changeEvent:{value:a&&a.changeEvent}}))}(),Fullscreen=function(){function e(e){var t=e||document.documentElement;return t===document.documentElement&&("msRequestFullscreen"===f.requestFn||Browser.isOpera&&Browser.operaVersion<15)&&(t=document.body),t}function t(){return f}function r(){return(f||null)&&document[f.element]}function n(){return Boolean(f&&document[f.isEnabled])}function a(){return Boolean(f&&document[f.element])}function i(t,r){var n=this;if(!f)return Promise.reject(new Error("fullscreen not supported"));var i=e(r);if("function"!=typeof i[f.requestFn])return Promise.reject(new Error("fullscreen not supported"));if(a())return Promise.resolve();if(p())return i[f.requestFn](t);var o=".Fullscreen_requestFullscreen";return new Promise(function(e,r){jQuery(i).off(o).one(""+f.errorEvent+o+" "+f.changeEvent+o,function(t){jQuery(n).off(o),t.type===f.errorEvent?r(new Error("unknown fullscreen request error")):e()}),i[f.requestFn](t)})}function o(){var e=this;if(!f||"function"!=typeof document[f.exitFn])return Promise.reject(new TypeError("fullscreen not supported"));if(!a())return Promise.reject(new TypeError("fullscreen mode not active"));if(p())return document[f.exitFn]();var t=".Fullscreen_exitFullscreen";return new Promise(function(r,n){jQuery(document).off(t).one(""+f.errorEvent+t+" "+f.changeEvent+t,function(a){jQuery(e).off(t),a.type===f.errorEvent?n(new Error("unknown fullscreen exit error")):r()}),document[f.exitFn]()})}function s(e,t){return a()?o():i(e,t)}function u(t,r){if(f){var n=e(r);$(n).on(f.changeEvent,t)}}function l(t,r){if(f){var n=e(r);t?$(n).off(f.changeEvent,t):$(n).off(f.changeEvent)}}function c(t,r){if(f){var n=e(r);$(n).on(f.errorEvent,t)}}function d(t,r){if(f){var n=e(r);t?$(n).off(f.errorEvent,t):$(n).off(f.errorEvent)}}var f=function(){try{return Object.freeze([{isEnabled:"fullscreenEnabled",element:"fullscreenElement",requestFn:"requestFullscreen",exitFn:"exitFullscreen",changeEvent:"fullscreenchange",errorEvent:"fullscreenerror"},{isEnabled:"webkitFullscreenEnabled",element:"webkitFullscreenElement",requestFn:"webkitRequestFullscreen",exitFn:"webkitExitFullscreen",changeEvent:"webkitfullscreenchange",errorEvent:"webkitfullscreenerror"},{isEnabled:"mozFullScreenEnabled",element:"mozFullScreenElement",requestFn:"mozRequestFullScreen",exitFn:"mozCancelFullScreen",changeEvent:"mozfullscreenchange",errorEvent:"mozfullscreenerror"},{isEnabled:"msFullscreenEnabled",element:"msFullscreenElement",requestFn:"msRequestFullscreen",exitFn:"msExitFullscreen",changeEvent:"MSFullscreenChange",errorEvent:"MSFullscreenError"}].find(function(e){return e.isEnabled in document}))}catch(e){}return undefined}(),p=function(){function e(){if(null!==t)return t;if(t=!1,f)try{var e=document.exitFullscreen();e.catch(function(){}),t=e instanceof Promise}catch(e){}return t}var t=null;return e}();return Object.freeze(Object.defineProperties({},{vendor:{get:t},element:{get:r},isEnabled:{value:n},isFullscreen:{value:a},request:{value:i},exit:{value:o},toggle:{value:s},onChange:{value:u},offChange:{value:l},onError:{value:c},offError:{value:d}}))}(),_ref3=function(){function e(e){for(var t=e.cloneNode(!0),r=document.createDocumentFragment(),n=void 0;null!==(n=t.firstChild);){if(n.nodeType===Node.ELEMENT_NODE)switch(n.nodeName.toUpperCase()){case"BR":case"DIV":case"P":r.appendChild(document.createTextNode(" "))}r.appendChild(n)}return r.textContent}function t(e){if("object"!==(void 0===e?"undefined":_typeof(e))||null===e)return e;if(e instanceof String)return String(e);if(e instanceof Number)return Number(e);if(e instanceof Boolean)return Boolean(e)
